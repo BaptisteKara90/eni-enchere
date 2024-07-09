@@ -1,6 +1,6 @@
 insert into UTILISATEURS (pseudo, nom, prenom, email,telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur)
-values ('antoine1', 'Guillo', 'Antoine', 'antoine.guillo@gmail.com', '0123456789', '1 rue de la rue', '35000', 'Rennes', 'password', 500, TRUE ),
-       ('Batou1', 'Kara', 'Baptiste', 'baptiste.kara@gmail.com', '0123456789', '1 rue de la rue', '35000', 'Rennes', 'password', 500, TRUE );
+values ('antoine1', 'Guillo', 'Antoine', 'antoine.guillo@gmail.com', '0123456789', '1 rue de la rue', '35000', 'Rennes', '{bcrypt}$2b$12$VYqvDmv3Q1vLQgzTr6UgCeKsd2j3mSHHOiwE8PbKQbb/Zy3FqgR4u', 500, TRUE ),
+       ('Batou1', 'Kara', 'Baptiste', 'baptiste.kara@gmail.com', '0123456789', '1 rue de la rue', '35000', 'Rennes', '{bcrypt}$2b$12$VYqvDmv3Q1vLQgzTr6UgCeKsd2j3mSHHOiwE8PbKQbb/Zy3FqgR4u', 500, TRUE );
 
 INSERT INTO ROLES (email, role)
 VALUES ('antoine.guillo@gmail.com', 'admin'),
@@ -14,9 +14,12 @@ VALUES ('Mobilier'),
        ('Divers');
 
 INSERT INTO UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur)
-VALUES ('enchereur1', 'Dupont', 'Jean', 'jean.dupont@exemple.com', '0123456789', '1 rue des Fleurs', '75000', 'Paris', 'secret', 100, FALSE),
-       ('vendeur1', 'Martin', 'Léa', 'lea.martin@exemple.com', '0987654321', '5 avenue Victor Hugo', '35000', 'Rennes', 'password', 50, TRUE),
-       ('acheteur2', 'Lefebvre', 'Paul', 'paul.lefebvre@exemple.com', '0654321987', '2 place de la République', '69000', 'Lyon', 'motdepasse', 200, FALSE);
+VALUES ('enchereur1', 'Dupont', 'Jean', 'jean.dupont@exemple.com', '0123456789', '1 rue des Fleurs', '75000', 'Paris', '{bcrypt}$2b$12$VYqvDmv3Q1vLQgzTr6UgCeKsd2j3mSHHOiwE8PbKQbb/Zy3FqgR4u', 100, FALSE),
+       -- mot de passe original: 'password'
+       ('vendeur1', 'Martin', 'Léa', 'lea.martin@exemple.com', '0987654321', '5 avenue Victor Hugo', '35000', 'Rennes', '{bcrypt}$2b$12$6GQiH1HICZh3A5sFEJ6l8O5mGHJSDkfHJfL.q2dCkOFG8Sy3Rz8L6', 50, TRUE),
+       -- mot de passe original: 'motdepasse'
+       ('acheteur2', 'Lefebvre', 'Paul', 'paul.lefebvre@exemple.com', '0654321987', '2 place de la République', '69000', 'Lyon', '{bcrypt}$2b$12$eWi4J9Fty5Gh7/.7rhEAsOu8TcH1BHeaHG0ZdMN9O.KFwaZ/jYTGm', 200, FALSE);
+       -- mot de passe original: 'password'
 
 INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie)
 VALUES ('Canapé en cuir', 'Magnifique canapé en cuir marron, très confortable.', '2024-07-08', '2024-07-22', 100, 2, 1),
