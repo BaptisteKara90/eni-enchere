@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html data-th-replace="~{layouts/layout :: frag-layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+<title>Login</title>
+
+<main>
+    <h1>Login</h1>
+    <form data-th-action="@{/login}" method="post">
+        <ul class="flex-outer">
+            <li>
+                <label for="idUser">Identifiant</label>
+                <input name="username" id="idUser" type="text" placeholder="Adresse e-mail">
+            </li>
+            <li>
+                <label for="idPassword">Mot de passe</label>
+                <input name="password" id="idPassword" type="password" placeholder="Mot de passe">
+            </li>
+            <li>
+                <button type="submit">log in</button>
+            </li>
+        </ul>
+    </form>
+</main>
+</html>

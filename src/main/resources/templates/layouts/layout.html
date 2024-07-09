@@ -1,0 +1,28 @@
+<html data-th-fragment="frag-layout(title, content)">
+<head>
+    <meta charset="ISO-8859-1">
+    <!--  la abalise sera remplacée par le contenu de title -->
+    <title data-th-replace="${title}"></title>
+
+    <link rel="stylesheet" href="/css/general.css">
+</head>
+<body>
+<header>
+    <h1 id="nav-title">ENI-Encheres</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/login">login</a></li>
+            <li><a href="/logout">logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main data-th-replace="${content}"></main>
+
+<footer>
+    <p>&copy; ENI - all right reserved</p>
+</footer>
+
+</body>
+</html>
