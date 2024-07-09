@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html data-th-replace="~{layouts/layout :: frag-layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+
+<!--  tire passé en paramètre -->
+<title>Home</title>
+
+<!--  contenu passé en paramètre -->
+<main class="center-main">
+    <h1>COUCOU!</h1>
+</main>
+
+
+</html>
