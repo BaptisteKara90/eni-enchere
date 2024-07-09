@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,10 +18,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class SecurityConfig {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Bean
     UserDetailsManager userDetailsManager(DataSource dataSource) {
@@ -44,12 +45,12 @@ public class SecurityConfig {
         });
 
         //Gestion automatique du login
-        //http.formLogin(Customizer.withDefaults());
+        http.formLogin(Customizer.withDefaults());
 
         //Gestion du login avec un fichier login.html
-        http.formLogin(form -> {
-            form.loginPage("/login").permitAll().defaultSuccessUrl("/");
-        });
+//        http.formLogin(form -> {
+//            form.loginPage("/login").permitAll().defaultSuccessUrl("/");
+//        });
 
         http.logout(logout -> {
             //supprime la session côté serveur
