@@ -11,49 +11,49 @@
 <!--  contenu passé en paramètre -->
 <main class="center-main">
     <h1>S'enregistrer</h1>
-    <form data-th-action="@{/addUser}" method="post">
+    <form data-th-action="@{/addUser}" method="post" data-th-object="${utilisateur}">
         <ul class="flex-outer">
             <li>
                 <label for="idPseudo">Pseudo</label>
-                <input name="pseudo" id="idPseudo" type="text" placeholder="Votre pseudonyme">
+                <input data-th-field= "*{pseudo}"  id="idPseudo" type="text" placeholder="Votre pseudonyme">
             </li>
             <li>
                 <label for="idMail">Mail</label>
-                <input name="email" id="idMail" type="text" placeholder="Votre e-mail">
+                <input data-th-field= "*{email}"  id="idMail" type="text" placeholder="Votre e-mail">
             </li>
             <li>
                 <label for="idPassword">Mot de passe</label>
-                <input name="mot_de_passe" id="idPassword" type="password" placeholder="Mot de Passe">
+                <input data-th-field= "*{mot_de_passe}" name="mot_de_passe" id="idPassword" type="password" placeholder="Mot de Passe">
             </li>
             <li>
                 <h2>Votre Identité</h2>
             </li>
             <li>
                 <label for="idNom">Nom</label>
-                <input name="nom" id="idNom" type="text" placeholder="Votre Nom">
+                <input data-th-field= "*{nom}" name="nom" id="idNom" type="text" placeholder="Votre Nom">
             </li>
             <li>
                 <label for="idPrenom">Prenom</label>
-                <input name="prenom" id="idPrenom" type="text" placeholder="Votre prenom">
+                <input data-th-field= "*{prenom}" name="prenom" id="idPrenom" type="text" placeholder="Votre prenom">
             </li>
             <li>
                 <label for="idTelephone">Telephone</label>
-                <input name="telephone" id="idTelephone" type="text" placeholder="Votre numero de telephone">
+                <input data-th-field= "*{telephone}" name="telephone" id="idTelephone" type="text" placeholder="Votre numero de telephone">
             </li>
             <li>
                 <h2>Votre Adresse</h2>
             </li>
             <li>
                 <label for="idRue">Adresse</label>
-                <input name="rue" id="idRue" type="text" placeholder="Votre adresse">
+                <input data-th-field= "*{rue}" name="rue" id="idRue" type="text" placeholder="Votre adresse">
             </li>
             <li>
                 <label for="idCodePostal">Code Postal</label>
-                <input name="code_postal" id="idCodePostal" type="text" placeholder="votre code postal">
+                <input data-th-field= "*{code_postal}" name="code_postal" id="idCodePostal" type="text" placeholder="votre code postal">
             </li>
             <li>
                 <label for="idVille">Ville</label>
-                <input name="ville" id="idVille" type="text" placeholder="Votre ville">
+                <input data-th-field= "*{ville}" name="ville" id="idVille" type="text" placeholder="Votre ville">
             </li>
             <li>
                 <button type="submit">S'enregistrer</button>

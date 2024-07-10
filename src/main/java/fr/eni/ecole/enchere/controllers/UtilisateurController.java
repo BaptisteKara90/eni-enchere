@@ -3,6 +3,7 @@ package fr.eni.ecole.enchere.controllers;
 import fr.eni.ecole.enchere.bll.utilisateur.UtilisateurService;
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,11 @@ public class UtilisateurController {
     }
 
     @GetMapping("/signin")
-    public String utilisateur() {
+    public String utilisateur(Model model) {
+        Utilisateur utilisateur = new Utilisateur();
+
+        model.addAttribute("utilisateur", utilisateur);
+
         return "signin";
     }
 
