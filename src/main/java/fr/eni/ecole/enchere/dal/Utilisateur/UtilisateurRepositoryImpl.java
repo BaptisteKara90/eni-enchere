@@ -60,6 +60,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
         map.addValue("rue", utilisateur.getRue());
         map.addValue("code_postal", utilisateur.getCode_postal());
         map.addValue("ville", utilisateur.getVille());
+        map.addValue("mot_de_passe", utilisateur.getMot_de_passe());
         map.addValue("credit", utilisateur.getCredit());
         map.addValue("administrateur", utilisateur.isAdministrateur());
 
