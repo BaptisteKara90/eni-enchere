@@ -12,12 +12,17 @@ public class UtilisateurController {
 
     UtilisateurService utilisateurService;
 
+    public UtilisateurController(UtilisateurService utilisateurService) {
+        super();
+        this.utilisateurService = utilisateurService;
+    }
+
     @GetMapping("/signin")
     public String utilisateur() {
         return "signin";
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/addUser")
     public String signin(@ModelAttribute("utilisateur") Utilisateur utilisateur) {
 
         utilisateurService.registerUtilisateur(utilisateur);

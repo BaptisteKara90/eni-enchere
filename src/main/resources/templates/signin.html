@@ -11,18 +11,18 @@
 <!--  contenu passé en paramètre -->
 <main class="center-main">
     <h1>S'enregistrer</h1>
-    <form data-th-action="@{/signin}" method="post">
+    <form data-th-action="@{/addUser}" method="post">
         <ul class="flex-outer">
             <li>
                 <label for="idPseudo">Pseudo</label>
                 <input name="pseudo" id="idPseudo" type="text" placeholder="Votre pseudonyme">
             </li>
             <li>
-                <label for="idMail">Mot de passe</label>
+                <label for="idMail">Mail</label>
                 <input name="email" id="idMail" type="text" placeholder="Votre e-mail">
             </li>
             <li>
-                <label for="idPassword">Identifiant</label>
+                <label for="idPassword">Mot de passe</label>
                 <input name="mot_de_passe" id="idPassword" type="password" placeholder="Mot de Passe">
             </li>
             <li>
