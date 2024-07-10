@@ -2,21 +2,21 @@ package fr.eni.ecole.enchere.bo;
 
 public class Utilisateur {
 
-    private long no_utilisateur;
+    private int no_utilisateur;
     private String pseudo;
     private String nom;
     private String prenom;
     private String email;
-    private long telephone;
-    private int rue;
-    private int code_postal;
+    private String telephone;
+    private String rue;
+    private String code_postal;
     private String ville;
     private String mot_de_passe;
-    private long credit;
+    private int credit;
     private boolean administrateur;
 
     //Constructor
-    public Utilisateur(long no_utilisateur, String pseudo, String nom, String prenom, String email, long telephone, int rue, int code_postal, String ville, String mot_de_passe, long credit, boolean administrateur) {
+    public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
         this.no_utilisateur = no_utilisateur;
         this.pseudo = pseudo;
         this.nom = nom;
@@ -31,7 +31,7 @@ public class Utilisateur {
         this.administrateur = administrateur;
     }
 
-    public Utilisateur(String pseudo, String nom, String prenom, String email, long telephone, int rue, int code_postal, String ville, String mot_de_passe, long credit, boolean administrateur) {
+    public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
         this.pseudo = pseudo;
         this.nom = nom;
         this.prenom = prenom;
@@ -49,11 +49,11 @@ public class Utilisateur {
     }
 
     //Getter Setter
-    public long getNo_utilisateur() {
+    public int getNo_utilisateur() {
         return no_utilisateur;
     }
 
-    public void setNo_utilisateur(long no_utilisateur) {
+    public void setNo_utilisateur(int no_utilisateur) {
         this.no_utilisateur = no_utilisateur;
     }
 
@@ -89,27 +89,27 @@ public class Utilisateur {
         this.email = email;
     }
 
-    public long getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(long telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
-    public int getRue() {
+    public String getRue() {
         return rue;
     }
 
-    public void setRue(int rue) {
+    public void setRue(String rue) {
         this.rue = rue;
     }
 
-    public int getCode_postal() {
+    public String getCode_postal() {
         return code_postal;
     }
 
-    public void setCode_postal(int code_postal) {
+    public void setCode_postal(String code_postal) {
         this.code_postal = code_postal;
     }
 
@@ -129,11 +129,11 @@ public class Utilisateur {
         this.mot_de_passe = mot_de_passe;
     }
 
-    public long getCredit() {
+    public int getCredit() {
         return credit;
     }
 
-    public void setCredit(long credit) {
+    public void setCredit(int credit) {
         this.credit = credit;
     }
 
