@@ -42,9 +42,10 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> {
             //On donne accès à la reque^te de type Get /security
             auth.requestMatchers(HttpMethod.GET, "/*").permitAll();
+            auth.requestMatchers(HttpMethod.POST, "/*").permitAll();
             auth.requestMatchers(HttpMethod.GET, "/css/*").permitAll();
             auth.requestMatchers(HttpMethod.GET, "/images/*").permitAll();
-            auth.anyRequest().denyAll();
+            //auth.anyRequest().denyAll();
         });
 
         //Gestion automatique du login

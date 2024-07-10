@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UtilisateurController {
 
-    UtilisateurService utilisateurService;
+   private UtilisateurService utilisateurService;
 
     public UtilisateurController(UtilisateurService utilisateurService) {
         super();
         this.utilisateurService = utilisateurService;
     }
 
-    @GetMapping("/signin")
+    @GetMapping("/register")
     public String utilisateur(Model model) {
         Utilisateur utilisateur = new Utilisateur();
 
         model.addAttribute("utilisateur", utilisateur);
 
-        return "signin";
+        return "register";
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/register")
     public String signin(@ModelAttribute("utilisateur") Utilisateur utilisateur) {
 
         utilisateurService.registerUtilisateur(utilisateur);
-        return "signin";
+        return "redirect:/login";
     }
 }

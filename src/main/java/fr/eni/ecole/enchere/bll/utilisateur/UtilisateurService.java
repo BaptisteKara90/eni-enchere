@@ -21,8 +21,10 @@ public class UtilisateurService {
 
         String password = utilisateur.getMot_de_passe();
         String encryptedPassword = new BCrypt().hashpw(password, BCrypt.gensalt());
-        utilisateur.setMot_de_passe(encryptedPassword);
+        password = "{bcrypt}" + encryptedPassword;
+        utilisateur.setMot_de_passe(password);
         utilisateur.setAdministrateur(false);
+        utilisateur.setCredit(0);
 
         utilisateurRepository.save(utilisateur);
     }
