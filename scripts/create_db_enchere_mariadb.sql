@@ -34,7 +34,7 @@ CREATE TABLE UTILISATEURS (
                               credit           INT NOT NULL,
                               administrateur   BOOLEAN NOT NULL,
                               PRIMARY KEY (no_utilisateur),
-                              UNIQUE (email) -- Ajout d'une contrainte unique sur l'email
+                              UNIQUE (email, pseudo) -- Ajout d'une contrainte unique sur l'email
 );
 
 CREATE TABLE ARTICLES_VENDUS (
