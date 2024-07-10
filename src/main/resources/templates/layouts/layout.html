@@ -14,6 +14,7 @@
             <li><a href="/">Accueil</a></li>
             <li data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/register">S'enregistrer</a></li>
             <li data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Se Connecter</a></li>
+            <li data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/my-account">Mon profil</a></li>
             <li data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/logout">Se Deconnecter</a></li>
         </ul>
     </nav>

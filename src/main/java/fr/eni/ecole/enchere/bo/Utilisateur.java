@@ -1,5 +1,7 @@
 package fr.eni.ecole.enchere.bo;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 public class Utilisateur {
 
     private int no_utilisateur;
