@@ -16,7 +16,7 @@ public class MainController {
         if (auth != null && auth.isAuthenticated() && !auth.getPrincipal().equals("anonymousUser")) {
             return "redirect:encheres";
         }
-            return "redirect:login";
+            return "login";
     }
 }
 

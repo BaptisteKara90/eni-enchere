@@ -14,15 +14,49 @@
     <form data-th-action="@{/signin}" method="post">
         <ul class="flex-outer">
             <li>
-                <label for="idUser">Identifiant</label>
-                <input name="username" id="idUser" type="text" placeholder="Adresse e-mail">
+                <label for="idPseudo">Pseudo</label>
+                <input name="pseudo" id="idPseudo" type="text" placeholder="Votre pseudonyme">
             </li>
             <li>
-                <label for="idPassword">Mot de passe</label>
-                <input name="password" id="idPassword" type="password" placeholder="Mot de passe">
+                <label for="idMail">Mot de passe</label>
+                <input name="email" id="idMail" type="text" placeholder="Votre e-mail">
             </li>
             <li>
-                <button type="submit">log in</button>
+                <label for="idPassword">Identifiant</label>
+                <input name="mot_de_passe" id="idPassword" type="password" placeholder="Mot de Passe">
+            </li>
+            <li>
+                <h2>Votre Identité</h2>
+            </li>
+            <li>
+                <label for="idNom">Nom</label>
+                <input name="nom" id="idNom" type="text" placeholder="Votre Nom">
+            </li>
+            <li>
+                <label for="idPrenom">Prenom</label>
+                <input name="prenom" id="idPrenom" type="text" placeholder="Votre prenom">
+            </li>
+            <li>
+                <label for="idTelephone">Telephone</label>
+                <input name="telephone" id="idTelephone" type="text" placeholder="Votre numero de telephone">
+            </li>
+            <li>
+                <h2>Votre Adresse</h2>
+            </li>
+            <li>
+                <label for="idRue">Adresse</label>
+                <input name="rue" id="idRue" type="text" placeholder="Votre adresse">
+            </li>
+            <li>
+                <label for="idCodePostal">Code Postal</label>
+                <input name="code_postal" id="idCodePostal" type="text" placeholder="votre code postal">
+            </li>
+            <li>
+                <label for="idVille">Ville</label>
+                <input name="ville" id="idVille" type="text" placeholder="Votre ville">
+            </li>
+            <li>
+                <button type="submit">S'enregistrer</button>
             </li>
         </ul>
     </form>
