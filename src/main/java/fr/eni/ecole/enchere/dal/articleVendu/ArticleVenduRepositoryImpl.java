@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 
 import java.util.List;
 
@@ -40,6 +41,24 @@ public class ArticleVenduRepositoryImpl implements ArticleVenduRepository {
     @Override
     public void save(ArticleVendu articleVendu) {
 
+        GeneratedKeyHolder key = new GeneratedKeyHolder();
+
+        String sql = "insert into articles_vendus (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) values (:nom_article, :description, :date_debut_encheres, :date_fin_encheres, :prix_initial, :prix_vente, :no_utilisateur, :no_categorie)";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("nom_article", articleVendu.getNom_article());
+        map.addValue("description", articleVendu.getDescription());
+        map.addValue("date_debut_encheres", articleVendu.getDate_debut_encheres());
+        map.addValue("date_fin_encheres", articleVendu.getDate_fin_encheres());
+        map.addValue("prix_initial", articleVendu.getPrix_initial());
+        map.addValue("prix_vente", articleVendu.getPrix_vente());
+        map.addValue("no_utilisateur", articleVendu.getUtilisateur().getNo_utilisateur());
+        map.addValue("no_categorie", articleVendu.getCategorie().getNo_categorie());
+
+        namedParameterJdbcTemplate.update(sql, map, key);
+
+        if(key.getKey() != null) {
+            articleVendu.setNo_article(key.getKey().intValue());
+        }
     }
 
     @Override

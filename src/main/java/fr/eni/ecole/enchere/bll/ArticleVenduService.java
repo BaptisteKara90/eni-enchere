@@ -1,4 +1,4 @@
-package fr.eni.ecole.enchere.bll.utilisateur;
+package fr.eni.ecole.enchere.bll;
 
 import fr.eni.ecole.enchere.bo.ArticleVendu;
 import fr.eni.ecole.enchere.dal.articleVendu.ArticleVenduRepository;
@@ -21,5 +21,9 @@ public class ArticleVenduService {
 
     public ArticleVendu getArticleVendu(int id) {
         return articleVenduRepository.findById(id);
+    }
+
+    public ArticleVendu addArticleVendu(ArticleVendu articleVendu) {
+        return articleVenduRepository.save(articleVendu);
     }
 }
