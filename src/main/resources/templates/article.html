@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html data-th-replace="~{layouts/layout :: frag-layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+
+<!--  tire passé en paramètre -->
+<title>Articles</title>
+
+<!--  contenu passé en paramètre -->
+<main class="center-main">
+    <h1 data-th-text="${article.nom_article}"></h1>
+    <div>
+        <ul>
+            <li data-th-text="${article.description}"></li>
+            <li data-th-text="${article.categorie.libelle}"></li>
+            <li> Meilleur enchère : </li>
+            <li data-th-text="${article.prix_initial}"> points</li>
+            <li data-th-text="${article.getDate_fin_encheres()}"></li>
+            <ul>
+                <li data-th-text="${article.utilisateur.rue}"></li>
+                <li data-th-text="${article.utilisateur.code_postal}"></li>
+                <li data-th-text="${article.utilisateur.ville}"></li>
+            </ul>
+            <li> vendu par : <span data-th-text="${article.utilisateur.pseudo}"></span></li>
+        </ul>
+    </div>
+</main>
+
+
+</html>

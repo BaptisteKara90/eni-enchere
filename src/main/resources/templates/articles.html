@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html data-th-replace="~{layouts/layout :: frag-layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+
+<!--  tire passé en paramètre -->
+<title>Articles</title>
+
+<!--  contenu passé en paramètre -->
+<main class="center-main">
+    <h1>Tout les articles</h1>
+    <div class = "container-card" data-th-each="item : ${articles}">
+        <ul>
+            <li><a data-th-text="${item.nom_article}" th:href="@{/article(id=${item.no_article})}"></a></li>
+            <li data-th-text="${item.prix_initial}"> points</li>
+            <li data-th-text="${item.getDate_fin_encheres()}"></li>
+            <li> vendu par : <span data-th-text="${item.utilisateur.pseudo}"></span></li>
+        </ul>
+    </div>
+</main>
+
+
+</html>
