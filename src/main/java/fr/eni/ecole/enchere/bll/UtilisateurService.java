@@ -1,4 +1,4 @@
-package fr.eni.ecole.enchere.bll.utilisateur;
+package fr.eni.ecole.enchere.bll;
 
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import fr.eni.ecole.enchere.dal.Utilisateur.UtilisateurRepository;
@@ -51,6 +51,11 @@ public class UtilisateurService {
     }
 
     public void updateUtilisateur(Utilisateur utilisateur) {
+
+        String password = utilisateur.getMot_de_passe();
+        String encryptedPassword = encoderBean.encode(password);
+
+        utilisateur.setMot_de_passe(encryptedPassword);
 
         utilisateurRepository.update(utilisateur);
     }
