@@ -1,6 +1,6 @@
 package fr.eni.ecole.enchere.controllers;
 
-import fr.eni.ecole.enchere.bll.utilisateur.UtilisateurService;
+import fr.eni.ecole.enchere.bll.UtilisateurService;
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UtilisateurController {
@@ -36,15 +37,33 @@ public class UtilisateurController {
         return "redirect:/login";
     }
 
-    @GetMapping("/my-account")
+    @GetMapping("/my-profile")
     public String myAccount(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = auth.getPrincipal();
+        Utilisateur utilisateur = (Utilisateur) auth.getPrincipal();
+        utilisateur = utilisateurService.getUtilisateur(utilisateur.getNo_utilisateur());
 
+        model.addAttribute("userData", utilisateur);
 
-        model.addAttribute("userData");
+        return "my-profile";
+    }
 
-        return "my-account";
+    @GetMapping("/profile/update")
+    public String getUpdateProfileForm(@RequestParam int id, Model model) {
+
+        Utilisateur utilisateur = utilisateurService.getUtilisateur(id);
+
+        model.addAttribute("userData", utilisateur);
+
+        return "update-profile";
+    }
+
+    @PostMapping("/profile/update")
+    public String updateProfile(@ModelAttribute("userData") Utilisateur utilisateur) {
+
+        utilisateurService.updateUtilisateur(utilisateur);
+
+        return "redirect:/my-profile";
     }
 }

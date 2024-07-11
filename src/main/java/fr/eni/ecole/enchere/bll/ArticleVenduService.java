@@ -1,4 +1,4 @@
-package fr.eni.ecole.enchere.bll.utilisateur;
+package fr.eni.ecole.enchere.bll;
 
 import fr.eni.ecole.enchere.bo.ArticleVendu;
 import fr.eni.ecole.enchere.dal.articleVendu.ArticleVenduRepository;

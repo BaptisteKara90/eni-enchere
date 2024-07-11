@@ -1,6 +1,6 @@
 package fr.eni.ecole.enchere.controllers;
 
-import fr.eni.ecole.enchere.bll.utilisateur.ArticleVenduService;
+import fr.eni.ecole.enchere.bll.ArticleVenduService;
 import fr.eni.ecole.enchere.bo.ArticleVendu;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

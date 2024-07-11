@@ -1,4 +1,4 @@
-package fr.eni.ecole.enchere.bll.utilisateur;
+package fr.eni.ecole.enchere.bll;
 
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import fr.eni.ecole.enchere.dal.Utilisateur.UtilisateurRepository;

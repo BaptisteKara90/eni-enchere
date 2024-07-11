@@ -87,7 +87,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     public void update(Utilisateur utilisateur) {
 
         String sql = "update utilisateurs " +
-                "set pseudo = :pseudo, nom = :nom, prenom = :prenom, email = :email, telephone = :telephone, rue = :rue, code_postal = :code_postal, ville, mot_de_passe, credit, administrateur " +
+                "set pseudo = :pseudo, nom = :nom, prenom = :prenom, email = :email, telephone = :telephone, rue = :rue, code_postal = :code_postal, ville = :ville, mot_de_passe = :mot_de_passe " +
                 "where no_utilisateur = :id;";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
@@ -99,8 +99,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
         map.addValue("rue", utilisateur.getRue());
         map.addValue("code_postal", utilisateur.getCode_postal());
         map.addValue("ville", utilisateur.getVille());
-        map.addValue("credit", utilisateur.getCredit());
-        map.addValue("administrateur", utilisateur.isAdministrateur());
+        map.addValue("mot_de_passe", utilisateur.getMot_de_passe());
         map.addValue("id", utilisateur.getNo_utilisateur());
 
         namedParameterJdbcTemplate.update(sql, map);
