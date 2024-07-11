@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
+
 
 public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
     @Override
@@ -15,7 +15,7 @@ public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
 
         ArticleVendu articleVendu = new ArticleVendu();
 
-        articleVendu.setNo_article(rs.getInt("no_article"));
+        articleVendu.setNo_article(rs.getInt("id_article"));
         articleVendu.setNom_article(rs.getString("nom_article"));
         articleVendu.setDescription(rs.getString("description"));
         articleVendu.setDate_debut_encheres(rs.getDate("date_debut_encheres"));
