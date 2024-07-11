@@ -1,8 +1,12 @@
 package fr.eni.ecole.enchere.bo;
 
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class Utilisateur {
+import java.util.Collection;
+import java.util.List;
+
+public class Utilisateur implements UserDetails {
 
     private int no_utilisateur;
     private String pseudo;
@@ -164,5 +168,20 @@ public class Utilisateur {
                 ", credit=" + credit +
                 ", administrateur=" + administrateur +
                 '}';
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getPassword() {
+        return mot_de_passe;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
     }
 }

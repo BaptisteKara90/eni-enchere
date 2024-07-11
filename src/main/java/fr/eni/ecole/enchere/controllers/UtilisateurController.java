@@ -40,9 +40,10 @@ public class UtilisateurController {
     public String myAccount(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Utilisateur utilisateur = (Utilisateur) auth.getDetails();
+        Object principal = auth.getPrincipal();
 
-        model.addAttribute("userData", utilisateurService.getUtilisateur(utilisateur.getNo_utilisateur()));
+
+        model.addAttribute("userData");
 
         return "my-account";
     }

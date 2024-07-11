@@ -2,55 +2,51 @@ package fr.eni.ecole.enchere.securite;
 
 import javax.sql.DataSource;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
-//    @Bean
-//    BCryptPasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    private final String SELECT_USER = "select email, mot_de_passe, 1 from utilisateurs where email = ?";
+    private final String SELECT_ROLES = "select email, role from roles where email = ?";
+    private UserDetailsService userService;
 
-//    @Bean
-//    public DaoAuthenticationProvider authenticationProvider() {
-//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//        authProvider.setUserDetailsService(userDetailsService(null));
-//        authProvider.setPasswordEncoder(passwordEncoder());
-//
-//        return authProvider;
-//    }
+    public SecurityConfig(UserDetailsService userService) {
+        this.userService = userService;
+    }
 
-//    @Bean
-//    UserDetailsService userDetailsService(DataSource dataSource) {
-//
-//        JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
-//
-//        manager.setUsersByUsernameQuery("select email, mot_de_passe, 1 from utilisateurs where email = ?");
-//        manager.setAuthoritiesByUsernameQuery("select email, role from roles where email = ?");
-//
-//        return manager;
-//    }
+    @Bean
+    public static PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+    }
 
     @Bean
     UserDetailsManager userDetailsManager(DataSource dataSource) {
 
         JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
 
-        manager.setUsersByUsernameQuery("select email, mot_de_passe, 1 from utilisateurs where email = ?");
-        manager.setAuthoritiesByUsernameQuery("select email, role from roles where email = ?");
+        manager.setUsersByUsernameQuery(SELECT_USER);
+        manager.setAuthoritiesByUsernameQuery(SELECT_ROLES);
 
         return manager;
     }
@@ -90,5 +86,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+
 }
 

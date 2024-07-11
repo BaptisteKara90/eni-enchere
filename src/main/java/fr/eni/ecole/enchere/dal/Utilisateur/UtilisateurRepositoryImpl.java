@@ -105,4 +105,16 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
         namedParameterJdbcTemplate.update(sql, map);
     }
+
+    @Override
+    public Utilisateur findByEmail(String email) {
+        String sql = "select no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur from utilisateurs where email = :email;";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("email", email);
+
+        Utilisateur utilisateur = namedParameterJdbcTemplate.queryForObject(sql, map, new UtilisateurRowMapper());
+
+        return utilisateur;
+    }
 }
