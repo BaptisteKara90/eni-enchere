@@ -23,7 +23,7 @@ public class ArticleVenduService {
         return articleVenduRepository.findById(id);
     }
 
-    public ArticleVendu addArticleVendu(ArticleVendu articleVendu) {
-        return articleVenduRepository.save(articleVendu);
+    public void addArticleVendu(ArticleVendu articleVendu) {
+        articleVenduRepository.save(articleVendu);
     }
 }
