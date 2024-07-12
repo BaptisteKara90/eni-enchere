@@ -2,7 +2,10 @@ package fr.eni.ecole.enchere.bll;
 
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import fr.eni.ecole.enchere.dal.Utilisateur.UtilisateurRepository;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -52,11 +55,25 @@ public class UtilisateurService {
 
     public void updateUtilisateur(Utilisateur utilisateur) {
 
+        //Cryptage du mot de passe
         String password = utilisateur.getMot_de_passe();
         String encryptedPassword = encoderBean.encode(password);
-
         utilisateur.setMot_de_passe(encryptedPassword);
 
+        //Récupération de l'utilisateur connecté
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Utilisateur principal = (Utilisateur) auth.getPrincipal();
+
+        //Mise à jour de l'utilisateur
         utilisateurRepository.update(utilisateur);
+
+        // On récupère l'utilisateur mis à jour
+        Utilisateur updatedUser = getUtilisateur(utilisateur.getNo_utilisateur());
+
+        // Si l'utilisateur mis à jour est l'utilisateur connecté, on met à jour le principal
+        if(updatedUser.getNo_utilisateur() == principal.getNo_utilisateur()) {
+            Authentication authentication = new UsernamePasswordAuthenticationToken(updatedUser, updatedUser.getPassword(), updatedUser.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        }
     }
 }

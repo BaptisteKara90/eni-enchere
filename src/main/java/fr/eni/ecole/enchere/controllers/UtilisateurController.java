@@ -2,6 +2,7 @@ package fr.eni.ecole.enchere.controllers;
 
 import fr.eni.ecole.enchere.bll.UtilisateurService;
 import fr.eni.ecole.enchere.bo.Utilisateur;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -42,7 +43,6 @@ public class UtilisateurController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Utilisateur utilisateur = (Utilisateur) auth.getPrincipal();
-        utilisateur = utilisateurService.getUtilisateur(utilisateur.getNo_utilisateur());
 
         model.addAttribute("userData", utilisateur);
 
