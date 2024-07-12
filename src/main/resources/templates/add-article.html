@@ -14,56 +14,58 @@
 
   <!--  contenu passé en paramètre -->
   <main class="center-main">
-    <h1>Ajouter un nouvel article</h1>
-    <form data-th-action="@{/add-article}" method="post" data-th-object="${articleVendu}">
-      <ul class="flex-outer">
-        <li>
-          <label for="idNomArticle">Nom de l'article</label>
-          <input data-th-field= "*{nom_article}"  id="idNomArticle" type="text" placeholder="Nom de l'article">
-        </li>
-        <li>
-          <label for="idDescription">Description</label>
-          <textarea data-th-field= "*{description}"  id="idDescription" placeholder="La description de votre article"></textarea>
-        </li>
-        <li>
-          <label for="idCategorie">Categorie</label>
-          <select id="idCategorie" data-th-field="*{categorie}">
-            <option data-th-each="item : ${categories}"
-                    data-th-text="${item.libelle}"
-                    data-th-value="${item.libelle}"></option>
-          </select>
-        </li>
-        <li>
-          <label for="idDateDebut">Debut de l'enchere</label>
-          <input data-th-field= "*{date_debut_encheres}" id="idDateDebut" type="date">
-        </li>
-        <li>
-          <label for="idDateFin">fin de l'enchere</label>
-          <input data-th-field= "*{date_fin_encheres}" id="idDateFin" type="date">
-        </li>
-        <li>
-          <label for="idPrixInit">Prix initial</label>
-          <input data-th-field= "*{prix_initial}" id="idPrixInit" type="text" placeholder="Votre prenom">
-        </li>
-        <li>
-          <h3>Retrait</h3>
-        </li>
-        <li>
-          <label for="idRue">Rue</label>
-          <input data-th-field= "${utilisateur.rue}" id="idRue" type="text">
-        </li>
-        <li>
-          <label for="idCodePostal">Code Postal</label>
-          <input data-th-field= "${utilisateur.code_postal}" name="code_postal" id="idCodePostal" type="text">
-        </li>
-        <li>
-          <label for="idVille">Ville</label>
-          <input data-th-field= "${utilisateur.ville}" id="idVille" type="text">
-        </li>
-        <li>
-          <button type="submit">S'enregistrer</button>
-        </li>
-      </ul>
-    </form>
+    <div class="container">
+      <h1>Ajouter un nouvel article</h1>
+      <form data-th-action="@{/add-article}" method="post" data-th-object="${articleVendu}">
+        <ul class="flex-outer">
+          <li>
+            <label for="idNomArticle">Nom de l'article</label>
+            <input data-th-field= "*{nom_article}"  id="idNomArticle" type="text" placeholder="Nom de l'article">
+          </li>
+          <li>
+            <label for="idDescription">Description</label>
+            <textarea data-th-field= "*{description}"  id="idDescription" placeholder="La description de votre article"></textarea>
+          </li>
+          <li>
+            <label for="idCategorie">Categorie</label>
+            <select id="idCategorie" data-th-field="*{categorie}">
+              <option data-th-each="item : ${categories}"
+                      data-th-text="${item.libelle}"
+                      data-th-value="${item.libelle}"></option>
+            </select>
+          </li>
+          <li>
+            <label for="idDateDebut">Debut de l'enchere</label>
+            <input data-th-field= "*{date_debut_encheres}" id="idDateDebut" type="date">
+          </li>
+          <li>
+            <label for="idDateFin">fin de l'enchere</label>
+            <input data-th-field= "*{date_fin_encheres}" id="idDateFin" type="date">
+          </li>
+          <li>
+            <label for="idPrixInit">Prix initial</label>
+            <input data-th-field= "*{prix_initial}" id="idPrixInit" type="text" placeholder="Votre prenom">
+          </li>
+          <li>
+            <h3>Retrait</h3>
+          </li>
+          <li>
+            <label for="idRue">Rue</label>
+            <input data-th-field= "${utilisateur.rue}" id="idRue" type="text">
+          </li>
+          <li>
+            <label for="idCodePostal">Code Postal</label>
+            <input data-th-field= "${utilisateur.code_postal}" name="code_postal" id="idCodePostal" type="text">
+          </li>
+          <li>
+            <label for="idVille">Ville</label>
+            <input data-th-field= "${utilisateur.ville}" id="idVille" type="text">
+          </li>
+          <li>
+            <button type="submit">S'enregistrer</button>
+          </li>
+        </ul>
+      </form>
+    </div>
   </main>
 </html>

@@ -10,53 +10,55 @@
 
 <!--  contenu passé en paramètre -->
 <main class="center-main">
-    <h1>Voici mon profil !</h1>
-    <form data-th-action="@{/profile/update}" method="post" data-th-object="${userData}">
-        <ul>
-            <li>
-                <input hidden data-th-field="${userData.no_utilisateur}">
-            </li>
-            <li>
-                <label for="pseudo">Pseudo</label>
-                <input id="pseudo" data-th-field="${userData.pseudo}">
-            </li>
-            <li>
-                <label for="nom">Nom</label>
-                <input id="nom" data-th-field="${userData.nom}">
-            </li>
-            <li>
-                <label for="prenom">Prénom</label>
-                <input id="prenom" data-th-field="${userData.prenom}">
-            </li>
-            <li>
-                <label for="email">Email</label>
-                <input id="email" data-th-field="${userData.email}">
-            </li>
-            <li>
-                <label for="telephone">Téléphone</label>
-                <input id="telephone" data-th-field="${userData.telephone}">
-            </li>
-            <li>
-                <label for="rue">Rue</label>
-                <input id="rue" data-th-field="${userData.rue}">
-            </li>
-            <li>
-                <label for="codePostal">Code postal</label>
-                <input id="codePostal" data-th-field="${userData.code_postal}">
-            </li>
-            <li>
-                <label for="ville">Ville</label>
-                <input id="ville" data-th-field="${userData.ville}">
-            </li>
-            <li>
-                <label for="motDePasse">Mot de passe</label>
-                <input type="password" id="motDePasse" data-th-field="${userData.mot_de_passe}">
-            </li>
-            <li>
-                <button type="submit">Mettre à jour</button>
-            </li>
-        </ul>
-    </form>
+    <div class="container">
+        <h1>Voici mon profil !</h1>
+        <form data-th-action="@{/profile/update}" method="post" data-th-object="${userData}">
+            <ul class="flex-outer">
+                <li>
+                    <input hidden data-th-field="${userData.no_utilisateur}">
+                </li>
+                <li>
+                    <label for="pseudo">Pseudo</label>
+                    <input id="pseudo" data-th-field="${userData.pseudo}">
+                </li>
+                <li>
+                    <label for="nom">Nom</label>
+                    <input id="nom" data-th-field="${userData.nom}">
+                </li>
+                <li>
+                    <label for="prenom">Prénom</label>
+                    <input id="prenom" data-th-field="${userData.prenom}">
+                </li>
+                <li>
+                    <label for="email">Email</label>
+                    <input id="email" data-th-field="${userData.email}">
+                </li>
+                <li>
+                    <label for="telephone">Téléphone</label>
+                    <input id="telephone" data-th-field="${userData.telephone}">
+                </li>
+                <li>
+                    <label for="rue">Rue</label>
+                    <input id="rue" data-th-field="${userData.rue}">
+                </li>
+                <li>
+                    <label for="codePostal">Code postal</label>
+                    <input id="codePostal" data-th-field="${userData.code_postal}">
+                </li>
+                <li>
+                    <label for="ville">Ville</label>
+                    <input id="ville" data-th-field="${userData.ville}">
+                </li>
+                <li>
+                    <label for="motDePasse">Mot de passe</label>
+                    <input type="password" id="motDePasse" data-th-field="${userData.mot_de_passe}">
+                </li>
+                <li>
+                    <button type="submit">Mettre à jour</button>
+                </li>
+            </ul>
+        </form>
+    </div>
 </main>
 
 </html>

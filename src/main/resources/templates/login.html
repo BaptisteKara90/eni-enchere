@@ -7,21 +7,24 @@
 <title>Login</title>
 
 <main>
+    <div class="container">
     <h1>Login</h1>
-    <form data-th-action="@{/login}" method="post">
-        <ul class="flex-outer">
-            <li>
-                <label for="idUser">Identifiant</label>
-                <input name="username" id="idUser" type="text" placeholder="Adresse e-mail">
-            </li>
-            <li>
-                <label for="idPassword">Mot de passe</label>
-                <input name="password" id="idPassword" type="password" placeholder="Mot de passe">
-            </li>
-            <li>
-                <button type="submit">log in</button>
-            </li>
-        </ul>
-    </form>
+        <form data-th-action="@{/login}" method="post">
+            <ul class="flex-outer">
+                <li>
+                    <label for="idUser">Identifiant</label>
+                    <input name="username" id="idUser" type="text" placeholder="Adresse e-mail">
+                </li>
+                <li>
+                    <label for="idPassword">Mot de passe</label>
+                    <input name="password" id="idPassword" type="password" placeholder="Mot de passe">
+                </li>
+                <li>
+                    <button type="submit">log in</button>
+                    <a href="/register"></a> <button type="submit">log in</button></a>
+                </li>
+            </ul>
+        </form>
+    </div>
 </main>
 </html>
