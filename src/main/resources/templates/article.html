@@ -10,21 +10,23 @@
 
 <!--  contenu passé en paramètre -->
 <main class="center-main">
+    <div class="container">
     <h1 data-th-text="${article.nom_article}"></h1>
-    <div>
-        <ul>
-            <li data-th-text="${article.description}"></li>
-            <li data-th-text="${article.categorie.libelle}"></li>
-            <li> Meilleur enchère : </li>
-            <li data-th-text="${article.prix_initial}"> points</li>
-            <li data-th-text="${article.getDate_fin_encheres()}"></li>
+        <div>
             <ul>
-                <li data-th-text="${article.utilisateur.rue}"></li>
-                <li data-th-text="${article.utilisateur.code_postal}"></li>
-                <li data-th-text="${article.utilisateur.ville}"></li>
+                <li class="flex-outer" data-th-text="${article.description}"></li>
+                <li class="flex-outer" data-th-text="${article.categorie.libelle}"></li>
+                <li class="flex-outer"> Meilleur enchère : </li>
+                <li class="flex-outer" data-th-text="${article.prix_initial}"> points</li>
+                <li class="flex-outer" data-th-text="${article.getDate_fin_encheres()}"></li>
+                <ul>
+                    <li class="flex-outer" data-th-text="${article.utilisateur.rue}"></li>
+                    <li class="flex-outer" data-th-text="${article.utilisateur.code_postal}"></li>
+                    <li class="flex-outer" data-th-text="${article.utilisateur.ville}"></li>
+                </ul>
+                <li class="flex-outer"> vendu par : <span data-th-text="${article.utilisateur.pseudo}"></span></li>
             </ul>
-            <li> vendu par : <span data-th-text="${article.utilisateur.pseudo}"></span></li>
-        </ul>
+        </div>
     </div>
 </main>
 

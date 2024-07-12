@@ -9,23 +9,24 @@
 <title>Mon profil</title>
 
 <!--  contenu passé en paramètre -->
-<main class="center-main">
-    <h1>Voici mon profil !</h1>
-    <div>
-        <ul data-th-object="${userData}">
-            <li>Pseudo : <span data-th-text="${userData.pseudo}"></span></li>
-            <li>Nom : <span data-th-text="${userData.nom}"></span></li>
-            <li>Prénom : <span data-th-text="${userData.prenom}"></span></li>
-            <li>Email : <span data-th-text="${userData.email}"></span></li>
-            <li>Telephone : <span data-th-text="${userData.telephone}"></span></li>
-            <li>Rue : <span data-th-text="${userData.rue}"></span></li>
-            <li>Code Postal : <span data-th-text="${userData.code_postal}"></span></li>
-            <li>Ville : <span data-th-text="${userData.ville}"></span></li>
-        </ul>
-        <a data-th-href="@{/profile/update(id=${userData.no_utilisateur})}"><button>Modifier mon profil</button></a>
-        <a data-th-href="@{/profile/delete(id=${userData.no_utilisateur})}"><button>Supprimer mon compte</button></a>
-    </div>
-
+<main>
+    <div class="container">
+        <h1>Voici mon profil !</h1>
+        <div class="profile-container flex-outer">
+            <ul class="flex-outer" data-th-object="${userData}">
+                <li>Pseudo : <span data-th-text="${userData.pseudo}"></span></li>
+                <li>Nom : <span data-th-text="${userData.nom}"></span></li>
+                <li>Prénom : <span data-th-text="${userData.prenom}"></span></li>
+                <li>Email : <span data-th-text="${userData.email}"></span></li>
+                <li>Telephone : <span data-th-text="${userData.telephone}"></span></li>
+                <li>Rue : <span data-th-text="${userData.rue}"></span></li>
+                <li>Code Postal : <span data-th-text="${userData.code_postal}"></span></li>
+                <li>Ville : <span data-th-text="${userData.ville}"></span></li>
+            </ul>
+            <a data-th-href="@{/profile/update(id=${userData.no_utilisateur})}"><button>Modifier mon profil</button></a>
+            <a data-th-href="@{/profile/delete(id=${userData.no_utilisateur})}"><button>Supprimer mon compte</button></a>
+        </div>
+    <div class="container">
 </main>
 
 

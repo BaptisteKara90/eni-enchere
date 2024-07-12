@@ -63,12 +63,12 @@ public class SecurityConfig {
         });
 
         //Gestion automatique du login
-        http.formLogin(Customizer.withDefaults());
+//        http.formLogin(Customizer.withDefaults());
 
         //Gestion du login avec un fichier login.html
-//        http.formLogin(form -> {
-//            form.loginPage("/login").permitAll().defaultSuccessUrl("/");
-//        });
+        http.formLogin(form -> {
+            form.loginPage("/login").permitAll().defaultSuccessUrl("/");
+        });
 
         http.logout(logout -> {
             //supprime la session côté serveur
