@@ -5,6 +5,7 @@ import fr.eni.ecole.enchere.bll.CategorieService;
 import fr.eni.ecole.enchere.bll.UtilisateurService;
 import fr.eni.ecole.enchere.bo.ArticleVendu;
 import fr.eni.ecole.enchere.bo.Categorie;
+import fr.eni.ecole.enchere.bo.Retrait;
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.security.core.Authentication;
@@ -16,8 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -66,7 +65,9 @@ public class ArticleVenduController {
     public String addArticle(@ModelAttribute("articleVendu") ArticleVendu articleVendu){
         Utilisateur utilisateur = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         articleVendu.setUtilisateur(utilisateur);
+
         articleVenduService.addArticleVendu(articleVendu);
+
 
         return "article?id=" + articleVendu.getNo_article();
     }

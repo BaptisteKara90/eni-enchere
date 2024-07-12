@@ -1,13 +1,13 @@
 package fr.eni.ecole.enchere.bo;
 
 public class Retrait {
-    private long no_article;
+    private int no_article;
     private String rue;
     private String code_postal;
     private String ville;
 
     //Constructor
-    public Retrait(long no_article, String rue, String code_postal, String ville) {
+    public Retrait(int no_article, String rue, String code_postal, String ville) {
         this.no_article = no_article;
         this.rue = rue;
         this.code_postal = code_postal;
@@ -24,11 +24,11 @@ public class Retrait {
     }
 
     //Getter Setter
-    public long getNo_article() {
+    public int getNo_article() {
         return no_article;
     }
 
-    public void setNo_article(long no_article) {
+    public void setNo_article(int no_article) {
         this.no_article = no_article;
     }
 
