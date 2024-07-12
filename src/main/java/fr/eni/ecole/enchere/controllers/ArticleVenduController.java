@@ -12,8 +12,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -58,6 +61,15 @@ public class ArticleVenduController {
         return "add-article";
     }
 
+    @PostMapping("/add-article")
+    public String addArticle(@ModelAttribute("articleVendu") ArticleVendu articleVendu){
+       Date debutEnchere =  articleVendu.getDate_debut_encheres();
+       Date finEnchere = articleVendu.getDate_fin_encheres();
+
+        articleVenduService.addArticleVendu(articleVendu);
+
+        return "article?id=" + articleVendu.getNo_article();
+    }
 
     //TODO ajouter un nouvel article
     //TODO supprimer un article

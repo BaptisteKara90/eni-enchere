@@ -8,7 +8,8 @@
 </head>
 <body>
 <header>
-   <h1 id="nav-title"> <a href="/">ENI-Encheres</a></h1>
+    <h1 data-th-if="${!#authorization.expression('isAuthenticated()')}" id="nav-title">ENI-Encheres</h1>
+    <a data-th-if="${#authorization.expression('isAuthenticated()')}" href="/"><h1 id="nav-title">ENI-Encheres</h1></a>
     <nav>
         <ul>
             <li data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/register">S'enregistrer</a></li>

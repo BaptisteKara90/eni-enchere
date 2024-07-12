@@ -9,10 +9,10 @@
 <title>Mon profil</title>
 
 <!--  contenu passé en paramètre -->
-<main class="center-main">
+<main>
     <div class="container">
         <h1>Voici mon profil !</h1>
-        <div>
+        <div class="profile-container flex-outer">
             <ul class="flex-outer" data-th-object="${userData}">
                 <li>Pseudo : <span data-th-text="${userData.pseudo}"></span></li>
                 <li>Nom : <span data-th-text="${userData.nom}"></span></li>
