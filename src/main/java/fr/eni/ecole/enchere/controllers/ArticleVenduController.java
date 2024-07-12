@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -63,8 +64,6 @@ public class ArticleVenduController {
 
     @PostMapping("/add-article")
     public String addArticle(@ModelAttribute("articleVendu") ArticleVendu articleVendu){
-       Date debutEnchere =  articleVendu.getDate_debut_encheres();
-       Date finEnchere = articleVendu.getDate_fin_encheres();
 
         articleVenduService.addArticleVendu(articleVendu);
 

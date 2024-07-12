@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 
 
 public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
@@ -18,8 +19,10 @@ public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
         articleVendu.setNo_article(rs.getInt("id_article"));
         articleVendu.setNom_article(rs.getString("nom_article"));
         articleVendu.setDescription(rs.getString("description"));
-        articleVendu.setDate_debut_encheres(rs.getDate("date_debut_encheres"));
-        articleVendu.setDate_fin_encheres(rs.getDate("date_fin_encheres"));
+        Date debutEnchere = rs.getDate("date_debut_encheres");
+        articleVendu.setDate_debut_encheres(debutEnchere.toLocalDate());
+        Date finEnchere = rs.getDate("date_fin_encheres");
+        articleVendu.setDate_fin_encheres(finEnchere.toLocalDate());
         articleVendu.setPrix_initial(rs.getLong("prix_initial"));
         articleVendu.setPrix_vente(rs.getLong("prix_vente"));
 

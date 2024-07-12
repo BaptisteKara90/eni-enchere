@@ -1,21 +1,22 @@
 package fr.eni.ecole.enchere.bo;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class ArticleVendu {
 
     private long no_article;
     private String nom_article;
     private String description;
-    private Date date_debut_encheres;
-    private Date date_fin_encheres;
+    private LocalDate date_debut_encheres;
+    private LocalDate date_fin_encheres;
     private long prix_initial;
     private long prix_vente;
     private Utilisateur utilisateur;
     private Categorie categorie;
 
     //Constructor
-    public ArticleVendu(long no_article, String nom_article, String description, Date date_debut_encheres, Date date_fin_encheres, long prix_initial, long prix_vente, Utilisateur utilisateur, Categorie categorie) {
+    public ArticleVendu(long no_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, long prix_initial, long prix_vente, Utilisateur utilisateur, Categorie categorie) {
         this.no_article = no_article;
         this.nom_article = nom_article;
         this.description = description;
@@ -27,7 +28,7 @@ public class ArticleVendu {
         this.categorie = categorie;
     }
 
-    public ArticleVendu(String nom_article, String description, Date date_debut_encheres, Date date_fin_encheres, long prix_initial, long prix_vente, Utilisateur utilisateur, Categorie categorie) {
+    public ArticleVendu(String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, long prix_initial, long prix_vente, Utilisateur utilisateur, Categorie categorie) {
         this.nom_article = nom_article;
         this.description = description;
         this.date_debut_encheres = date_debut_encheres;
@@ -67,19 +68,19 @@ public class ArticleVendu {
         this.description = description;
     }
 
-    public Date getDate_debut_encheres() {
+    public LocalDate getDate_debut_encheres() {
         return date_debut_encheres;
     }
 
-    public void setDate_debut_encheres(Date date_debut_encheres) {
+    public void setDate_debut_encheres(LocalDate date_debut_encheres) {
         this.date_debut_encheres = date_debut_encheres;
     }
 
-    public Date getDate_fin_encheres() {
+    public LocalDate getDate_fin_encheres() {
         return date_fin_encheres;
     }
 
-    public void setDate_fin_encheres(Date date_fin_encheres) {
+    public void setDate_fin_encheres(LocalDate date_fin_encheres) {
         this.date_fin_encheres = date_fin_encheres;
     }
 
