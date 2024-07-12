@@ -2,9 +2,13 @@ package fr.eni.ecole.enchere.controllers;
 
 import fr.eni.ecole.enchere.bll.ArticleVenduService;
 import fr.eni.ecole.enchere.bll.CategorieService;
+import fr.eni.ecole.enchere.bll.UtilisateurService;
 import fr.eni.ecole.enchere.bo.ArticleVendu;
 import fr.eni.ecole.enchere.bo.Categorie;
+import fr.eni.ecole.enchere.bo.Utilisateur;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +21,13 @@ public class ArticleVenduController {
 
     private final CategorieService categorieService;
     private ArticleVenduService articleVenduService;
+    private UtilisateurService utilisateurService;
 
-    public ArticleVenduController(ArticleVenduService articleVenduService, CategorieService categorieService) {
+    public ArticleVenduController(ArticleVenduService articleVenduService, CategorieService categorieService, UtilisateurService utilisateurService) {
         super();
         this.articleVenduService = articleVenduService;
         this.categorieService = categorieService;
+        this.utilisateurService = utilisateurService;
     }
 
     @GetMapping("/articles")
@@ -42,7 +48,11 @@ public class ArticleVenduController {
     public String addArticle(Model model){
         ArticleVendu articleVendu = new ArticleVendu();
         List<Categorie> listCat = categorieService.getAllCategories();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Utilisateur utilisateur = (Utilisateur) auth.getPrincipal();
+        utilisateur = utilisateurService.getUtilisateur(utilisateur.getNo_utilisateur());
 
+        model.addAttribute("utilisateur", utilisateur);
         model.addAttribute("categories", listCat);
         model.addAttribute("articleVendu", articleVendu);
         return "add-article";
