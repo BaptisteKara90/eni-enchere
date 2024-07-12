@@ -66,4 +66,18 @@ public class UtilisateurController {
 
         return "redirect:/my-profile";
     }
+
+    @GetMapping("/profile/delete")
+    public String deleteProfile(@RequestParam int id) {
+
+        utilisateurService.deleteUtilisateur(id);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Utilisateur principal = (Utilisateur) auth.getPrincipal();
+
+//        if (principal.getNo_utilisateur() == id) {
+            return "redirect:/logout";
+//        }
+
+    }
 }

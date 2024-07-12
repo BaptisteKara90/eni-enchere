@@ -76,4 +76,9 @@ public class UtilisateurService {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
     }
+
+    public void deleteUtilisateur(int id) {
+
+        utilisateurRepository.deleteById(id);
+    }
 }
