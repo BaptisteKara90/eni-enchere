@@ -64,7 +64,8 @@ public class ArticleVenduController {
 
     @PostMapping("/add-article")
     public String addArticle(@ModelAttribute("articleVendu") ArticleVendu articleVendu){
-
+        Utilisateur utilisateur = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        articleVendu.setUtilisateur(utilisateur);
         articleVenduService.addArticleVendu(articleVendu);
 
         return "article?id=" + articleVendu.getNo_article();

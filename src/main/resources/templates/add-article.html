@@ -18,7 +18,7 @@
       <h1>Ajouter un nouvel article</h1>
       <form data-th-action="@{/add-article}" method="post" data-th-object="${articleVendu}">
         <ul class="flex-outer">
-          <input data-th-field="${articleVendu.utilisateur.no_utilisateur}" name="no_utilisateur" data-th-value="${utilisateur.no_utilisateur}" hidden>
+          <input data-th-field="${utilisateur.no_utilisateur}" name="no_utilisateur" type="hidden">
           <li>
             <label for="idNomArticle">Nom de l'article</label>
             <input data-th-field="*{nom_article}"  id="idNomArticle" type="text" placeholder="Nom de l'article">
@@ -29,7 +29,7 @@
           </li>
           <li>
             <label for="idCategorie">Categorie</label>
-            <select id="idCategorie" data-th-field="*{categorie}">
+            <select id="idCategorie" data-th-field="*{categorie.no_categorie}">
               <option data-th-each="item : ${categories}"
                       data-th-text="${item.libelle}"
                       data-th-value="${item.no_categorie}"></option>
