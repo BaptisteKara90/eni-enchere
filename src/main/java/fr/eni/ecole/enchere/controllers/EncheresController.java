@@ -8,13 +8,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class EncheresController {
 
-    @GetMapping("/encheres")
-    public String encheres() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        if (auth != null && auth.isAuthenticated() && !auth.getPrincipal().equals("anonymousUser")) {
-            return "encheres";
-        }
-        return "login";
-    }
 }

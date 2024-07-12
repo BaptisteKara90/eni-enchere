@@ -30,11 +30,11 @@ public class ArticleVenduController {
         this.utilisateurService = utilisateurService;
     }
 
-    @GetMapping("/articles")
+    @GetMapping("/encheres")
     public String articles(Model model) {
         List<ArticleVendu>listArticles = articleVenduService.getArticleVendu();
         model.addAttribute("articles", listArticles);
-        return "articles";
+        return "encheres";
     }
 
     @GetMapping("/article")

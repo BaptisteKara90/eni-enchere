@@ -11,12 +11,7 @@ public class MainController {
 
     @GetMapping("/")
     public String index() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        if (auth != null && auth.isAuthenticated() && !auth.getPrincipal().equals("anonymousUser")) {
-            return "redirect:encheres";
-        }
-            return "login";
+       return "redirect:encheres";
     }
 }
 
