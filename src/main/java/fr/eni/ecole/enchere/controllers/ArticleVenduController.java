@@ -86,7 +86,7 @@ public class ArticleVenduController {
     }
 
     @PostMapping("/search-article")
-    public String searchArticle(@RequestParam String motCle,@RequestParam String categorie, Model model){
+    public String searchArticle(@RequestParam("motCle") String motCle,@RequestParam("categorie") String categorie, Model model){
 
         List<ArticleVendu> searchResult = articleVenduService.getArticlesWithFilter(motCle, Integer.parseInt(categorie));
         model.addAttribute("articles", searchResult);

@@ -73,27 +73,31 @@ public class ArticleVenduRepositoryImpl implements ArticleVenduRepository {
 
     @Override
     public List<ArticleVendu> searchArticles(String motCle, int idCategorie) {
-        String sql = "select a.no_article AS id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.prix_vente, u.no_utilisateur, u.pseudo, u.nom, u.prenom, u.email, u.telephone, u.rue, u.code_postal, u.ville, u.mot_de_passe, u.credit, u.administrateur, c.no_categorie, c.libelle " +
+        String sql = "SELECT a.no_article AS id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.prix_vente, " +
+                "u.no_utilisateur, u.pseudo, u.nom, u.prenom, u.email, u.telephone, u.rue, u.code_postal, u.ville, u.mot_de_passe, u.credit, u.administrateur, " +
+                "c.no_categorie, c.libelle " +
                 "FROM articles_vendus a " +
                 "INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur " +
                 "INNER JOIN categories c ON a.no_categorie = c.no_categorie";
 
-        if((motCle != null || !motCle.isEmpty() || motCle != "") && idCategorie > 0) {
-            sql += " WHERE a.nom_article LIKE '%' + :motCle + '%' AND a.no_categorie = :idCategorie;";
-        } else if((motCle != null || !motCle.isEmpty() || motCle != "") && idCategorie == 0) {
-            sql += " WHERE a.nom_article LIKE '%' + :motCle + '%';";
-        } else if((motCle == null || motCle.isEmpty() || motCle == "") && idCategorie > 0) {
-            sql+= " WHERE a.no_categorie = :idCategorie;";
-        } else {
-            sql+= ";";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+
+        // Construire la clause WHERE en fonction des paramètres
+        if ((motCle != null && !motCle.isEmpty()) && idCategorie > 0) {
+            sql += " WHERE a.nom_article LIKE :motCle AND a.no_categorie = :idCategorie";
+            map.addValue("motCle", "%" + motCle + "%");
+            map.addValue("idCategorie", idCategorie);
+        } else if ((motCle != null && !motCle.isEmpty()) && idCategorie == 0) {
+            sql += " WHERE a.nom_article LIKE :motCle";
+            map.addValue("motCle", "%" + motCle + "%");
+        } else if ((motCle == null || motCle.isEmpty()) && idCategorie > 0) {
+            sql += " WHERE a.no_categorie = :idCategorie";
+            map.addValue("idCategorie", idCategorie);
         }
 
-        MapSqlParameterSource map = new MapSqlParameterSource();
-        map.addValue("motCle", motCle);
-        map.addValue("idCategorie", idCategorie);
-
-
+        // Exécuter la requête
         List<ArticleVendu> list = namedParameterJdbcTemplate.query(sql, map, new ArticleVenduRowMapper());
         return list;
     }
+
 }
