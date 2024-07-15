@@ -1,6 +1,7 @@
 package fr.eni.ecole.enchere.dal.Enchere;
 
 import fr.eni.ecole.enchere.bo.Enchere;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -34,9 +35,14 @@ public class EnchereRepositoryImpl implements EnchereRepository {
         String sql = "SELECT * FROM encheres WHERE no_article = :id AND montant_enchere = (SELECT MAX(montant_enchere) FROM encheres WHERE no_article = :id);";
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id", id);
-        Enchere enchere = namedParameterJdbcTemplate.queryForObject(sql, map, new EnchereRowMapper());
-        return enchere;
+
+        try {
+            return namedParameterJdbcTemplate.queryForObject(sql, map, new EnchereRowMapper());
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
+
 
     @Override
     public List<Enchere> findByIdUtilisateur(int idUtilisateur) {

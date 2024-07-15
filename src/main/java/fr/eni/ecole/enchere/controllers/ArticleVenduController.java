@@ -47,23 +47,28 @@ public class ArticleVenduController {
     }
 
     @GetMapping("/article")
-    public String showDetails(@RequestParam("id") int id, Model model){
+    public String showDetails(@RequestParam("id") int id, Model model) {
         ArticleVendu article = articleVenduService.getArticleVendu(id);
         Enchere enchere = enchereService.getEnchere(id);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(article.getUtilisateur().getNo_utilisateur());
 
-        if (enchere != null ){
+        if (enchere != null) {
             Utilisateur enchereUtilisateur = utilisateurService.getUtilisateur(enchere.getNo_utilisateur());
             model.addAttribute("enchereUtilisateur", enchereUtilisateur);
             model.addAttribute("enchere", enchere);
+        } else {
+            model.addAttribute("enchereUtilisateur", null);
+            Enchere enchere_vide = new Enchere();
+            enchere_vide.setMontant_enchere(article.getPrix_initial());
+            model.addAttribute("enchere", enchere_vide);
         }
-
 
         model.addAttribute("article", article);
         model.addAttribute("utilisateur", utilisateur);
 
         return "article";
     }
+
 
     @GetMapping("/add-article")
     public String addArticle(Model model){
