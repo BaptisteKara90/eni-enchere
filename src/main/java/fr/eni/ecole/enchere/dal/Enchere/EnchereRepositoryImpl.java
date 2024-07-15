@@ -31,14 +31,16 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
     @Override
     public Enchere findById(int id) {
-        String sql = "select * from encheres where no_article = :id";
-        Enchere enchere = jdbcTemplate.queryForObject(sql, new EnchereRowMapper(), id);
+        String sql = "SELECT * FROM encheres WHERE no_article = :id AND montant_enchere = (SELECT MAX(montant_enchere) FROM encheres WHERE no_article = :id);";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", id);
+        Enchere enchere = namedParameterJdbcTemplate.queryForObject(sql, map, new EnchereRowMapper());
         return enchere;
     }
 
     @Override
     public List<Enchere> findByIdUtilisateur(int idUtilisateur) {
-        String sql = "select * from encheres where no_utilisateur = :idUtilisateur";
+        String sql = "select * from encheres where no_utilisateur = :idUtilisateur;";
         List<Enchere> list = jdbcTemplate.query(sql, new EnchereRowMapper(), idUtilisateur);
         return list;
     }
@@ -46,7 +48,7 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
     @Override
     public void save(Enchere enchere) {
-        String sql = "insert into encheres (no_utilisateur, no_article, date_enchere, montant_enchere) values (:no_utilisateur, :no_article, :date_enchere, :montant_encher)";
+        String sql = "insert into encheres (no_utilisateur, no_article, date_enchere, montant_enchere) values (:no_utilisateur, :no_article, :date_enchere, :montant_enchere);";
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("no_utilisateur", enchere.getNo_utilisateur());
         map.addValue("no_article", enchere.getNo_article());

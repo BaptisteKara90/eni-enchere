@@ -16,8 +16,15 @@
             <ul>
                 <li class="flex-outer" data-th-text="${article.description}"></li>
                 <li class="flex-outer" data-th-text="${article.categorie.libelle}"></li>
-                <li class="flex-outer"> Meilleur enchère : </li>
-                <li class="flex-outer" data-th-text="${article.prix_initial}"> points</li>
+                <li class="flex-outer"> Meilleur enchère :&nbsp;<span data-th-text="${enchereUtilisateur.pseudo}"></span> </li>
+                <li class="flex-outer" data-th-text="${enchere.montant_enchere}"> points</li>
+                <li>
+                    <form data-th-action="@{/add-enchere}" method="post" data-th-object="${enchere}">
+                        <label for="idEnchere">Nouvelle enchère</label>
+                        <input data-th-field="${enchere.montant_enchere}" id="idEnchere" type="number">
+                        <input type="submit" value="envoyer">
+                    </form>
+                </li>
                 <li class="flex-outer" data-th-text="${article.getDate_fin_encheres()}"></li>
                 <ul>
                     <li class="flex-outer" data-th-text="${article.utilisateur.rue}"></li>
