@@ -87,14 +87,13 @@ public class ArticleVenduController {
         return "redirect:article?id=" + articleVendu.getNo_article();
     }
 
-    @GetMapping("/search-article")
+    @PostMapping("/search-article")
     public void searchArticle(@RequestParam("motCle") String motCle, @RequestParam("categorie") int idCategorie, Model model){
 
         List<ArticleVendu> searchResult = articleVenduService.getArticlesWithFilter(motCle, idCategorie);
         model.addAttribute("articles", searchResult);
 
-        articles(model);
-
+        this.articles(model);
     }
 
     //TODO ajouter un nouvel article
