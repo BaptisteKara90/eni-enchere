@@ -52,7 +52,6 @@ public class ArticleVenduController {
         Enchere enchere = enchereService.getEnchere(id);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(id);
 
-
         Utilisateur enchereUtilisateur = utilisateurService.getUtilisateur(enchere.getNo_utilisateur());
 
 
