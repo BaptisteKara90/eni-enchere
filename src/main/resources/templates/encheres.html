@@ -14,7 +14,7 @@
         <h1>Liste des enchères</h1>
         <section id="encheres-filter">
             <form method="POST" data-th-action="@{/search-article}">
-                <fieldset>
+                <fieldset class="filter1">
                     <legend>Filtres</legend>
                     <label for="motCle">Mots clés</label>
                     <input type="text" id="motCle" name="motCle">
@@ -26,6 +26,30 @@
                                 data-th-text="${item.libelle}"
                                 data-th-value="${item.no_categorie}"></option>
                     </select>
+                </fieldset>
+                <fieldset data-th-if="${#authorization.expression('isAuthenticated()')}" class="filter2">
+                    <div>
+                        <input type="radio" name="type" id="achat" value="achat">
+                        <label for="achat">Achat</label>
+                        <br>
+                        <input class="achat" type="checkbox" id="encheresOuvertes" name="encheresOuvertes" value="1">
+                        <label for="encheresOuvertes"> Enchères ouvertes</label><br>
+                        <input class="achat" type="checkbox" id="mesEncheresEnCours" name="mesEncheresEnCours" value="1">
+                        <label for="mesEncheresEnCours"> Mes enchères en cours</label><br>
+                        <input class="achat" type="checkbox" id="mesEncheresRemportees" name="mesEncheresRemportees" value="1">
+                        <label for="mesEncheresRemportees"> Mes enchères remportées</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="type" id="vente" value="vente">
+                        <label for="vente">Mes ventes</label>
+                        <br>
+                        <input class="vente" type="checkbox" id="mesVentesEnCours" name="mesVentesEnCours" value="1">
+                        <label for="mesVentesEnCours">Mes ventes en cours</label><br>
+                        <input class="vente" type="checkbox" id="ventesNonDebutees" name="ventesNonDebutees" value="1">
+                        <label for="ventesNonDebutees">Ventes non débutées</label><br>
+                        <input class="vente" type="checkbox" id="venteTerminee" name="venteTerminee" value="1">
+                        <label for="venteTerminee">Ventes terminées</label><br>
+                    </div>
                 </fieldset>
                 <button type="submit">Rechercher</button>
             </form>
@@ -43,6 +67,5 @@
         </section>
     </div>
 </main>
-
 
 </html>

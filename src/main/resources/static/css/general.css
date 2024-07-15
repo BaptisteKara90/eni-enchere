@@ -23,6 +23,11 @@ header li {
     font-family: Arial, Helvetica;
 }
 
+button>a{
+    text-decoration: none;
+    color: #fff;
+}
+
 /* Header */
 header {
     display: flex;

@@ -27,6 +27,30 @@
                                 data-th-value="${item.no_categorie}"></option>
                     </select>
                 </fieldset>
+                <fieldset data-th-if="${#authorization.expression('isAuthenticated()')}" class="filter2">
+                    <div>
+                        <input type="radio" name="type" id="achat" value="achat">
+                        <label for="achat">Achat</label>
+                        <br>
+                        <input class="achat" type="checkbox" id="encheresOuvertes" name="encheresOuvertes" value="1">
+                        <label for="encheresOuvertes"> Enchères ouvertes</label><br>
+                        <input class="achat" type="checkbox" id="mesEncheresEnCours" name="mesEncheresEnCours" value="1">
+                        <label for="mesEncheresEnCours"> Mes enchères en cours</label><br>
+                        <input class="achat" type="checkbox" id="mesEncheresRemportees" name="mesEncheresRemportees" value="1">
+                        <label for="mesEncheresRemportees"> Mes enchères remportées</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="type" id="vente" value="vente">
+                        <label for="vente">Mes ventes</label>
+                        <br>
+                        <input class="vente" type="checkbox" id="mesVentesEnCours" name="mesVentesEnCours" value="1">
+                        <label for="mesVentesEnCours">Mes ventes en cours</label><br>
+                        <input class="vente" type="checkbox" id="ventesNonDebutees" name="ventesNonDebutees" value="1">
+                        <label for="ventesNonDebutees">Ventes non débutées</label><br>
+                        <input class="vente" type="checkbox" id="venteTerminee" name="venteTerminee" value="1">
+                        <label for="venteTerminee">Ventes terminées</label><br>
+                    </div>
+                </fieldset>
                 <button type="submit">Rechercher</button>
             </form>
 
