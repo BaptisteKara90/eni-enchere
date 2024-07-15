@@ -2,7 +2,9 @@ package fr.eni.ecole.enchere.dal.Enchere;
 
 import fr.eni.ecole.enchere.bo.Enchere;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -45,6 +47,13 @@ public class EnchereRepositoryImpl implements EnchereRepository {
     @Override
     public void save(Enchere enchere) {
         String sql = "insert into encheres (no_utilisateur, no_article, date_enchere, montant_enchere) values (:no_utilisateur, :no_article, :date_enchere, :montant_encher)";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("no_utilisateur", enchere.getNo_utilisateur());
+        map.addValue("no_article", enchere.getNo_article());
+        map.addValue("date_enchere", enchere.getDate_enchere());
+        map.addValue("montant_enchere", enchere.getMontant_enchere());
+
+        namedParameterJdbcTemplate.update(sql, map);
     }
 
     @Override
@@ -54,7 +63,13 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
     @Override
     public void update(Enchere enchere) {
-
+        String sql = "update encheres set no_utilisateur = :no_utilisateur, no_article = :no_article, date_enchere = :date_enchere, montant_enchere = :montant_enchere where no_article = :no_article";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("no_utilisateur", enchere.getNo_utilisateur());
+        map.addValue("no_article", enchere.getNo_article());
+        map.addValue("date_enchere", enchere.getDate_enchere());
+        map.addValue("montant_enchere", enchere.getMontant_enchere());
+        namedParameterJdbcTemplate.update(sql, map);
     }
 
 
