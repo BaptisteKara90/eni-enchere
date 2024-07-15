@@ -48,6 +48,9 @@ public class ArticleVenduController {
 
     @GetMapping("/article")
     public String showDetails(@RequestParam("id") int id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Utilisateur CurrentUtilisateur = (Utilisateur) auth.getPrincipal();
+        CurrentUtilisateur = utilisateurService.getUtilisateur(CurrentUtilisateur.getNo_utilisateur());
         ArticleVendu article = articleVenduService.getArticleVendu(id);
         Enchere enchere = enchereService.getEnchere(id);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(article.getUtilisateur().getNo_utilisateur());
@@ -65,6 +68,7 @@ public class ArticleVenduController {
 
         model.addAttribute("article", article);
         model.addAttribute("utilisateur", utilisateur);
+        model.addAttribute("CurrentUtilisateur", CurrentUtilisateur);
 
         return "article";
     }
