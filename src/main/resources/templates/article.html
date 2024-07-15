@@ -30,9 +30,9 @@
                 </li>
                 <li class="flex-outer" data-th-text="${article.getDate_fin_encheres()}"></li>
                 <ul>
-                    <li class="flex-outer" th:text="${article.utilisateur.rue}"></li>
-                    <li class="flex-outer" th:text="${article.utilisateur.code_postal}"></li>
-                    <li class="flex-outer" th:text="${article.utilisateur.ville}"></li>
+                    <li class="flex-outer" th:text="${retrait.rue}"></li>
+                    <li class="flex-outer" th:text="${retrait.code_postal}"></li>
+                    <li class="flex-outer" th:text="${retrait.ville}"></li>
                 </ul>
                 <li class="flex-outer">vendu par : <span th:text="${article.utilisateur.pseudo}"></span></li>
             </ul>

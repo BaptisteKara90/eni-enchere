@@ -54,6 +54,7 @@ public class ArticleVenduController {
         ArticleVendu article = articleVenduService.getArticleVendu(id);
         Enchere enchere = enchereService.getEnchere(id);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(article.getUtilisateur().getNo_utilisateur());
+        Retrait retrait = retraitService.getRetrait(article.getNo_article());
 
         if (enchere != null) {
             Utilisateur enchereUtilisateur = utilisateurService.getUtilisateur(enchere.getNo_utilisateur());
@@ -66,6 +67,7 @@ public class ArticleVenduController {
             model.addAttribute("enchere", enchere_vide);
         }
 
+        model.addAttribute("retrait", retrait);
         model.addAttribute("article", article);
         model.addAttribute("utilisateur", utilisateur);
         model.addAttribute("CurrentUtilisateur", CurrentUtilisateur);
@@ -103,7 +105,6 @@ public class ArticleVenduController {
         return "redirect:/article?id=" + articleVendu.getNo_article();
     }
 
-    //TODO ajouter un nouvel article
     //TODO supprimer un article
     //TODO modifier un article
 }
