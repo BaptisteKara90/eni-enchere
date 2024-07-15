@@ -50,15 +50,18 @@ public class ArticleVenduController {
     public String showDetails(@RequestParam("id") int id, Model model){
         ArticleVendu article = articleVenduService.getArticleVendu(id);
         Enchere enchere = enchereService.getEnchere(id);
-        Utilisateur utilisateur = utilisateurService.getUtilisateur(id);
+        Utilisateur utilisateur = utilisateurService.getUtilisateur(article.getUtilisateur().getNo_utilisateur());
 
-        Utilisateur enchereUtilisateur = utilisateurService.getUtilisateur(enchere.getNo_utilisateur());
+        if (enchere != null ){
+            Utilisateur enchereUtilisateur = utilisateurService.getUtilisateur(enchere.getNo_utilisateur());
+            model.addAttribute("enchereUtilisateur", enchereUtilisateur);
+            model.addAttribute("enchere", enchere);
+        }
 
 
         model.addAttribute("article", article);
-        model.addAttribute("enchere", enchere);
         model.addAttribute("utilisateur", utilisateur);
-        model.addAttribute("enchereUtilisateur", enchereUtilisateur);
+
         return "article";
     }
 
@@ -87,13 +90,6 @@ public class ArticleVenduController {
         articleVenduService.addArticleVendu(articleVendu);
         retrait.setNo_article(articleVendu.getNo_article());
         retraitService.addRetrait(retrait);
-
-        enchere.setNo_article(articleVendu.getNo_article());
-        enchere.setNo_utilisateur(utilisateur.getNo_utilisateur());
-        enchere.setDate_enchere(articleVendu.getDate_debut_encheres());
-        enchere.setMontant_enchere(articleVendu.getPrix_initial());
-
-        enchereService.addEnchere(enchere);
 
         return "redirect:/article?id=" + articleVendu.getNo_article();
     }

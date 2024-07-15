@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 
-<!--  appel du fragment layout avec les paramètre -->
 <html data-th-replace="~{layouts/layout :: frag-layout
 						(title= ~{:: title},
 						content= ~{::main} )}">
 
-<!--  tire passé en paramètre -->
 <title>Articles</title>
 
-<!--  contenu passé en paramètre -->
 <main class="center-main">
     <div class="container">
     <h1 data-th-text="${article.nom_article}"></h1>
-        <div>
-            <ul>
-                <li class="flex-outer" data-th-text="${article.description}"></li>
-                <li class="flex-outer" data-th-text="${article.categorie.libelle}"></li>
-                <li class="flex-outer"> Meilleur enchère :&nbsp;<span data-th-text="${enchereUtilisateur.pseudo}"></span></li>
-                <li class="flex-outer" data-th-text="${enchere.montant_enchere}"> points</li>
-                <li>
-                    <form data-th-action="@{/add-enchere}" method="post" data-th-object="${enchere}">
-                        <label for="idEnchere">Nouvelle enchère</label>
-                        <input data-th-field="${enchere.montant_enchere}" id="idEnchere" type="number">
-                        <input type="submit" value="envoyer">
-                    </form>
-                </li>
-                <li class="flex-outer" data-th-text="${article.getDate_fin_encheres()}"></li>
-                <ul>
-                    <li class="flex-outer" data-th-text="${article.utilisateur.rue}"></li>
-                    <li class="flex-outer" data-th-text="${article.utilisateur.code_postal}"></li>
-                    <li class="flex-outer" data-th-text="${article.utilisateur.ville}"></li>
-                </ul>
-                <li class="flex-outer"> vendu par : <span data-th-text="${article.utilisateur.pseudo}"></span></li>
-            </ul>
-        </div>
+    <div>
+    <ul>
+    <li class="flex-outer" data-th-text="${article.description}"></li>
+    <li class="flex-outer" data-th-text="${article.categorie.libelle}"></li>
+    <li class="flex-outer" data-th-if="${enchereUtilisateur.pseudo != null}">
+        Meilleur enchère :&nbsp;<span data-th-text="${enchereUtilisateur.pseudo}"></span>
+    </li>
+    <li class="flex-outer" data-th-if="${enchereUtilisateur.pseudo == null}">
+        Pas d'enchère en cours pour le moment.
+    </li>
+    <li class="flex-outer" data-th-text="${enchere.montant_enchere ?: 0}"> points</li>
+    <li>
+    <form data-th-action="@{/add-enchere}" method="post" data-th-object="${enchere}">
+    <label for="idEnchere">Nouvelle enchère</label>
+    <input data-th-field="${enchere.montant_enchere}" id="idEnchere" type="number">
+    <input type="submit" value="envoyer">
+    </form>
+    </li>
+    <li class="flex-outer" data-th-text="${article.getDate_fin_encheres()}"></li>
+    <ul>
+    <li class="flex-outer" data-th-text="${article.utilisateur.rue}"></li>
+    <li class="flex-outer" data-th-text="${article.utilisateur.code_postal}"></li>
+    <li class="flex-outer" data-th-text="${article.utilisateur.ville}"></li>
+    </ul>
+    li class="flex-outer"> vendu par : <span data-th-text="${article.utilisateur.pseudo}"></span></li>
+    </ul>
+    </div>
     </div>
 </main>
 
