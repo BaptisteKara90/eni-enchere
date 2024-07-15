@@ -21,6 +21,7 @@
                     <br>
                     <label for="categorie">Catégorie</label>
                     <select id="categorie" name="categorie">
+                        <option value="0"></option>
                         <option data-th-each="item : ${categories}"
                                 data-th-text="${item.libelle}"
                                 data-th-value="${item.no_categorie}"></option>

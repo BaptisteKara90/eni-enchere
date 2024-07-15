@@ -26,4 +26,9 @@ public class ArticleVenduService {
     public void addArticleVendu(ArticleVendu articleVendu) {
         articleVenduRepository.save(articleVendu);
     }
+
+    public List<ArticleVendu> getArticlesWithFilter(String motCle, int idCategorie) {
+
+        return articleVenduRepository.searchArticles(motCle, idCategorie);
+    }
 }
