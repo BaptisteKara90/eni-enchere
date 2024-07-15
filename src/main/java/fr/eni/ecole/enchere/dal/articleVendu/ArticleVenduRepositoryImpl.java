@@ -78,11 +78,11 @@ public class ArticleVenduRepositoryImpl implements ArticleVenduRepository {
                 "INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur " +
                 "INNER JOIN categories c ON a.no_categorie = c.no_categorie";
 
-        if((motCle != null || !motCle.isEmpty()) && idCategorie != 0) {
+        if((motCle != null || !motCle.isEmpty() || motCle != "") && idCategorie > 0) {
             sql += " WHERE a.nom_article LIKE '%' + :motCle + '%' AND a.no_categorie = :idCategorie;";
-        } else if((motCle != null || !motCle.isEmpty()) && idCategorie == 0) {
+        } else if((motCle != null || !motCle.isEmpty() || motCle != "") && idCategorie == 0) {
             sql += " WHERE a.nom_article LIKE '%' + :motCle + '%';";
-        } else if((motCle == null || motCle.isEmpty()) && idCategorie != 0) {
+        } else if((motCle == null || motCle.isEmpty() || motCle == "") && idCategorie > 0) {
             sql+= " WHERE a.no_categorie = :idCategorie;";
         } else {
             sql+= ";";
