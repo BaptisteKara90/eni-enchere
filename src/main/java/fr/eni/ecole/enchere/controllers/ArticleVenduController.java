@@ -98,18 +98,6 @@ public class ArticleVenduController {
         return "redirect:/article?id=" + articleVendu.getNo_article();
     }
 
-    @PostMapping("/search-article")
-    public String searchArticle(@RequestParam("motCle") String motCle,@RequestParam("categorie") String categorie, Model model){
-
-        List<ArticleVendu> searchResult = articleVenduService.getArticlesWithFilter(motCle, Integer.parseInt(categorie));
-        model.addAttribute("articles", searchResult);
-
-        List<Categorie> listCategories = categorieService.getAllCategories();
-        model.addAttribute("categories", listCategories);
-
-        return "search-article";
-    }
-
     //TODO ajouter un nouvel article
     //TODO supprimer un article
     //TODO modifier un article
