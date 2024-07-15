@@ -10,13 +10,13 @@ public class ArticleVendu {
     private String description;
     private LocalDate date_debut_encheres;
     private LocalDate date_fin_encheres;
-    private long prix_initial;
-    private long prix_vente;
+    private int prix_initial;
+    private int prix_vente;
     private Utilisateur utilisateur;
     private Categorie categorie;
 
     //Constructor
-    public ArticleVendu(int no_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, long prix_initial, long prix_vente, Utilisateur utilisateur, Categorie categorie) {
+    public ArticleVendu(int no_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int prix_initial, int prix_vente, Utilisateur utilisateur, Categorie categorie) {
         this.no_article = no_article;
         this.nom_article = nom_article;
         this.description = description;
@@ -28,7 +28,7 @@ public class ArticleVendu {
         this.categorie = categorie;
     }
 
-    public ArticleVendu(String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, long prix_initial, long prix_vente, Utilisateur utilisateur, Categorie categorie) {
+    public ArticleVendu(String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int prix_initial, int prix_vente, Utilisateur utilisateur, Categorie categorie) {
         this.nom_article = nom_article;
         this.description = description;
         this.date_debut_encheres = date_debut_encheres;
@@ -84,19 +84,19 @@ public class ArticleVendu {
         this.date_fin_encheres = date_fin_encheres;
     }
 
-    public long getPrix_initial() {
+    public int getPrix_initial() {
         return prix_initial;
     }
 
-    public void setPrix_initial(long prix_initial) {
+    public void setPrix_initial(int prix_initial) {
         this.prix_initial = prix_initial;
     }
 
-    public long getPrix_vente() {
+    public int getPrix_vente() {
         return prix_vente;
     }
 
-    public void setPrix_vente(long prix_vente) {
+    public void setPrix_vente(int prix_vente) {
         this.prix_vente = prix_vente;
     }
 

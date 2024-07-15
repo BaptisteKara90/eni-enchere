@@ -58,6 +58,10 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
     @Override
     public void deleteById(int id) {
+        String sql = "delete from encheres where no_article = :id";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", id);
+        namedParameterJdbcTemplate.update(sql, map);
 
     }
 

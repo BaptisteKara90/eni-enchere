@@ -23,8 +23,8 @@ public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
         articleVendu.setDate_debut_encheres(debutEnchere.toLocalDate());
         Date finEnchere = rs.getDate("date_fin_encheres");
         articleVendu.setDate_fin_encheres(finEnchere.toLocalDate());
-        articleVendu.setPrix_initial(rs.getLong("prix_initial"));
-        articleVendu.setPrix_vente(rs.getLong("prix_vente"));
+        articleVendu.setPrix_initial(rs.getInt("prix_initial"));
+        articleVendu.setPrix_vente(rs.getInt("prix_vente"));
 
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setNo_utilisateur(rs.getInt("no_utilisateur"));
