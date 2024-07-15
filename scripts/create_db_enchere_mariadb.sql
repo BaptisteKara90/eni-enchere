@@ -5,11 +5,12 @@ CREATE TABLE CATEGORIES (
 );
 
 CREATE TABLE ENCHERES (
+                          id_enchere       INT AUTO_INCREMENT NOT NULL,
                           no_utilisateur   INT NOT NULL,
                           no_article       INT NOT NULL,
                           date_enchere     DATETIME NOT NULL,
                           montant_enchere  INT NOT NULL,
-                          PRIMARY KEY (no_utilisateur, no_article)
+                          PRIMARY KEY (id_enchere)
 );
 
 CREATE TABLE RETRAITS (
