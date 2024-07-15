@@ -59,25 +59,22 @@ public class ArticleVenduController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Utilisateur utilisateur = (Utilisateur) auth.getPrincipal();
         utilisateur = utilisateurService.getUtilisateur(utilisateur.getNo_utilisateur());
+        Retrait retrait = new Retrait();
 
         model.addAttribute("utilisateur", utilisateur);
         model.addAttribute("categories", listCat);
         model.addAttribute("articleVendu", articleVendu);
+        model.addAttribute("retrait", retrait);
         return "add-article";
     }
 
     @PostMapping("/add-article")
-    public String addArticle(@ModelAttribute("articleVendu") ArticleVendu articleVendu){
+    public String addArticle(@ModelAttribute("articleVendu") ArticleVendu articleVendu, @ModelAttribute("retrait") Retrait retrait){
         Utilisateur utilisateur = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         articleVendu.setUtilisateur(utilisateur);
-        Retrait retrait = new Retrait();
-
-
-
 
         articleVenduService.addArticleVendu(articleVendu);
         retrait.setNo_article(articleVendu.getNo_article());
-
         retraitService.addRetrait(retrait);
 
         return "redirect:article?id=" + articleVendu.getNo_article();

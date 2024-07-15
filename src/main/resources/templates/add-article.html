@@ -52,15 +52,15 @@
           </li>
           <li>
             <label for="idRue">Rue</label>
-            <input data-th-field="${utilisateur.rue}" id="idRue" type="text">
+            <input data-th-field="${utilisateur.rue}" id="idRue" type="text" data-th-value="${retrait.rue}">
           </li>
           <li>
             <label for="idCodePostal">Code Postal</label>
-            <input data-th-field="${utilisateur.code_postal}" name="code_postal" id="idCodePostal" type="text">
+            <input data-th-field="${utilisateur.code_postal}" name="code_postal" id="idCodePostal" type="text"data-th-value="${retrait.code_postal}">
           </li>
           <li>
             <label for="idVille">Ville</label>
-            <input data-th-field="${utilisateur.ville}" id="idVille" type="text">
+            <input data-th-field="${utilisateur.ville}" id="idVille" type="text" data-th-value="${retrait.ville}">
           </li>
           <li>
             <button type="submit">S'enregistrer</button>
