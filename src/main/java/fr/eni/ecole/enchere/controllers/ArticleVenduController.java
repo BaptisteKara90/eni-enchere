@@ -38,11 +38,18 @@ public class ArticleVenduController {
 
     @GetMapping("/encheres")
     public String articles(Model model) {
+
+
         List<Categorie> listCategories = categorieService.getAllCategories();
-        List<ArticleVendu>listArticles = articleVenduService.getArticleVendu();
         model.addAttribute("categories", listCategories);
-        model.addAttribute("articles", listArticles);
-        return "encheres";
+
+        if (model.containsAttribute("articles")) {
+            return "encheres";
+        } else {
+            List<ArticleVendu> listArticles = articleVenduService.getArticleVendu();
+            model.addAttribute("articles", listArticles);
+            return "encheres";
+        }
     }
 
     @GetMapping("/article")
@@ -78,6 +85,16 @@ public class ArticleVenduController {
         retraitService.addRetrait(retrait);
 
         return "redirect:article?id=" + articleVendu.getNo_article();
+    }
+
+    @GetMapping("/search-article")
+    public void searchArticle(@RequestParam("motCle") String motCle, @RequestParam("categorie") int idCategorie, Model model){
+
+        List<ArticleVendu> searchResult = articleVenduService.getArticlesWithFilter(motCle, idCategorie);
+        model.addAttribute("articles", searchResult);
+
+        articles(model);
+
     }
 
     //TODO ajouter un nouvel article
