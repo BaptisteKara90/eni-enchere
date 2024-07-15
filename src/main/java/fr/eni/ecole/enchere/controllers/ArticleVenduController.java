@@ -43,13 +43,11 @@ public class ArticleVenduController {
         List<Categorie> listCategories = categorieService.getAllCategories();
         model.addAttribute("categories", listCategories);
 
-        if (model.containsAttribute("articles")) {
-            return "encheres";
-        } else {
-            List<ArticleVendu> listArticles = articleVenduService.getArticleVendu();
-            model.addAttribute("articles", listArticles);
-            return "encheres";
-        }
+        List<ArticleVendu> listArticles = articleVenduService.getArticleVendu();
+        model.addAttribute("articles", listArticles);
+
+        return "encheres";
+
     }
 
     @GetMapping("/article")
@@ -88,12 +86,15 @@ public class ArticleVenduController {
     }
 
     @PostMapping("/search-article")
-    public void searchArticle(@RequestParam("motCle") String motCle, @RequestParam("categorie") int idCategorie, Model model){
+    public String searchArticle(@RequestParam String motCle,@RequestParam String categorie, Model model){
 
-        List<ArticleVendu> searchResult = articleVenduService.getArticlesWithFilter(motCle, idCategorie);
+        List<ArticleVendu> searchResult = articleVenduService.getArticlesWithFilter(motCle, Integer.parseInt(categorie));
         model.addAttribute("articles", searchResult);
 
-        this.articles(model);
+        List<Categorie> listCategories = categorieService.getAllCategories();
+        model.addAttribute("categories", listCategories);
+
+        return "search-article";
     }
 
     //TODO ajouter un nouvel article

@@ -24,7 +24,7 @@ public class SecurityConfig {
 
     private final String SELECT_USER = "select email, mot_de_passe, 1 from utilisateurs where email = ?";
     private final String SELECT_ROLES = "select email, role from roles where email = ?";
-    private UserDetailsService userService;
+    private static UserDetailsService userService;
 
     public SecurityConfig(UserDetailsService userService) {
         this.userService = userService;
@@ -57,6 +57,7 @@ public class SecurityConfig {
             //On donne accès à la reque^te de type Get /security
             auth.requestMatchers(HttpMethod.GET, "/**").permitAll();
             auth.requestMatchers(HttpMethod.POST, "/**").permitAll();
+            auth.requestMatchers(HttpMethod.POST, "/search-article").permitAll();
             auth.requestMatchers(HttpMethod.GET, "/css/*").permitAll();
             auth.requestMatchers(HttpMethod.GET, "/images/*").permitAll();
             //auth.anyRequest().denyAll();
