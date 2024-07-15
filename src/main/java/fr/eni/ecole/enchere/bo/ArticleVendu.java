@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class ArticleVendu {
 
-    private long no_article;
+    private int no_article;
     private String nom_article;
     private String description;
     private LocalDate date_debut_encheres;
@@ -16,7 +16,7 @@ public class ArticleVendu {
     private Categorie categorie;
 
     //Constructor
-    public ArticleVendu(long no_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, long prix_initial, long prix_vente, Utilisateur utilisateur, Categorie categorie) {
+    public ArticleVendu(int no_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, long prix_initial, long prix_vente, Utilisateur utilisateur, Categorie categorie) {
         this.no_article = no_article;
         this.nom_article = nom_article;
         this.description = description;
@@ -44,11 +44,11 @@ public class ArticleVendu {
 
     //Getter Setter
 
-    public long getNo_article() {
+    public int getNo_article() {
         return no_article;
     }
 
-    public void setNo_article(long no_article) {
+    public void setNo_article(int no_article) {
         this.no_article = no_article;
     }
 

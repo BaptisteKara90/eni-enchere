@@ -2,12 +2,13 @@ package fr.eni.ecole.enchere.controllers;
 
 import fr.eni.ecole.enchere.bll.ArticleVenduService;
 import fr.eni.ecole.enchere.bll.CategorieService;
+import fr.eni.ecole.enchere.bll.RetraitService;
 import fr.eni.ecole.enchere.bll.UtilisateurService;
 import fr.eni.ecole.enchere.bo.ArticleVendu;
 import fr.eni.ecole.enchere.bo.Categorie;
 import fr.eni.ecole.enchere.bo.Retrait;
 import fr.eni.ecole.enchere.bo.Utilisateur;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
+import fr.eni.ecole.enchere.dal.Retrait.RetraitRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,20 +23,24 @@ import java.util.List;
 @Controller
 public class ArticleVenduController {
 
+    private RetraitService retraitService;
     private final CategorieService categorieService;
     private ArticleVenduService articleVenduService;
     private UtilisateurService utilisateurService;
 
-    public ArticleVenduController(ArticleVenduService articleVenduService, CategorieService categorieService, UtilisateurService utilisateurService) {
+    public ArticleVenduController(ArticleVenduService articleVenduService, CategorieService categorieService, UtilisateurService utilisateurService, RetraitService retraitService) {
         super();
         this.articleVenduService = articleVenduService;
         this.categorieService = categorieService;
         this.utilisateurService = utilisateurService;
+        this.retraitService = retraitService;
     }
 
     @GetMapping("/encheres")
     public String articles(Model model) {
+        List<Categorie> listCategories = categorieService.getAllCategories();
         List<ArticleVendu>listArticles = articleVenduService.getArticleVendu();
+        model.addAttribute("categories", listCategories);
         model.addAttribute("articles", listArticles);
         return "encheres";
     }
@@ -65,11 +70,17 @@ public class ArticleVenduController {
     public String addArticle(@ModelAttribute("articleVendu") ArticleVendu articleVendu){
         Utilisateur utilisateur = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         articleVendu.setUtilisateur(utilisateur);
+        Retrait retrait = new Retrait();
+
+
+
 
         articleVenduService.addArticleVendu(articleVendu);
+        retrait.setNo_article(articleVendu.getNo_article());
 
+        retraitService.addRetrait(retrait);
 
-        return "article?id=" + articleVendu.getNo_article();
+        return "redirect:article?id=" + articleVendu.getNo_article();
     }
 
     //TODO ajouter un nouvel article
