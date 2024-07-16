@@ -24,7 +24,9 @@
                 <li class="flex-outer" th:if = "${erreur}">
                     <span data-th-text="${erreur}"></span>
                 </li>
-                <li>
+
+                <!--/* Si l'enchere est ouverte, on envoie le formulaire*/-->
+                <li data-th-if="${article.date_debut_encheres.isBefore(T(java.time.LocalDate).now()) && article.date_fin_encheres.isAfter(T(java.time.LocalDate).now())}">
                     <form data-th-action="@{/add-enchere}" method="post" data-th-object="${enchere}">
                         <input id="idArticle" data-th-field="${article.no_article}" type="hidden">
                         <input id="idUtilisateur" data-th-field="${CurrentUtilisateur.no_utilisateur}" type="hidden">
@@ -33,6 +35,18 @@
                         <input type="submit" value="envoyer">
                     </form>
                 </li>
+
+                <!--/* Sinon l'enchere est fermé et on envoie un message pour prévenir de l'ouverture de l'enchère*/-->
+                <li data-th-if="${!article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
+                    <div>Les enchères commenceront le <span data-th-text="${article.date_debut_encheres}"></span></div>
+                </li>
+
+
+                <!--/* Sinon l'enchere est fermé */-->
+                <li data-th-if="${!article.date_fin_encheres.isAfter(T(java.time.LocalDate).now())}">
+                    <div>Les enchères sont terminé! Le gagnant est : <span data-th-text="${enchereUtilisateur.pseudo}"></span></div>
+                </li>
+
                 <li class="flex-outer" data-th-text="${article.getDate_fin_encheres()}"></li>
                 <ul>
                     <li class="flex-outer" th:text="${retrait.rue}"></li>

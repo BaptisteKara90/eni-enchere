@@ -81,4 +81,8 @@ public class UtilisateurService {
 
         utilisateurRepository.deleteById(id);
     }
+
+    public void changeCredit(int id,int credit) {
+        utilisateurRepository.changeCredit(id, credit);
+    }
 }
