@@ -52,6 +52,15 @@ public class EnchereRepositoryImpl implements EnchereRepository {
         return list;
     }
 
+    @Override
+    public List<Enchere> findByIdArticle(int idArticle) {
+        String sql = "select * from encheres where no_article = :idArticle;";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("idArticle", idArticle);
+        List<Enchere> list = namedParameterJdbcTemplate.query(sql, map, new EnchereRowMapper());
+        return list;
+    }
+
 
     @Override
     public void save(Enchere enchere) {

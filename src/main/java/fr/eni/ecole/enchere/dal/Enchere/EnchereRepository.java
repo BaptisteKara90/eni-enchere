@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface EnchereRepository extends Dao<Enchere> {
     List<Enchere> findByIdUtilisateur(int idUtilisateur);
+    List<Enchere> findByIdArticle(int idArticle);
 }

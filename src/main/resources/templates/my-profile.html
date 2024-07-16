@@ -22,12 +22,10 @@
                 <li>Rue : <span data-th-text="${userData.rue}"></span></li>
                 <li>Code Postal : <span data-th-text="${userData.code_postal}"></span></li>
                 <li>Ville : <span data-th-text="${userData.ville}"></span></li>
+                <li>Vos Points : <span data-th-text="${userData.credit}"></span></li>
             </ul>
             <a data-th-href="@{/profile/update(id=${userData.no_utilisateur})}"><button>Modifier mon profil</button></a>
             <a data-th-href="@{/profile/delete(id=${userData.no_utilisateur})}"><button>Supprimer mon compte</button></a>
         </div>
-    <div class="container">
 </main>
-
-
 </html>

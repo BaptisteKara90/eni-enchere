@@ -23,6 +23,10 @@ public class EnchereService {
         return enchereRepository.findById(id);
     }
 
+    public List<Enchere> getEnchereByArticle(int articleId) {
+        return enchereRepository.findByIdArticle(articleId);
+    }
+
     public List<Enchere> getEnchereByUtilisateur(int utilisateurId) {
         return enchereRepository.findByIdUtilisateur(utilisateurId);
     }
