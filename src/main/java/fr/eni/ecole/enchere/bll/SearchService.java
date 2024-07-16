@@ -1,6 +1,7 @@
 package fr.eni.ecole.enchere.bll;
 
 import fr.eni.ecole.enchere.bo.ArticleVendu;
+import fr.eni.ecole.enchere.bo.Enchere;
 import fr.eni.ecole.enchere.bo.Search;
 import fr.eni.ecole.enchere.dal.search.SearchRepository;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,11 @@ import java.util.List;
 public class SearchService {
 
     private SearchRepository searchRepository;
+    private EnchereService enchereService;
 
-    public SearchService(SearchRepository searchRepository) {
+    public SearchService(SearchRepository searchRepository, EnchereService enchereService) {
         this.searchRepository = searchRepository;
+        this.enchereService = enchereService;
     }
 
     public List<ArticleVendu> getArticlesWithFilter(Search search, int currentUserId) {
@@ -30,18 +33,33 @@ public class SearchService {
         }
 
         //Si l'utilisateur utilise le filtre Achat
-        if(search.getType().equalsIgnoreCase("achat")){
+        if(search.getType().equals("achat")){
             for (ArticleVendu article : result) {
                 if(article.getUtilisateur().getNo_utilisateur() == currentUserId){
                     result.remove(article);
                 }
-                if(search.getEncheresOuvertes() == "1") {
-                    if (article.getDate_debut_encheres().isAfter(currentDate) == true || article.getDate_fin_encheres().isBefore(currentDate) == true) {
+            }
+            if(search.isEncheresOuvertes()) {
+                for (ArticleVendu article : result) {
+                    if (!article.getDate_debut_encheres().isAfter(currentDate) || !article.getDate_fin_encheres().isBefore(currentDate)) {
                         result.remove(article);
                     }
                 }
-                if(search.getMesEncheresEnCours() == "1") {
+            }
+            if(search.isMesEncheresEnCours()) {
+                for (ArticleVendu article : result) {
 
+                    List<Enchere> encheresCurrentArticle = enchereService.getEnchereByArticle(article.getNo_article());
+                    int currentUserEnchereDetected = 0;
+
+                    for (Enchere enchere : encheresCurrentArticle) {
+                        if(enchere.getNo_utilisateur() == currentUserId && enchere.getNo_article() == article.getNo_article()){
+                            currentUserEnchereDetected++;
+                        }
+                    }
+                    if (currentUserEnchereDetected <= 0) {
+                        result.remove(article);
+                    }
                 }
             }
         }

@@ -1,12 +1,10 @@
 package fr.eni.ecole.enchere.controllers;
 
 import fr.eni.ecole.enchere.bll.CategorieService;
+import fr.eni.ecole.enchere.bll.EnchereService;
 import fr.eni.ecole.enchere.bll.SearchService;
 import fr.eni.ecole.enchere.bll.UtilisateurService;
-import fr.eni.ecole.enchere.bo.ArticleVendu;
-import fr.eni.ecole.enchere.bo.Categorie;
-import fr.eni.ecole.enchere.bo.Search;
-import fr.eni.ecole.enchere.bo.Utilisateur;
+import fr.eni.ecole.enchere.bo.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,12 +20,12 @@ public class SearchController {
 
     private SearchService searchService;
     private CategorieService categorieService;
-    private UtilisateurService utilisateurService;
+    private EnchereService enchereService;
 
-    public SearchController(SearchService searchService, CategorieService categorieService, UtilisateurService utilisateurService) {
+    public SearchController(SearchService searchService, CategorieService categorieService, EnchereService enchereService) {
         this.searchService = searchService;
         this.categorieService = categorieService;
-        this.utilisateurService = utilisateurService;
+        this.enchereService = enchereService;
     }
 
     @PostMapping("/search-article")
@@ -40,7 +38,12 @@ public class SearchController {
         model.addAttribute("search", emptyFilter);
 
         List<ArticleVendu> searchResult = searchService.getArticlesWithFilter(search, currentUtilisateur.getNo_utilisateur());
-
+        for (ArticleVendu articleVendu : searchResult) {
+            Enchere enchere = enchereService.getEnchere(articleVendu.getNo_article());
+            if (enchere != null) {
+                articleVendu.setPrix_initial(enchere.getMontant_enchere());
+            }
+        }
         model.addAttribute("articles", searchResult);
 
         List<Categorie> listCategories = categorieService.getAllCategories();

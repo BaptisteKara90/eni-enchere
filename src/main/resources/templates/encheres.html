@@ -32,22 +32,22 @@
                         <input type="radio" name="type" id="achat" value="achat">
                         <label for="achat">Achat</label>
                         <br>
-                        <input class="achat" type="checkbox" id="encheresOuvertes" data-th-field="*{encheresOuvertes}" value="1">
+                        <input class="achat" type="checkbox" id="encheresOuvertes" name="encheresOuvertes" data-th-checked="*{encheresOuvertes}">
                         <label for="encheresOuvertes"> Enchères ouvertes</label><br>
-                        <input class="achat" type="checkbox" id="mesEncheresEnCours" data-th-field="*{mesEncheresEnCours}" value="1">
+                        <input class="achat" type="checkbox" id="mesEncheresEnCours" name="mesEncheresEnCours" data-th-checked="*{mesEncheresEnCours}">
                         <label for="mesEncheresEnCours"> Mes enchères en cours</label><br>
-                        <input class="achat" type="checkbox" id="mesEncheresRemportees" data-th-field="*{mesEncheresRemportees}" value="1">
+                        <input class="achat" type="checkbox" id="mesEncheresRemportees" name="mesEncheresRemportees" data-th-checked="*{mesEncheresRemportees}">
                         <label for="mesEncheresRemportees"> Mes enchères remportées</label><br>
                     </div>
                     <div>
                         <input type="radio" name="type" id="vente" value="vente">
                         <label for="vente">Mes ventes</label>
                         <br>
-                        <input class="vente" type="checkbox" id="mesVentesEnCours" data-th-field="*{mesVentesEnCours}" value="1">
+                        <input class="vente" type="checkbox" id="mesVentesEnCours" name="mesVentesEnCours" data-th-checked="*{mesVentesEnCours}">
                         <label for="mesVentesEnCours">Mes ventes en cours</label><br>
-                        <input class="vente" type="checkbox" id="ventesNonDebutees" data-th-field="*{ventesNonDebutees}" value="1">
+                        <input class="vente" type="checkbox" id="ventesNonDebutees" name="ventesNonDebutees" data-th-checked="*{ventesNonDebutees}">
                         <label for="ventesNonDebutees">Ventes non débutées</label><br>
-                        <input class="vente" type="checkbox" id="venteTerminee" data-th-field="*{venteTerminee}" value="1">
+                        <input class="vente" type="checkbox" id="venteTerminee" name="venteTerminee" data-th-checked="*{venteTerminee}">
                         <label for="venteTerminee">Ventes terminées</label><br>
                     </div>
                 </fieldset>

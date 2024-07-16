@@ -4,25 +4,13 @@ public class Search {
 
     private String motCle;
     private int categorie;
-    private String type = "";
-    private String encheresOuvertes = "";
-    private String mesEncheresEnCours = "";
-    private String mesEncheresRemportees = "";
-    private String mesVentesEnCours = "";
-    private String ventesNonDebutees = "";
-    private String venteTerminee = "";
-
-    public Search(String motCle, int categorie, String type, String encheresOuvertes, String mesEncheresEnCours, String mesEncheresRemportees, String mesVentesEnCours, String ventesNonDebutees, String venteTerminee) {
-        this.motCle = motCle;
-        this.categorie = categorie;
-        this.type = type;
-        this.encheresOuvertes = encheresOuvertes;
-        this.mesEncheresEnCours = mesEncheresEnCours;
-        this.mesEncheresRemportees = mesEncheresRemportees;
-        this.mesVentesEnCours = mesVentesEnCours;
-        this.ventesNonDebutees = ventesNonDebutees;
-        this.venteTerminee = venteTerminee;
-    }
+    private String type;
+    private boolean encheresOuvertes;
+    private boolean mesEncheresEnCours;
+    private boolean mesEncheresRemportees;
+    private boolean mesVentesEnCours;
+    private boolean ventesNonDebutees;
+    private boolean venteTerminee;
 
     public Search() {
     }
@@ -51,51 +39,51 @@ public class Search {
         this.type = type;
     }
 
-    public String getEncheresOuvertes() {
+    public boolean isEncheresOuvertes() {
         return encheresOuvertes;
     }
 
-    public void setEncheresOuvertes(String encheresOuvertes) {
+    public void setEncheresOuvertes(boolean encheresOuvertes) {
         this.encheresOuvertes = encheresOuvertes;
     }
 
-    public String getMesEncheresEnCours() {
+    public boolean isMesEncheresEnCours() {
         return mesEncheresEnCours;
     }
 
-    public void setMesEncheresEnCours(String mesEncheresEnCours) {
+    public void setMesEncheresEnCours(boolean mesEncheresEnCours) {
         this.mesEncheresEnCours = mesEncheresEnCours;
     }
 
-    public String getMesEncheresRemportees() {
+    public boolean isMesEncheresRemportees() {
         return mesEncheresRemportees;
     }
 
-    public void setMesEncheresRemportees(String mesEncheresRemportees) {
+    public void setMesEncheresRemportees(boolean mesEncheresRemportees) {
         this.mesEncheresRemportees = mesEncheresRemportees;
     }
 
-    public String getMesVentesEnCours() {
+    public boolean isMesVentesEnCours() {
         return mesVentesEnCours;
     }
 
-    public void setMesVentesEnCours(String mesVentesEnCours) {
+    public void setMesVentesEnCours(boolean mesVentesEnCours) {
         this.mesVentesEnCours = mesVentesEnCours;
     }
 
-    public String getVentesNonDebutees() {
+    public boolean isVentesNonDebutees() {
         return ventesNonDebutees;
     }
 
-    public void setVentesNonDebutees(String ventesNonDebutees) {
+    public void setVentesNonDebutees(boolean ventesNonDebutees) {
         this.ventesNonDebutees = ventesNonDebutees;
     }
 
-    public String getVenteTerminee() {
+    public boolean isVenteTerminee() {
         return venteTerminee;
     }
 
-    public void setVenteTerminee(String venteTerminee) {
+    public void setVenteTerminee(boolean venteTerminee) {
         this.venteTerminee = venteTerminee;
     }
 }
