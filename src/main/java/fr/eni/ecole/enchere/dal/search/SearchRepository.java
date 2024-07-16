@@ -49,4 +49,5 @@ public class SearchRepository {
         List<ArticleVendu> list = namedParameterJdbcTemplate.query(sql, map, new ArticleVenduRowMapper());
         return list;
     }
+
 }
