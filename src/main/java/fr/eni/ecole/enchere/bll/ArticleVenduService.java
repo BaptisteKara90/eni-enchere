@@ -27,15 +27,5 @@ public class ArticleVenduService {
         articleVenduRepository.save(articleVendu);
     }
 
-    public List<ArticleVendu> getArticlesWithFilter(String motCle,
-                                                    int idCategorie,
-                                                    String encheresOuvertes,
-                                                    String mesEncheresEnCours,
-                                                    String mesEncheresRemportees,
-                                                    String mesVentesEnCours,
-                                                    String ventesNonDebutees,
-                                                    String venteTerminee) {
 
-        return articleVenduRepository.searchArticles(motCle, idCategorie);
-    }
 }

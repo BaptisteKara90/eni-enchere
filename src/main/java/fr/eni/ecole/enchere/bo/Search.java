@@ -1,19 +1,21 @@
 package fr.eni.ecole.enchere.bo;
 
-public class Filtre {
+public class Search {
 
     private String motCle;
-    private String categorie;
-    private String encheresOuvertes;
-    private String mesEncheresEnCours;
-    private String mesEncheresRemportees;
-    private String mesVentesEnCours;
-    private String ventesNonDebutees;
-    private String venteTerminee;
+    private int categorie;
+    private String type = "";
+    private String encheresOuvertes = "";
+    private String mesEncheresEnCours = "";
+    private String mesEncheresRemportees = "";
+    private String mesVentesEnCours = "";
+    private String ventesNonDebutees = "";
+    private String venteTerminee = "";
 
-    public Filtre(String motCle, String categorie, String encheresOuvertes, String mesEncheresEnCours, String mesEncheresRemportees, String mesVentesEnCours, String ventesNonDebutees, String venteTerminee) {
+    public Search(String motCle, int categorie, String type, String encheresOuvertes, String mesEncheresEnCours, String mesEncheresRemportees, String mesVentesEnCours, String ventesNonDebutees, String venteTerminee) {
         this.motCle = motCle;
         this.categorie = categorie;
+        this.type = type;
         this.encheresOuvertes = encheresOuvertes;
         this.mesEncheresEnCours = mesEncheresEnCours;
         this.mesEncheresRemportees = mesEncheresRemportees;
@@ -22,7 +24,7 @@ public class Filtre {
         this.venteTerminee = venteTerminee;
     }
 
-    public Filtre() {
+    public Search() {
     }
 
     public String getMotCle() {
@@ -33,12 +35,20 @@ public class Filtre {
         this.motCle = motCle;
     }
 
-    public String getCategorie() {
+    public int getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(String categorie) {
+    public void setCategorie(int categorie) {
         this.categorie = categorie;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getEncheresOuvertes() {

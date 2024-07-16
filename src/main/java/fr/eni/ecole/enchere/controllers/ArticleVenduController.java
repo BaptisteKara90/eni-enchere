@@ -35,6 +35,8 @@ public class ArticleVenduController {
     @GetMapping("/encheres")
     public String articles(Model model) {
 
+        Search emptyFilter = new Search();
+        model.addAttribute("search", emptyFilter);
 
         List<Categorie> listCategories = categorieService.getAllCategories();
         model.addAttribute("categories", listCategories);
