@@ -116,4 +116,13 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
         return utilisateur;
     }
+
+    @Override
+    public void changeCredit(int id, int credit) {
+        String sql = "update utilisateurs set credit = :credit where no_utilisateur = :id;";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("credit", credit);
+        map.addValue("id", id);
+        namedParameterJdbcTemplate.update(sql, map);
+    }
 }

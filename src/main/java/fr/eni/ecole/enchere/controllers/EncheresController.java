@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 public class EncheresController {
@@ -35,14 +36,25 @@ public class EncheresController {
     public String addEnchere(@ModelAttribute("enchere") Enchere enchere, RedirectAttributes redirectAttributes) {
      Utilisateur utilisateur = utilisateurService.getUtilisateur(enchere.getNo_utilisateur());
      ArticleVendu article = articleVenduService.getArticleVendu(enchere.getNo_article());
-     if (utilisateur.getCredit() >= enchere.getMontant_enchere()){
+
+     if (utilisateur.getCredit() > enchere.getMontant_enchere()){
          enchere.setDate_enchere(LocalDate.now());
          enchereService.addEnchere(enchere);
-        } else{
+         utilisateur.setCredit(utilisateur.getCredit() - enchere.getMontant_enchere());
+         utilisateurService.changeCredit(utilisateur.getNo_utilisateur(), utilisateur.getCredit());
+         List<Enchere> enchereArticle = enchereService.getEnchereByArticle(enchere.getNo_article());
+
+         if (enchereArticle.size() > 1){
+             enchereArticle.removeLast();
+             Enchere lastEnchere = enchereArticle.getLast();
+             Utilisateur refundUtilisateur = utilisateurService.getUtilisateur(lastEnchere.getNo_utilisateur());
+             refundUtilisateur.setCredit(lastEnchere.getMontant_enchere() + refundUtilisateur.getCredit());
+             utilisateurService.changeCredit(refundUtilisateur.getNo_utilisateur(), refundUtilisateur.getCredit());
+         }
+        } else if(utilisateur.getCredit() <= enchere.getMontant_enchere()){
          String erreur = "Vous avez pas les moyens pour acquérir cette objet !";
          redirectAttributes.addFlashAttribute("erreur", erreur);
      }
-
 
      return "redirect:/article?id=" + article.getNo_article();
     }
