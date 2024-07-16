@@ -42,10 +42,15 @@ public class ArticleVenduController {
         model.addAttribute("categories", listCategories);
 
         List<ArticleVendu> listArticles = articleVenduService.getArticleVendu();
+        for (ArticleVendu articleVendu : listArticles) {
+            Enchere enchere = enchereService.getEnchere(articleVendu.getNo_article());
+            if (enchere != null) {
+                articleVendu.setPrix_initial(enchere.getMontant_enchere());
+            }
+        }
         model.addAttribute("articles", listArticles);
 
         return "encheres";
-
     }
 
     @GetMapping("/article")
