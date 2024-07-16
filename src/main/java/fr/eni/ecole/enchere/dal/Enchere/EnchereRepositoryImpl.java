@@ -37,7 +37,8 @@ public class EnchereRepositoryImpl implements EnchereRepository {
         map.addValue("id", id);
 
         try {
-            return namedParameterJdbcTemplate.queryForObject(sql, map, new EnchereRowMapper());
+            Enchere enchere =  namedParameterJdbcTemplate.queryForObject(sql, map, new EnchereRowMapper());
+            return enchere;
         } catch (EmptyResultDataAccessException e) {
             return null;
         }

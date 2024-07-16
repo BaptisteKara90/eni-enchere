@@ -21,10 +21,15 @@
                 <li class="flex-outer">
                     Prix : <span th:text="${enchere.montant_enchere}"></span> points
                 </li>
+                <li class="flex-outer" th:if = "${erreur}">
+                    <span data-th-text="${erreur}"></span>
+                </li>
                 <li>
                     <form data-th-action="@{/add-enchere}" method="post" data-th-object="${enchere}">
+                        <input id="idArticle" data-th-field="${article.no_article}" type="hidden">
+                        <input id="idUtilisateur" data-th-field="${CurrentUtilisateur.no_utilisateur}" type="hidden">
                         <label for="idEnchere">Nouvelle enchère</label>
-                        <input id="idEnchere" type="number"  data-th-field="${enchere.montant_enchere}"  data-th-value ="${enchere.montant_enchere}" data-th-min="${enchere.montant_enchere}" data-th-max="${enchere.montant_enchere} + ${CurrentUtilisateur.credit}">
+                        <input id="idEnchere" type="number"  data-th-field="${enchere.montant_enchere}"  data-th-value ="${enchere.montant_enchere}" data-th-min="${enchere.montant_enchere}">
                         <input type="submit" value="envoyer">
                     </form>
                 </li>
