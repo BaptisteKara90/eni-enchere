@@ -15,7 +15,10 @@
                 <li class="flex-outer" th:if="${enchereUtilisateur != null}">
                     Meilleur enchère :&nbsp;<span th:text="${enchereUtilisateur.pseudo}"></span>
                 </li>
-                <li class="flex-outer" th:if="${enchereUtilisateur == null}">
+                <li class="flex-outer" th:if="${enchereUtilisateur == null && !article.date_fin_encheres.isAfter(T(java.time.LocalDate).now())}">
+                    L'enchère est terminé sans enchérisseur
+                </li>
+                <li class="flex-outer" th:if="${enchereUtilisateur == null && !article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
                     Pas d'enchère en cours pour le moment.
                 </li>
                 <li class="flex-outer">
@@ -43,7 +46,7 @@
 
 
                 <!--/* Sinon l'enchere est fermé */-->
-                <li data-th-if="${!article.date_fin_encheres.isAfter(T(java.time.LocalDate).now())}">
+                <li data-th-if="${!article.date_fin_encheres.isAfter(T(java.time.LocalDate).now()) && enchereUtilisateur != null}">
                     <div>Les enchères sont terminé! Le gagnant est : <span data-th-text="${enchereUtilisateur.pseudo}"></span></div>
                 </li>
 
