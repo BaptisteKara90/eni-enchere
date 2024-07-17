@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html data-th-replace="~{layouts/layout :: frag-layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+<title>Login</title>
+
+<main>
+    <div class="container">
+        <h1>Espace administrateur</h1>
+        <h2>Gestion des utilisateurs</h2>
+        <div class="admin-utilisateurs-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Pseudo</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Rue</th>
+                    <th>Code Postal</th>
+                    <th>Ville</th>
+                    <th>Crédit</th>
+                    <th>Administrateur</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="item : ${utilisateurs}">
+                        <td data-th-text="${item.no_utilisateur}"></td>
+                        <td data-th-text="${item.pseudo}"></td>
+                        <td data-th-text="${item.nom}"></td>
+                        <td data-th-text="${item.prenom}"></td>
+                        <td data-th-text="${item.email}"></td>
+                        <td data-th-text="${item.telephone}"></td>
+                        <td data-th-text="${item.rue}"></td>
+                        <td data-th-text="${item.code_postal}"></td>
+                        <td data-th-text="${item.ville}"></td>
+                        <td data-th-text="${item.credit}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2>Gestion des categories</h2>
+        <div class="admin-categories-container">
+
+        </div>
+
+    </div>
+</main>
+</html>

@@ -1,5 +1,6 @@
 package fr.eni.ecole.enchere.bll;
 
+import fr.eni.ecole.enchere.bo.Role;
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import fr.eni.ecole.enchere.dal.Utilisateur.UtilisateurRepository;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -84,5 +85,9 @@ public class UtilisateurService {
 
     public void changeCredit(int id,int credit) {
         utilisateurRepository.changeCredit(id, credit);
+    }
+
+    public List<Role> getUserRoles(String username){
+        return utilisateurRepository.findRolesByUsername(username);
     }
 }

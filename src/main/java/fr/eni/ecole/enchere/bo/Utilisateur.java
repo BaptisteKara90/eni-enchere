@@ -1,5 +1,6 @@
 package fr.eni.ecole.enchere.bo;
 
+import fr.eni.ecole.enchere.bll.UtilisateurService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,9 +21,26 @@ public class Utilisateur implements UserDetails {
     private String mot_de_passe;
     private int credit;
     private boolean administrateur;
+    private UtilisateurService utilisateurService;
 
-    //Constructor
-    public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
+    public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService) {
+        super();
+        this.pseudo = pseudo;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.rue = rue;
+        this.code_postal = code_postal;
+        this.ville = ville;
+        this.mot_de_passe = mot_de_passe;
+        this.credit = credit;
+        this.administrateur = administrateur;
+        this.utilisateurService = utilisateurService;
+    }
+
+    public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService) {
+        super();
         this.no_utilisateur = no_utilisateur;
         this.pseudo = pseudo;
         this.nom = nom;
@@ -35,26 +53,13 @@ public class Utilisateur implements UserDetails {
         this.mot_de_passe = mot_de_passe;
         this.credit = credit;
         this.administrateur = administrateur;
-    }
-
-    public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
-        this.pseudo = pseudo;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.telephone = telephone;
-        this.rue = rue;
-        this.code_postal = code_postal;
-        this.ville = ville;
-        this.mot_de_passe = mot_de_passe;
-        this.credit = credit;
-        this.administrateur = administrateur;
+        this.utilisateurService = utilisateurService;
     }
 
     public Utilisateur() {
+        super();
     }
 
-    //Getter Setter
     public int getNo_utilisateur() {
         return no_utilisateur;
     }
@@ -151,6 +156,14 @@ public class Utilisateur implements UserDetails {
         this.administrateur = administrateur;
     }
 
+    public UtilisateurService getUtilisateurService() {
+        return utilisateurService;
+    }
+
+    public void setUtilisateurService(UtilisateurService utilisateurService) {
+        this.utilisateurService = utilisateurService;
+    }
+
     //ToString
     @Override
     public String toString() {
@@ -172,6 +185,7 @@ public class Utilisateur implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         return List.of();
     }
 

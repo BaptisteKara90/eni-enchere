@@ -52,9 +52,10 @@ CREATE TABLE ARTICLES_VENDUS (
 );
 
 CREATE TABLE ROLES (
+                       id           INT AUTO_INCREMENT NOT NULL,
                        email        VARCHAR(50) NOT NULL,
                        role         VARCHAR(30) NOT NULL,
-                       PRIMARY KEY (email, role),
+                       PRIMARY KEY (id),
                        FOREIGN KEY (email) REFERENCES UTILISATEURS (email) -- Ajout de la contrainte de clé étrangère
 );
 
@@ -93,6 +94,4 @@ ALTER TABLE ARTICLES_VENDUS
         ON UPDATE NO ACTION;
 
 ALTER TABLE ROLES
-    ADD CONSTRAINT roles_unique UNIQUE (email, role)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION;
+    ADD UNIQUE (email, role)

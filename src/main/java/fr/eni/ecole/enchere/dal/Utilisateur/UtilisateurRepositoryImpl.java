@@ -1,5 +1,6 @@
 package fr.eni.ecole.enchere.dal.Utilisateur;
 
+import fr.eni.ecole.enchere.bo.Role;
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -124,5 +125,17 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
         map.addValue("credit", credit);
         map.addValue("id", id);
         namedParameterJdbcTemplate.update(sql, map);
+    }
+
+    @Override
+    public List<Role> findRolesByUsername(String username) {
+        String sql = "select email, role, id from roles where email = :emailUtilisateur;";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("emailUtilisateur", username);
+
+        List<Role> list = namedParameterJdbcTemplate.query(sql, map, new RoleRowMapper());
+
+        return list;
     }
 }

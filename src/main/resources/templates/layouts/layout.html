@@ -16,6 +16,7 @@
             <li data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Se Connecter</a></li>
             <li data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/my-profile">Mon profil</a></li>
             <li data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/add-article">Ajouter un article</a></li>
+            <li data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}"><a href="/admin">Espace administrateur</a></li>
             <li data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/logout">Se Deconnecter</a></li>
         </ul>
     </nav>

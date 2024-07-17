@@ -1,13 +1,9 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     let achatRadio = document.getElementById('achat');
-    console.log(achatRadio);
     let venteRadio = document.getElementById('vente');
-    console.log(venteRadio);
     let filter2AchatInputs = document.querySelectorAll('.achat');
-    console.log(filter2AchatInputs);
     let filter2VenteInputs = document.querySelectorAll('.vente');
-    console.log(filter2VenteInputs);
 
     function updateInputs() {
         if (achatRadio.checked) {
