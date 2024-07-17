@@ -54,11 +54,15 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> {
             //On donne accès à la reque^te de type Get /security
-            auth.requestMatchers(HttpMethod.GET, "/**").permitAll();
-            auth.requestMatchers(HttpMethod.POST, "/**").permitAll();
+            auth.requestMatchers(HttpMethod.GET, "/encheres").permitAll();
+            auth.requestMatchers(HttpMethod.GET, "/register").permitAll();
+            auth.requestMatchers(HttpMethod.GET, "/search-article").permitAll();
+            auth.requestMatchers(HttpMethod.POST, "/register").permitAll();
             auth.requestMatchers(HttpMethod.POST, "/search-article").permitAll();
             auth.requestMatchers(HttpMethod.GET, "/css/*").permitAll();
             auth.requestMatchers(HttpMethod.GET, "/images/*").permitAll();
+            auth.requestMatchers(HttpMethod.GET, "/js/*").permitAll();
+            auth.anyRequest().authenticated();
             //auth.anyRequest().denyAll();
         });
 
