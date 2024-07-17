@@ -58,7 +58,7 @@ CREATE TABLE ROLES (
                        FOREIGN KEY (email) REFERENCES UTILISATEURS (email) -- Ajout de la contrainte de clé étrangère
 );
 
-CREATE TABLE image(
+CREATE TABLE IMAGE(
     id_image int auto_increment not null,
     no_article int not null,
     image varchar(255) not null,
@@ -91,4 +91,8 @@ ALTER TABLE ARTICLES_VENDUS
     ADD CONSTRAINT articles_vendus_categories_fk FOREIGN KEY (no_categorie) REFERENCES CATEGORIES (no_categorie)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
-        
+
+ALTER TABLE ROLES
+    ADD CONSTRAINT roles_unique UNIQUE (email, role)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION;

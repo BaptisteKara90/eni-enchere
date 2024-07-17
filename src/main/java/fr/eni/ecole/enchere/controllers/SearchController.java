@@ -3,7 +3,6 @@ package fr.eni.ecole.enchere.controllers;
 import fr.eni.ecole.enchere.bll.CategorieService;
 import fr.eni.ecole.enchere.bll.EnchereService;
 import fr.eni.ecole.enchere.bll.SearchService;
-import fr.eni.ecole.enchere.bll.UtilisateurService;
 import fr.eni.ecole.enchere.bo.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,13 +30,10 @@ public class SearchController {
     @PostMapping("/search-article")
     public String searchArticle(@ModelAttribute("search") Search search, Model model){
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Utilisateur currentUtilisateur = (Utilisateur) auth.getPrincipal();
-
         Search emptyFilter = new Search();
         model.addAttribute("search", emptyFilter);
 
-        List<ArticleVendu> searchResult = searchService.getArticlesWithFilter(search, currentUtilisateur.getNo_utilisateur());
+        List<ArticleVendu> searchResult = searchService.getArticlesWithFilter(search);
         for (ArticleVendu articleVendu : searchResult) {
             Enchere enchere = enchereService.getEnchere(articleVendu.getNo_article());
             if (enchere != null) {

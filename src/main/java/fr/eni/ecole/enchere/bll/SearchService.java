@@ -3,7 +3,10 @@ package fr.eni.ecole.enchere.bll;
 import fr.eni.ecole.enchere.bo.ArticleVendu;
 import fr.eni.ecole.enchere.bo.Enchere;
 import fr.eni.ecole.enchere.bo.Search;
+import fr.eni.ecole.enchere.bo.Utilisateur;
 import fr.eni.ecole.enchere.dal.search.SearchRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -23,13 +26,21 @@ public class SearchService {
         this.enchereService = enchereService;
     }
 
-    public List<ArticleVendu> getArticlesWithFilter(Search search, int currentUserId) {
+    public List<ArticleVendu> getArticlesWithFilter(Search search) {
 
+        //Récupération de l'id de l'utilisateur courant si l'utilisateur est connecté
         LocalDate currentDate = LocalDate.now();
+        int currentUserId;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(!auth.getPrincipal().equals("anonymousUser")) {
+            Utilisateur currentUtilisateur = (Utilisateur) auth.getPrincipal();
+            currentUserId = currentUtilisateur.getNo_utilisateur();
+        } else {
+            currentUserId = 0;
+        }
 
-       // On récupère le resultat de la requête avec prise en compte des 2 premiers champs du formulaire
+        // On récupère le resultat de la requête avec prise en compte des 2 premiers champs du formulaire
         List<ArticleVendu> result = searchRepository.searchArticles(search);
-        List<ArticleVendu> toRemove = new ArrayList<>();
 
         // Si l'utilisateur n'utilise pas de filtres, on envoie le resultat
         if (search.getType().equalsIgnoreCase("")){

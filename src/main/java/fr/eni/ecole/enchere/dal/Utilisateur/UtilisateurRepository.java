@@ -8,4 +8,5 @@ public interface UtilisateurRepository extends Dao<Utilisateur> {
 
     Utilisateur findByEmail(String email);
     void changeCredit(int id, int credit);
+
 }
