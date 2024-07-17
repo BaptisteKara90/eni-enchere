@@ -19,6 +19,9 @@
                     <label for="idPassword">Mot de passe</label>
                     <input name="password" id="idPassword" type="password" placeholder="Mot de passe">
                 </li>
+                <li th:if="${param.sessionExpired}">
+                    Votre session a expiré
+                </li>
                 <li>
                     <button type="submit">Se connecter</button>
                 </li>

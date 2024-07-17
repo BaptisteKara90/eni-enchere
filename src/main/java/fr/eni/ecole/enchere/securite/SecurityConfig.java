@@ -88,6 +88,12 @@ public class SecurityConfig {
                     .permitAll();
         });
 
+        http.sessionManagement(session -> {
+            session.invalidSessionUrl("/login?sessionExpired=true")
+                    .maximumSessions(1)
+                    .expiredUrl("/login?sessionExpired=true");
+        });
+
         return http.build();
     }
 
