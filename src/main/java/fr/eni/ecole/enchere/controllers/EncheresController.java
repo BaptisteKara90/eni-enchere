@@ -36,6 +36,9 @@ public class EncheresController {
     public String addEnchere(@ModelAttribute("enchere") Enchere enchere, RedirectAttributes redirectAttributes) {
      Utilisateur utilisateur = utilisateurService.getUtilisateur(enchere.getNo_utilisateur());
      ArticleVendu article = articleVenduService.getArticleVendu(enchere.getNo_article());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Utilisateur currentUtilisateur = (Utilisateur) auth.getPrincipal();
+        currentUtilisateur = utilisateurService.getUtilisateur(utilisateur.getNo_utilisateur());
 
      if (utilisateur.getCredit() > enchere.getMontant_enchere()){
          enchere.setDate_enchere(LocalDate.now());
@@ -51,9 +54,15 @@ public class EncheresController {
              refundUtilisateur.setCredit(lastEnchere.getMontant_enchere() + refundUtilisateur.getCredit());
              utilisateurService.changeCredit(refundUtilisateur.getNo_utilisateur(), refundUtilisateur.getCredit());
          }
-        } else if(utilisateur.getCredit() <= enchere.getMontant_enchere()){
+     } else if(utilisateur.getCredit() <= enchere.getMontant_enchere()) {
          String erreur = "Vous avez pas les moyens pour acquérir cette objet !";
          redirectAttributes.addFlashAttribute("erreur", erreur);
+         return "redirect:/article?id=" + article.getNo_article();
+     }
+     if(currentUtilisateur.getNo_utilisateur() == article.getUtilisateur().getNo_utilisateur()){
+         String erreur = "Vous ne pouvez pas enchérir votre propre objet ! (petit(e) coquin(e) va!)";
+         redirectAttributes.addFlashAttribute("erreur", erreur);
+         return "redirect:/article?id=" + article.getNo_article();
      }
 
      return "redirect:/article?id=" + article.getNo_article();
