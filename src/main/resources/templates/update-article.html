@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html data-th-replace="~{layouts/layout :: frag-layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+
+<!--  tire passé en paramètre -->
+<title>Articles</title>
+
+<!--  contenu passé en paramètre -->
+
+<title>Nouvel Article</title>
+
+<!--  contenu passé en paramètre -->
+<main class="center-main">
+    <div class="container">
+        <h1>Modifier l'article</h1>
+        <form data-th-action="@{/update-article}" method="post" data-th-object="${article}">
+            <ul class="flex-outer">
+                <input data-th-field="${article.no_article}" name="no_article" type="hidden">
+                <li>
+                    <label for="idNomArticle">Nom de l'article</label>
+                    <input data-th-field="*{nom_article}"  id="idNomArticle" type="text" placeholder="Nom de l'article">
+                </li>
+                <li>
+                    <label for="idDescription">Description</label>
+                    <textarea data-th-field="*{description}"  id="idDescription" placeholder="La description de votre article"></textarea>
+                </li>
+                <li>
+                    <label for="idCategorie">Categorie</label>
+                    <select id="idCategorie" data-th-field="*{categorie.no_categorie}">
+                        <option data-th-each="item : ${categories}"
+                                data-th-text="${item.libelle}"
+                                data-th-value="${item.no_categorie}"></option>
+                    </select>
+                </li>
+                <li>
+                    <h3>Modification du Retrait</h3>
+                </li>
+                <li>
+                    <label for="idRue">Rue</label>
+                    <input data-th-field="${retrait.rue}" id="idRue" type="text" data-th-value="${retrait.rue}">
+                </li>
+                <li>
+                    <label for="idCodePostal">Code Postal</label>
+                    <input data-th-field="${retrait.code_postal}" name="code_postal" id="idCodePostal" type="text"data-th-value="${retrait.code_postal}">
+                </li>
+                <li>
+                    <label for="idVille">Ville</label>
+                    <input data-th-field="${retrait.ville}" id="idVille" type="text" data-th-value="${retrait.ville}">
+                </li>
+                <li>
+                    <button type="submit">Modifier</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+</main>
+</html>

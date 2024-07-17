@@ -54,6 +54,10 @@
                     <li class="flex-outer" th:text="${retrait.ville}"></li>
                 </ul>
                 <li class="flex-outer">vendu par : <span th:text="${article.utilisateur.pseudo}"></span></li>
+                <div data-th-if="${article.utilisateur.no_utilisateur == CurrentUtilisateur.no_utilisateur && !article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
+                    <a data-th-href="@{/update-article(id=${article.no_article})}"><button>Modifier</button></a>
+                    <a data-th-href="@{/delete-article(id=${article.no_article})}"><button>Supprimer</button></a>
+                </div>
             </ul>
         </div>
     </div>

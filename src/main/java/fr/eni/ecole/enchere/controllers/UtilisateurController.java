@@ -43,8 +43,9 @@ public class UtilisateurController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Utilisateur utilisateur = (Utilisateur) auth.getPrincipal();
+        Utilisateur currentUtilisateur = utilisateurService.getUtilisateur(utilisateur.getNo_utilisateur());
 
-        model.addAttribute("userData", utilisateur);
+        model.addAttribute("userData", currentUtilisateur);
 
         return "my-profile";
     }

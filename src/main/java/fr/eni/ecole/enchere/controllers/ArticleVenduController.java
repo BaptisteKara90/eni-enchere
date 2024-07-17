@@ -112,8 +112,41 @@ public class ArticleVenduController {
         return "redirect:/article?id=" + articleVendu.getNo_article();
     }
 
-    //TODO supprimer un article
-    //TODO modifier un article
+    @GetMapping("/update-article")
+    public String updateArticle(@RequestParam("id") int id, Model model){
+        ArticleVendu articleVendu = articleVenduService.getArticleVendu(id);
+
+        Retrait retrait = retraitService.getRetrait(articleVendu.getNo_article());
+
+        List<Categorie> categories = categorieService.getAllCategories();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Utilisateur utilisateur = (Utilisateur) auth.getPrincipal();
+        utilisateur = utilisateurService.getUtilisateur(utilisateur.getNo_utilisateur());
+
+
+        model.addAttribute("article", articleVendu);
+        model.addAttribute("retrait", retrait);
+        model.addAttribute("categories", categories);
+        model.addAttribute("utilisateur", utilisateur);
+        return "update-article";
+    }
+
+    @PostMapping("/update-article")
+    public String updateArticle(@ModelAttribute("article") ArticleVendu articleVendu, @ModelAttribute("retrait") Retrait retrait){
+        articleVenduService.updateArticle(articleVendu);
+        retraitService.updateRetrait(retrait);
+        return "redirect:/article?id=" + articleVendu.getNo_article();
+    }
+
+
+    @GetMapping("/delete-article")
+    public String deleteArticle(@RequestParam("id") int id){
+        retraitService.deleteRetrait(id);
+        articleVenduService.deleteArticleVendu(id);
+        return "redirect:/encheres";
+    }
+
 }
 
 

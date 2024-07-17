@@ -27,5 +27,12 @@ public class ArticleVenduService {
         articleVenduRepository.save(articleVendu);
     }
 
+    public void updateArticle(ArticleVendu articleVendu) {
+        articleVenduRepository.update(articleVendu);
+    }
+
+    public void deleteArticleVendu(int id) {
+        articleVenduRepository.deleteById(id);
+    }
 
 }

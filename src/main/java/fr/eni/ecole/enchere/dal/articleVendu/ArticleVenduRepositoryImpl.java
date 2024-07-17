@@ -64,12 +64,22 @@ public class ArticleVenduRepositoryImpl implements ArticleVenduRepository {
 
     @Override
     public void deleteById(int id) {
-
+        String sql = "delete from articles_vendus where no_article = :id";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", id);
+        namedParameterJdbcTemplate.update(sql, map);
     }
 
     @Override
     public void update(ArticleVendu articleVendu) {
+        String sql = "Update articles_vendus set nom_article = :nom_article, description = :description, no_categorie = :no_categorie where no_article = :no_article";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("no_article", articleVendu.getNo_article());
+        map.addValue("nom_article", articleVendu.getNom_article());
+        map.addValue("description", articleVendu.getDescription());
+        map.addValue("no_categorie", articleVendu.getCategorie().getNo_categorie());
 
+        namedParameterJdbcTemplate.update(sql, map);
     }
 
 }

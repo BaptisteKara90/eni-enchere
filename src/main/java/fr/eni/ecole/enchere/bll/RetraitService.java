@@ -26,4 +26,12 @@ public class RetraitService {
     public void addRetrait(Retrait retrait) {
         retraitRepository.save(retrait);
     }
+
+    public void updateRetrait(Retrait retrait) {
+        retraitRepository.update(retrait);
+    }
+
+    public void deleteRetrait(int id) {
+        retraitRepository.deleteById(id);
+    }
 }

@@ -57,11 +57,20 @@ public class RetraitRepositoryImpl implements RetraitRepository{
 
     @Override
     public void deleteById(int id) {
-
+        String sql = "delete from retraits where no_article = :no_article";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("no_article", id);
+        namedParameterJdbcTemplate.update(sql, map);
     }
 
     @Override
     public void update(Retrait retrait) {
-
+        String sql = "update retraits set rue = :rue, code_postal = :code_postal, ville = :ville where no_article = :no_article";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("no_article", retrait.getNo_article());
+        map.addValue("rue", retrait.getRue());
+        map.addValue("code_postal", retrait.getCode_postal());
+        map.addValue("ville", retrait.getVille());
+        namedParameterJdbcTemplate.update(sql, map);
     }
 }
