@@ -58,6 +58,15 @@ CREATE TABLE ROLES (
                        FOREIGN KEY (email) REFERENCES UTILISATEURS (email) -- Ajout de la contrainte de clé étrangère
 );
 
+CREATE TABLE image(
+    id_image int auto_increment not null,
+    no_article int not null,
+    image varchar(255) not null,
+
+    PRIMARY KEY (id_image),
+    FOREIGN KEY (no_article) REFERENCES ARTICLES_VENDUS (no_article)
+);
+
 ALTER TABLE ARTICLES_VENDUS
     ADD CONSTRAINT encheres_utilisateur_fk FOREIGN KEY (no_utilisateur) REFERENCES UTILISATEURS (no_utilisateur)
         ON DELETE NO ACTION
