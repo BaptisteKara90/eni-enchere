@@ -45,7 +45,20 @@
         </div>
         <h2>Gestion des categories</h2>
         <div class="admin-categories-container">
-
+            <table>
+                <thead>
+                <tr>
+                    <th>Identifiant catégorie</th>
+                    <th>Libelle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-th-each="item : ${categories}">
+                    <td data-th-text="${item.no_categorie}"></td>
+                    <td data-th-text="${item.libelle}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>
