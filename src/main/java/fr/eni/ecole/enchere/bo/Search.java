@@ -4,7 +4,7 @@ public class Search {
 
     private String motCle;
     private int categorie;
-    private String type;
+    private String type = "";
     private boolean encheresOuvertes;
     private boolean mesEncheresEnCours;
     private boolean mesEncheresRemportees;

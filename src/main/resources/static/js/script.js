@@ -24,6 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
             filter2VenteInputs.forEach(function (input) {
                 input.disabled = false;
             });
+        } else {
+            filter2VenteInputs.forEach(function (input) {
+                input.disabled = true;
+            });
+            filter2AchatInputs.forEach(function (input) {
+                input.disabled = true;
+            });
         }
     }
 
