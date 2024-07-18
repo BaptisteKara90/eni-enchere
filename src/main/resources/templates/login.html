@@ -8,27 +8,27 @@
 
 <main>
     <div class="container">
-    <h1>Login</h1>
+    <h1 class="titre-index">Je vous en pris, connectez vous</h1>
         <form data-th-action="@{/login}" method="post">
-            <ul class="flex-outer">
-                <li>
-                    <label for="idUser">Identifiant</label>
-                    <input name="username" id="idUser" type="text" placeholder="Adresse e-mail">
-                </li>
-                <li>
+            <div>
+                <div class="input-user">
+                    <label for="idMail">Identifiant</label>
+                    <input name="username" id="idMail" type="text" placeholder="Adresse e-mail">
+                </div>
+                <div class="input-user">
                     <label for="idPassword">Mot de passe</label>
                     <input name="password" id="idPassword" type="password" placeholder="Mot de passe">
-                </li>
-                <li th:if="${param.sessionExpired}">
+                </div>
+                <div th:if="${param.sessionExpired}">
                     Votre session a expiré
-                </li>
-                <li>
+                </div>
+                <div>
                     <button type="submit">Se connecter</button>
-                </li>
-                <li>
+                </div>
+                <div>
                     <a class="bouton" data-th-href="@{/register}">Pas de compte ? Je crée mon comte !</a>
-                </li>
-            </ul>
+                </div>
+            </div>
         </form>
         <ul>
             <li>

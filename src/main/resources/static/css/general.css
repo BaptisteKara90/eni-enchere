@@ -1,26 +1,30 @@
 @charset "UTF-8";
 
 
-nav ul {
+
+
+.menu-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    @media (min-width:800px){
+        justify-content: end;
+    }
 }
 
-.error {
-    color: red;
-    font-weight: bold;
+.menu{
+    margin: 0 10px;
+    a{
+        color: #2D1D38;
+        font-size: 12px;
+        margin: 0;
+    }
 }
 
-header li {
-    list-style: none;
-    display: inline-block;
-    padding: 0 20px;
-}
-
-* {
+body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica;
+    min-height: 100%;
 }
 
 button>a{
@@ -31,29 +35,34 @@ button>a{
 /* Header */
 header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 20px 50px;
-    box-shadow: 0 1px 8px #ddd;
-    height: 35px;
     z-index: 1;
+    @media (min-width:800px){
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.nav-menu{
+    width: 100%;
 }
 
 #nav-title {
-    margin-right: auto;
-    font-size: 1.1em;
-}
-
-header li {
-    list-style: none;
-    display: inline-block;
-    padding: 0 20px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2D1D38;
+    width: 300px;
 }
 
 header a {
     text-decoration: none;
-    color: #555;
     transition: all 0.3s ease 0s;
+    color: #2D1D38;
 }
 
 header a:hover {
@@ -61,26 +70,15 @@ header a:hover {
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    height: 90%;
+    flex: 1;
 }
 
 main h1 {
     margin: 10px;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-}
-
 h1 {
-    font-size: 1.8em;
+    font-size: 15px;
 }
 
 h2 {
@@ -93,108 +91,266 @@ footer {
     text-align: center;
     color: white;
     height: 35px;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
 
+
+:root {
+    --primary-color: #2D1D38;
+    --secondary-color: #DE6438;
+    --tertiary-color: #D3EBEB;
+    --background-color: #F5F5F5;
+}
+
+/* Styles de base */
+body {
+    font-family: 'DM Mono', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .container {
-    width: 80%;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* En-tête */
+h1 {
+    color: var(--secondary-color);
+}
+
+/* Formulaire de filtre */
+#encheres-filter {
+    margin-bottom: 20px;
+}
+
+
+legend {
+    color: var(--secondary-color);
+}
+
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    @media (min-width: 800px) {
+        width: 760px;
+
+    }
+}
+
+.container-mot-cles{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#motCle{
+    width: 92%;
+    @media (min-width:780px) {
+        width: 725px;
+    }
+}
+
+.container-categorie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.filtre-supp{
+    margin-bottom: 25px;
+}
+
+.filter-content{
+    @media (min-width: 800px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+hr{
+    margin: 10px 0;
+
+}
+
+.input-achat{
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+     @media(min-width: 800px){
+         margin-right: 50px;
+     }
+}
+
+.input-vente{
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+    @media(min-width: 800px){
+        margin-left: 50px;
+    }
+}
+
+.container-filter-vente{
+    margin: 20px 0;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Liste des enchères */
+
+.titre-index{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+#encheres-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-card {
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 90%;
+    height: 350px;
+}
+
+.container-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.container-card li {
+    margin-bottom: 10px;
+}
+
+.container-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container-card a:hover {
+    text-decoration: underline;
+}
+
+.card-header{
+    background-color: #2D1D38;
+    margin: 0;
+    padding: 12px 0;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    display: flex;
+    justify-content: center;
+    span, p{
+          color: var(--background-color);
+        font-size: 10px;
+    }
+}
+
+.card-text{
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    justify-content: space-between;
+}
+
+.card-nom-article{
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 50px;
+}
+
+.card-text-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-card {
+    width: 300px;
+    max-width: 300px;
+}
+
+/*Page Register*/
+
+#idPseudo,#idNom,#idPrenom,#idTelephone,#idRue,#idCodePostal,#idVille,#motCle,#idNomArticle,#idPrixInit{
+    width: 92%;
+    @media (min-width:780px) {
+        width: 725px;
+    }
+}
+
+#idPassword, #idMail,#idDateDebut,#idDateFin,#idDescription{
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    width: 92%;
+    @media (min-width:780px) {
+        width: 725px;
+    }
+}
+
+#idImage{
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    width: 92%;
+    background-color: white;
+    @media (min-width:780px) {
+        width: 725px;
+    }
+}
+
+.container-form-user{
+    h2{
+        margin: 25px 0;
+    }
+}
+
+.input-user{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
 }
 
-#encheres-list {
-    width: 80%;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-}
 
-.container-card{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0 2rem 0;
-}
-
-.container-card>ul {
-    border: 1px solid black;
-    min-width: 80%;
-}
-
-nav li {
-    font-size: 1.5em;
-}
-
-form {
-   padding: 10px;
-   border-radius: 10px;
-    border: 1px solid black;
-}
-
-form h1 {
-    margin: 15px;
-}
-
-form button{
-    width: 100%;
-}
-
-.flex-outer li {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 10px 5px;
-}
-
-.flex-outer>li select {
-    flex: 1 0 220px;
-}
-
-.flex-outer>li>label {
-    flex: 1 0 120px;
-    max-width: 220px;
-    margin-bottom: 5px;
-}
-
-.flex-outer>li>label+* {
-    flex: 1 0 220px;
-}
-
-.flex-outer li button,
-.profile-container button{
-    margin-left: auto;
-    margin-bottom: 5px; padding : 8px 16px;
-    border: none;
-    background: #333;
-    color: #f2f2f2;
-    text-transform: uppercase;
-    letter-spacing: .09em;
-    border-radius: 2px;
-    padding: 8px 16px
-}
-
-.profile-container {
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid black;
-}
-
-.bouton{
-    margin-left: auto;
-    margin-bottom: 5px;
-    padding: 8px 16px;
-    border: none;
-    background: #333;
-    color: #f2f2f2;
-    text-transform: uppercase;
-    letter-spacing: .09em;
-    border-radius: 2px;
-    padding: 8px 16px;
-    font-size: 13px;
-    text-decoration: none;
-}
