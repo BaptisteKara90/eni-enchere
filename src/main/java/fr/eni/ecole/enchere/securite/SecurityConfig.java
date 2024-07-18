@@ -62,6 +62,8 @@ public class SecurityConfig {
             auth.requestMatchers(HttpMethod.GET, "/css/*").permitAll();
             auth.requestMatchers(HttpMethod.GET, "/images/*").permitAll();
             auth.requestMatchers(HttpMethod.GET, "/js/*").permitAll();
+            auth.requestMatchers(HttpMethod.GET, "/forget-password").permitAll();
+            auth.requestMatchers(HttpMethod.POST, "/forget-password/change-password").permitAll();
             auth.anyRequest().authenticated();
             //auth.anyRequest().denyAll();
         });

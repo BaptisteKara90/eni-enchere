@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UtilisateurController {
@@ -104,4 +105,25 @@ public class UtilisateurController {
 
         return "redirect:/admin";
     }
+
+    @GetMapping("/forget-password")
+    public String getForgetPasswordForm(Model model) {
+
+        return "change-password";
+    }
+
+    @PostMapping("/forget-password/change-password")
+    public String changePassword(@RequestParam("username") String username, @RequestParam String password1, @RequestParam String password2, RedirectAttributes redirectAttributes) {
+
+        Utilisateur utilisateur = utilisateurService.getUtilisateurByEmail(username);
+        if (password1.equals(password2)) {
+            utilisateurService.updatePassword(utilisateur.getNo_utilisateur(), password1);
+            return "redirect:/login";
+        } else {
+            redirectAttributes.addFlashAttribute("error", "Les mots de passe ne correspondent pas.");
+            return "redirect:/forget-password";
+        }
+
+    }
+
 }

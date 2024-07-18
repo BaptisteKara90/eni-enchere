@@ -104,4 +104,11 @@ public class UtilisateurService {
 
         utilisateurRepository.activateById(id);
     }
+
+    public void updatePassword(int id, String password) {
+
+        String encodedPassword = encoderBean.encode(password);
+
+        utilisateurRepository.saveNewPassword(id, encodedPassword);
+    }
 }

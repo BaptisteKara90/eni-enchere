@@ -14,5 +14,6 @@ public interface UtilisateurRepository extends Dao<Utilisateur> {
     List<Role> findRolesByUsername(String username);
     void desactivateById(int id);
     void activateById(int id);
+    void saveNewPassword(int id, String password);
 
 }

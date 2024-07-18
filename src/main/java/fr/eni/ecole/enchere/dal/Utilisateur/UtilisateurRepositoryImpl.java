@@ -159,4 +159,16 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
         namedParameterJdbcTemplate.update(sql, map);
     }
+
+    @Override
+    public void saveNewPassword(int id, String password) {
+
+        String sql = "udpate utilisateurs set mot_de_passe = :mot_de_passe where no_utilisateur = :id;";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("mot_de_passe", password);
+        map.addValue("id", id);
+
+        namedParameterJdbcTemplate.update(sql, map);
+    }
 }
