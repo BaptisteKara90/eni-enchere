@@ -50,8 +50,12 @@
                     <input id="ville" data-th-field="${userData.ville}">
                 </li>
                 <li>
-                    <label for="motDePasse">Saisissez votre mot de passe pour valider la modification</label>
-                    <input type="password" id="motDePasse" name="password" required>
+                    <label for="newPassword">Nouveau mot de passe</label>
+                    <input type="password" id="newPassword" data-th-field="${userData.mot_de_passe}">
+                </li>
+                <li>
+                    <label for="password">Saisissez votre mot de passe pour valider les modification</label>
+                    <input type="password" id="password" name="password" required>
                 </li>
                 <li>
                     <button type="submit">Mettre à jour</button>

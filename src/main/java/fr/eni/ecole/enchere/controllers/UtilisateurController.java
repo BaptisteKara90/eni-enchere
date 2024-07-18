@@ -123,7 +123,5 @@ public class UtilisateurController {
             redirectAttributes.addFlashAttribute("error", "Les mots de passe ne correspondent pas.");
             return "redirect:/forget-password";
         }
-
     }
-
 }
