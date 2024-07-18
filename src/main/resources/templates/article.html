@@ -7,64 +7,74 @@
 
 <main class="center-main">
     <div class="container">
-        <h1 th:text="${article.nom_article}"></h1>
-        <div>
+        <h1 class="titre-index" th:text="${article.nom_article}"></h1>
+        <div class = "container-article">
             <div class="image-container" data-th-if="${image != null}">
-                <img th:src="@{${image.image}}" alt="Image de l'article"/>
+                <img class="image-article" th:src="@{${image.image}}" alt="Image de l'article"/>
             </div>
-            <ul>
-                <li class="flex-outer" th:text="${article.description}"></li>
-                <li class="flex-outer" th:text="${article.categorie.libelle}"></li>
-                <li class="flex-outer" th:if="${enchereUtilisateur != null}">
+            <div class="container-form-enchere" >
+                <div class="view-profil" th:text="${article.description}"></div>
+                <div class="view-profil" th:text="${article.categorie.libelle}"></div>
+                <div class="view-profil" th:if="${enchereUtilisateur != null}">
                     Meilleur enchère :&nbsp;<span th:text="${enchereUtilisateur.pseudo}"></span>
-                </li>
-                <li class="flex-outer" th:if="${enchereUtilisateur == null && !article.date_fin_encheres.isAfter(T(java.time.LocalDate).now())}">
+                </div>
+                <div class="view-profil"
+                     th:if="${enchereUtilisateur == null && !article.date_fin_encheres.isAfter(T(java.time.LocalDate).now())}">
                     L'enchère est terminé sans enchérisseur
-                </li>
-                <li class="flex-outer" th:if="${enchereUtilisateur == null && !article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
+                </div>
+                <div class="view-profil"
+                     th:if="${enchereUtilisateur == null && !article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
                     Pas d'enchère en cours pour le moment.
-                </li>
-                <li class="flex-outer">
+                </div>
+                <div class="view-profil">
                     Prix : <span th:text="${enchere.montant_enchere}"></span> points
-                </li>
-                <li class="flex-outer" th:if = "${erreur}">
+                </div>
+                <div class="view-profil" th:if="${erreur}">
                     <span data-th-text="${erreur}"></span>
-                </li>
+                </div>
 
                 <!--/* Si l'enchere est ouverte, on envoie le formulaire*/-->
-                <li data-th-if="${article.date_debut_encheres.isBefore(T(java.time.LocalDate).now()) && article.date_fin_encheres.isAfter(T(java.time.LocalDate).now()) && CurrentUtilisateur.active == 1}">
+                <div data-th-if="${article.date_debut_encheres.isBefore(T(java.time.LocalDate).now()) && article.date_fin_encheres.isAfter(T(java.time.LocalDate).now()) && CurrentUtilisateur.active == 1}">
                     <form data-th-action="@{/add-enchere}" method="post" data-th-object="${enchere}">
                         <input id="idArticle" data-th-field="${article.no_article}" type="hidden">
                         <input id="idUtilisateur" data-th-field="${CurrentUtilisateur.no_utilisateur}" type="hidden">
+                        <div class="container-form-enchere">
                         <label for="idEnchere">Nouvelle enchère</label>
-                        <input id="idEnchere" type="number"  data-th-field="${enchere.montant_enchere}"  data-th-value ="${enchere.montant_enchere}" data-th-min="${enchere.montant_enchere}">
-                        <input type="submit" value="envoyer">
+                        <input id="idEnchere" type="number" data-th-field="${enchere.montant_enchere}"
+                               data-th-value="${enchere.montant_enchere}" data-th-min="${enchere.montant_enchere}">
+                            <button type="submit" value="envoyer"> enchérir </button>
+                        </div>
                     </form>
-                </li>
+                </div>
 
                 <!--/* Sinon l'enchere est fermé et on envoie un message pour prévenir de l'ouverture de l'enchère*/-->
-                <li data-th-if="${!article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
+                <div data-th-if="${!article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
                     <div>Les enchères commenceront le <span data-th-text="${article.date_debut_encheres}"></span></div>
-                </li>
+                </div>
 
 
                 <!--/* Sinon l'enchere est fermé */-->
-                <li data-th-if="${!article.date_fin_encheres.isAfter(T(java.time.LocalDate).now()) && enchereUtilisateur != null}">
-                    <div>Les enchères sont terminé! Le gagnant est : <span data-th-text="${enchereUtilisateur.pseudo}"></span></div>
-                </li>
-
-                <li class="flex-outer" data-th-text="${article.getDate_fin_encheres()}"></li>
-                <ul>
-                    <li class="flex-outer" th:text="${retrait.rue}"></li>
-                    <li class="flex-outer" th:text="${retrait.code_postal}"></li>
-                    <li class="flex-outer" th:text="${retrait.ville}"></li>
-                </ul>
-                <li class="flex-outer">vendu par : <span th:text="${article.utilisateur.pseudo}"></span></li>
-                <div data-th-if="${article.utilisateur.no_utilisateur == CurrentUtilisateur.no_utilisateur && !article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
-                    <a data-th-href="@{/update-article(id=${article.no_article})}"><button>Modifier</button></a>
-                    <a data-th-href="@{/delete-article(id=${article.no_article})}"><button>Supprimer</button></a>
+                <div data-th-if="${!article.date_fin_encheres.isAfter(T(java.time.LocalDate).now()) && enchereUtilisateur != null}">
+                    <div>Les enchères sont terminé! Le gagnant est : <span
+                            data-th-text="${enchereUtilisateur.pseudo}"></span></div>
                 </div>
-            </ul>
+
+                <div class="view-profil" data-th-text="${article.getDate_fin_encheres()}"></div>
+                <div>
+                    <div class="view-profil" th:text="${retrait.rue}"></div>
+                    <div class="view-profil" th:text="${retrait.code_postal}"></div>
+                    <div class="view-profil" th:text="${retrait.ville}"></div>
+                </div>
+                <div class="view-profil">vendu par : <span th:text="${article.utilisateur.pseudo}"></span></div>
+                <div data-th-if="${article.utilisateur.no_utilisateur == CurrentUtilisateur.no_utilisateur && !article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
+                    <a data-th-href="@{/update-article(id=${article.no_article})}">
+                        <button>Modifier</button>
+                    </a>
+                    <a data-th-href="@{/delete-article(id=${article.no_article})}">
+                        <button>Supprimer</button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </main>

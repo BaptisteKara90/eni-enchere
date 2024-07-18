@@ -11,57 +11,92 @@
 <!--  contenu passé en paramètre -->
 <main>
     <div class="container">
-        <h1>Liste des enchères</h1>
+        <h1 class="titre-index">Bonjour les petits rats des villes</h1>
         <section id="encheres-filter">
             <form method="POST" data-th-action="@{/search-article}" data-th-object="${search}">
                 <fieldset class="filter1">
-                    <legend>Filtres</legend>
-                    <label for="motCle">Mots clés</label>
-                    <input type="text" id="motCle" data-th-field="*{motCle}">
-                    <br>
-                    <label for="categorie">Catégorie</label>
-                    <select id="categorie" data-th-field="*{categorie}">
-                        <option value="0"></option>
-                        <option data-th-each="item : ${categories}"
-                                data-th-text="${item.libelle}"
-                                data-th-value="${item.no_categorie}"></option>
-                    </select>
-                </fieldset>
-                <fieldset data-th-if="${#authorization.expression('isAuthenticated()')}" class="filter2">
-                    <div>
-                        <input type="radio" name="type" id="achat" value="achat">
-                        <label for="achat">Achat</label>
-                        <br>
-                        <input class="achat" type="checkbox" id="encheresOuvertes" name="encheresOuvertes" data-th-checked="*{encheresOuvertes}">
-                        <label for="encheresOuvertes"> Enchères ouvertes</label><br>
-                        <input class="achat" type="checkbox" id="mesEncheresEnCours" name="mesEncheresEnCours" data-th-checked="*{mesEncheresEnCours}">
-                        <label for="mesEncheresEnCours"> Mes enchères en cours</label><br>
-                        <input class="achat" type="checkbox" id="mesEncheresRemportees" name="mesEncheresRemportees" data-th-checked="*{mesEncheresRemportees}">
-                        <label for="mesEncheresRemportees"> Mes enchères remportées</label><br>
+                    <div class = "container-mot-cles">
+                        <label for="motCle">Mots clés</label>
+                        <input type="text" id="motCle" data-th-field="*{motCle}"
+                               placeholder="Faites une recherche precise">
                     </div>
-                    <div>
-                        <input type="radio" name="type" id="vente" value="vente">
-                        <label for="vente">Mes ventes</label>
-                        <br>
-                        <input class="vente" type="checkbox" id="mesVentesEnCours" name="mesVentesEnCours" data-th-checked="*{mesVentesEnCours}">
-                        <label for="mesVentesEnCours">Mes ventes en cours</label><br>
-                        <input class="vente" type="checkbox" id="ventesNonDebutees" name="ventesNonDebutees" data-th-checked="*{ventesNonDebutees}">
-                        <label for="ventesNonDebutees">Ventes non débutées</label><br>
-                        <input class="vente" type="checkbox" id="venteTerminee" name="venteTerminee" data-th-checked="*{venteTerminee}">
-                        <label for="venteTerminee">Ventes terminées</label><br>
+                    <div class="container-categorie">
+                        <label for="categorie">Catégorie</label>
+                        <select id="categorie" data-th-field="*{categorie}">
+                            <option value="0">recherchez par une catégorie</option>
+                            <option data-th-each="item : ${categories}"
+                                    data-th-text="${item.libelle}"
+                                    data-th-value="${item.no_categorie}"></option>
+                        </select>
                     </div>
+
                 </fieldset>
+                <details class="filter2" data-th-if="${#authorization.expression('isAuthenticated()')}">
+                    <summary class="filtre-supp">Filtres supplémentaires</summary>
+                    <div class="filter-content">
+                        <div class="container-filter-achat">
+                            <div class="input-achat">
+                                <input type="radio" name="type" id="achat" value="achat">
+                                <label for="achat">Achat</label>
+                            </div>
+                            <div class="input-achat">
+                                <input class="achat" type="checkbox" id="encheresOuvertes" name="encheresOuvertes"
+                                       data-th-checked="*{encheresOuvertes}">
+                                <label for="encheresOuvertes"> Enchères ouvertes</label>
+                            </div>
+                            <div class="input-achat">
+                                <input class="achat" type="checkbox" id="mesEncheresEnCours" name="mesEncheresEnCours"
+                                       data-th-checked="*{mesEncheresEnCours}">
+                                <label for="mesEncheresEnCours"> Mes enchères en cours</label>
+                            </div>
+                            <div class="input-achat">
+                                <input class="achat" type="checkbox" id="mesEncheresRemportees"
+                                       name="mesEncheresRemportees"
+                                       data-th-checked="*{mesEncheresRemportees}">
+                                <label for="mesEncheresRemportees"> Mes enchères remportées</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="container-filter-vente">
+                            <div class="input-vente">
+                                <input type="radio" name="type" id="vente" value="vente">
+                                <label for="vente">Mes ventes</label>
+                            </div>
+                            <div class="input-vente">
+                                <input class="vente" type="checkbox" id="mesVentesEnCours" name="mesVentesEnCours"
+                                       data-th-checked="*{mesVentesEnCours}">
+                                <label for="mesVentesEnCours">Mes ventes en cours</label>
+                            </div>
+                            <div class="input-vente">
+                                <input class="vente" type="checkbox" id="ventesNonDebutees" name="ventesNonDebutees"
+                                       data-th-checked="*{ventesNonDebutees}">
+                                <label for="ventesNonDebutees">Ventes non débutées</label>
+                            </div>
+                            <div class="input-vente">
+                                <input class="vente" type="checkbox" id="venteTerminee" name="venteTerminee"
+                                       data-th-checked="*{venteTerminee}">
+                                <label for="venteTerminee">Ventes terminées</label>
+                            </div>
+                        </div>
+                    </div>
+                </details>
                 <button type="submit">Rechercher</button>
             </form>
 
         </section>
         <section id="encheres-list">
-            <div class = "container-card" data-th-each="item : ${articles}">
-                <ul class="flex-outer">
-                    <li><a data-th-text="${item.nom_article}" th:href="@{/article(id=${item.no_article})}"></a></li>
-                    <li>Prix :&nbsp; <span data-th-text="${item.prix_initial}"></span>&nbsp; points</li>
-                    <li>Fin de l'enchère :&nbsp; <span data-th-text="${item.getDate_fin_encheres()}"></span></li>
-                    <li>Vendeur :&nbsp; <span data-th-text="${item.utilisateur.pseudo}"></span></li>
+            <div class="container-card" data-th-each="item : ${articles}">
+                <div class="card-header"><p>SE TERMINE LE&nbsp;</p> <span
+                        data-th-text="${item.getDate_fin_encheres()}"></span></div>
+                <ul class="card-text">
+                    <li><p class="card-nom-article" data-th-text="${item.nom_article}"></p></li>
+                    <div class="card-text-info">
+                        <li>Prix :&nbsp; <span data-th-text="${item.prix_initial}"></span>&nbsp; points</li>
+                        <li>Vendeur :&nbsp; <span data-th-text="${item.utilisateur.pseudo}"></span></li>
+                        <li><a th:href="@{/article(id=${item.no_article})}">
+                            <button>ENCHÉRIR</button>
+                        </a></li>
+                    </div>
                 </ul>
             </div>
         </section>

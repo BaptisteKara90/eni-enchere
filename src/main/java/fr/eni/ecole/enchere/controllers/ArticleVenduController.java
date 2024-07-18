@@ -50,6 +50,11 @@ public class ArticleVenduController {
 
         List<ArticleVendu> listArticles = articleVenduService.getArticleVendu();
 
+        List<Image> listImage = imageService.getImages();
+        if(listImage != null && listImage.size() > 0) {
+            model.addAttribute("images", listImage);
+        }
+
         for (ArticleVendu articleVendu : listArticles) {
             Enchere enchere = enchereService.getEnchere(articleVendu.getNo_article());
             if (enchere != null) {

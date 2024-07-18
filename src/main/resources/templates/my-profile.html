@@ -11,21 +11,37 @@
 <!--  contenu passé en paramètre -->
 <main>
     <div class="container">
-        <h1>Voici mon profil !</h1>
-        <div class="profile-container flex-outer">
-            <ul class="flex-outer" data-th-object="${userData}">
-                <li>Pseudo : <span data-th-text="${userData.pseudo}"></span></li>
-                <li>Nom : <span data-th-text="${userData.nom}"></span></li>
-                <li>Prénom : <span data-th-text="${userData.prenom}"></span></li>
-                <li>Email : <span data-th-text="${userData.email}"></span></li>
-                <li>Telephone : <span data-th-text="${userData.telephone}"></span></li>
-                <li>Rue : <span data-th-text="${userData.rue}"></span></li>
-                <li>Code Postal : <span data-th-text="${userData.code_postal}"></span></li>
-                <li>Ville : <span data-th-text="${userData.ville}"></span></li>
-                <li>Vos Points : <span data-th-text="${userData.credit}"></span></li>
-            </ul>
-            <a data-th-href="@{/profile/update(id=${userData.no_utilisateur})}"><button>Modifier mon profil</button></a>
-            <a data-th-href="@{/profile/delete(id=${userData.no_utilisateur})}"><button>Supprimer mon compte</button></a>
+        <h1 class="titre-index">Votre profile</h1>
+        <div class="profile-container">
+            <div class="container-profile" data-th-object="${userData}">
+                <div class="container-user">
+                    <div class="view-profil">Votre Pseudo : <span class="user-info"
+                                                                  data-th-text="${userData.pseudo}"></span></div>
+                    <div class="view-profil">Email : <span class="user-info" data-th-text="${userData.email}"></span>
+                    </div>
+                    <div class="view-profil">Nom : <span class="user-info" data-th-text="${userData.nom}"></span></div>
+                    <div class="view-profil">Prénom : <span class="user-info" data-th-text="${userData.prenom}"></span>
+                    </div>
+                </div>
+                <div class="container-user">
+                    <div class="view-profil">Telephone : <span class="user-info"
+                                                               data-th-text="${userData.telephone}"></span></div>
+                    <div class="view-profil">Rue : <span class="user-info" data-th-text="${userData.rue}"></span></div>
+                    <div class="view-profil">Code Postal : <span class="user-info"
+                                                                 data-th-text="${userData.code_postal}"></span></div>
+                    <div class="view-profil">Ville : <span class="user-info" data-th-text="${userData.ville}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="view-profil" id="idPoint">Vos Points : <span class="user-info" data-th-text="${userData.credit}"></span></div>
+            <div class="container-button">
+                <a data-th-href="@{/profile/update(id=${userData.no_utilisateur})}">
+                    <button>Modifier mon profil</button>
+                </a>
+                <a data-th-href="@{/profile/delete(id=${userData.no_utilisateur})}">
+                    <button>Supprimer mon compte</button>
+                </a>
+            </div>
         </div>
 </main>
 </html>

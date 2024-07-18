@@ -308,6 +308,25 @@ button:hover {
     max-width: 300px;
 }
 
+.image-container-card {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    @media (min-width: 800px) {
+        max-width: 600px;
+    }
+}
+.image-card{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
 /*Page Register*/
 
 #idPseudo,#idNom,#idPrenom,#idTelephone,#idRue,#idCodePostal,#idVille,#motCle,#idNomArticle,#idPrixInit{
@@ -327,6 +346,18 @@ button:hover {
         width: 725px;
     }
 }
+
+#idEnchere{
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    width: 200px;
+    @media (min-width:780px) {
+        width: 200px;
+    }
+}
+
 
 #idImage{
     padding: 15px;
@@ -353,4 +384,106 @@ button:hover {
     align-items: center;
 }
 
+/*page my-profile*/
+.view-profil{
+    margin: 10px 0;
+}
 
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info{
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.container-profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media(min-width: 780px){
+        flex-direction: row;
+        justify-content: space-evenly;
+        width:100%;
+    }
+}
+
+.container-user{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.container-button{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#idPoint{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+
+/*page article*/
+
+.container-article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media(min-width: 780px){
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+.image-container{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+    @media (min-width: 800px) {
+        max-width: 600px;
+    }
+}
+
+.image-article{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.container-form-enchere{
+    display: flex;
+    flex-direction: column;
+    label{
+        margin: 10px 0 5px 0;
+        font-weight: bolder;
+    }
+    input[number]{
+        width: 200px;
+    }
+    button{
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+
+.container-form-enchere{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
