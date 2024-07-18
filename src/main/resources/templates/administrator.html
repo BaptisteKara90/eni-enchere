@@ -39,6 +39,9 @@
                         <td data-th-text="${item.code_postal}"></td>
                         <td data-th-text="${item.ville}"></td>
                         <td data-th-text="${item.credit}"></td>
+                        <td>
+                            <a data-th-href="@{/profile/delete(id=${item.no_utilisateur})}">Supprimer utilisateur</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

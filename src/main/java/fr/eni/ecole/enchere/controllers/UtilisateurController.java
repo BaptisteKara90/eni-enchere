@@ -76,9 +76,11 @@ public class UtilisateurController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Utilisateur principal = (Utilisateur) auth.getPrincipal();
 
-//        if (principal.getNo_utilisateur() == id) {
+        if (principal.getNo_utilisateur() == id) {
             return "redirect:/logout";
-//        }
+        } else {
+            return "redirect:/admin";
+        }
 
     }
 }

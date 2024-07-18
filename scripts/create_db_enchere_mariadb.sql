@@ -10,6 +10,7 @@ CREATE TABLE ENCHERES (
                           no_article       INT NOT NULL,
                           date_enchere     DATETIME NOT NULL,
                           montant_enchere  INT NOT NULL,
+                          active           TINYINT(1) NOT NULL DEFAULT 1,
                           PRIMARY KEY (id_enchere)
 );
 
@@ -18,6 +19,7 @@ CREATE TABLE RETRAITS (
                           rue                VARCHAR(30) NOT NULL,
                           code_postal        VARCHAR(15) NOT NULL,
                           ville              VARCHAR(30) NOT NULL,
+                          active             TINYINT(1) NOT NULL DEFAULT 1,
                           PRIMARY KEY (no_article)
 );
 
@@ -34,6 +36,7 @@ CREATE TABLE UTILISATEURS (
                               mot_de_passe     VARCHAR(255) NOT NULL, -- Augmenté la taille du mot de passe
                               credit           INT NOT NULL,
                               administrateur   BOOLEAN NOT NULL,
+                              active           TINYINT(1) NOT NULL DEFAULT 1,
                               PRIMARY KEY (no_utilisateur),
                               UNIQUE (email, pseudo) -- Ajout d'une contrainte unique sur l'email
 );
@@ -48,6 +51,7 @@ CREATE TABLE ARTICLES_VENDUS (
                                  prix_vente                    INT,
                                  no_utilisateur                INT NOT NULL,
                                  no_categorie                  INT NOT NULL,
+                                 active             TINYINT(1) NOT NULL DEFAULT 1,
                                  PRIMARY KEY (no_article)
 );
 
