@@ -22,9 +22,9 @@ public class Utilisateur implements UserDetails {
     private int credit;
     private boolean administrateur;
     private UtilisateurService utilisateurService;
-    private boolean active;
+    private int active;
 
-    public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService, boolean active) {
+    public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService, int active) {
         this.no_utilisateur = no_utilisateur;
         this.pseudo = pseudo;
         this.nom = nom;
@@ -41,7 +41,7 @@ public class Utilisateur implements UserDetails {
         this.active = active;
     }
 
-    public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService, boolean active) {
+    public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService, int active) {
         this.pseudo = pseudo;
         this.nom = nom;
         this.prenom = prenom;
@@ -164,11 +164,11 @@ public class Utilisateur implements UserDetails {
         this.utilisateurService = utilisateurService;
     }
 
-    public boolean isActive() {
+    public int getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(int active) {
         this.active = active;
     }
 

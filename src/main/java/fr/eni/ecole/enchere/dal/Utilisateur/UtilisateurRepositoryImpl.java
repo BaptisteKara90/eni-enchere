@@ -34,7 +34,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     @Override
     public Utilisateur findById(int id) {
 
-        String sql = "select no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur from utilisateurs where no_utilisateur = :id;";
+        String sql = "select no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur, active from utilisateurs where no_utilisateur = :id;";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id", id);
