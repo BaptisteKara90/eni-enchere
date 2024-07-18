@@ -9,6 +9,9 @@
     <div class="container">
         <h1 th:text="${article.nom_article}"></h1>
         <div>
+            <div class="image-container" data-th-if="${image != null}">
+                <img th:src="@{${image.image}}" alt="Image de l'article"/>
+            </div>
             <ul>
                 <li class="flex-outer" th:text="${article.description}"></li>
                 <li class="flex-outer" th:text="${article.categorie.libelle}"></li>

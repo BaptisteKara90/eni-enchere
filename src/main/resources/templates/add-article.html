@@ -16,7 +16,7 @@
   <main class="center-main">
     <div class="container">
       <h1>Ajouter un nouvel article</h1>
-      <form data-th-action="@{/add-article}" method="post" data-th-object="${articleVendu}">
+      <form data-th-action="@{/add-article}" method="post" data-th-object="${articleVendu}" enctype="multipart/form-data">
         <ul class="flex-outer">
           <input data-th-field="${utilisateur.no_utilisateur}" name="no_utilisateur" type="hidden">
           <li>
@@ -46,6 +46,10 @@
           <li>
             <label for="idPrixInit">Prix initial</label>
             <input data-th-field="*{prix_initial}" id="idPrixInit" type="text" placeholder="Votre prenom">
+          </li>
+          <li>
+            <label for="idImage">Ajouter une image</label>
+            <input type="file" id="idImage" name="image" accept="image/*">
           </li>
           <li>
             <h3>Retrait</h3>

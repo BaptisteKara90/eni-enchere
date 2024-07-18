@@ -29,10 +29,6 @@ VALUES ('Canapé en cuir', 'Magnifique canapé en cuir marron, très confortable
 INSERT INTO ROLES (email, role)
 VALUES ('lea.martin@exemple.com', 'admin');
 
-INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie)
-VALUES ('Canapé en cuir', 'Magnifique canapé en cuir marron, très confortable.', '2024-07-08', '2024-07-22', 100, 2, 1),
-       ('Robe de soirée', 'Robe de soirée noire, jamais portée, taille 38.', '2024-07-07', '2024-07-15', 50, 1, 2),
-       ('Smartphone récent', 'Smartphone dernière génération, état neuf.', '2024-07-05', '2024-07-12', 300, 3, 3);
 
 INSERT INTO ENCHERES (no_utilisateur, no_article, date_enchere, montant_enchere)
 VALUES (1, 1, '2024-07-08', 120),
