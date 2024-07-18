@@ -163,7 +163,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     @Override
     public void saveNewPassword(int id, String password) {
 
-        String sql = "udpate utilisateurs set mot_de_passe = :mot_de_passe where no_utilisateur = :id;";
+        String sql = "update utilisateurs set mot_de_passe = :mot_de_passe where no_utilisateur = :id;";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("mot_de_passe", password);
