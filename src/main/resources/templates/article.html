@@ -32,7 +32,7 @@
                 </li>
 
                 <!--/* Si l'enchere est ouverte, on envoie le formulaire*/-->
-                <li data-th-if="${article.date_debut_encheres.isBefore(T(java.time.LocalDate).now()) && article.date_fin_encheres.isAfter(T(java.time.LocalDate).now())}">
+                <li data-th-if="${article.date_debut_encheres.isBefore(T(java.time.LocalDate).now()) && article.date_fin_encheres.isAfter(T(java.time.LocalDate).now()) && CurrentUtilisateur.active == 1}">
                     <form data-th-action="@{/add-enchere}" method="post" data-th-object="${enchere}">
                         <input id="idArticle" data-th-field="${article.no_article}" type="hidden">
                         <input id="idUtilisateur" data-th-field="${CurrentUtilisateur.no_utilisateur}" type="hidden">

@@ -60,9 +60,9 @@ public class UtilisateurController {
     }
 
     @PostMapping("/profile/update")
-    public String updateProfile(@ModelAttribute("userData") Utilisateur utilisateur) {
+    public String updateProfile(@ModelAttribute("userData") Utilisateur utilisateur, @RequestParam("password") String password) {
 
-        utilisateurService.updateUtilisateur(utilisateur);
+        utilisateurService.updateUtilisateur(utilisateur, password);
 
         return "redirect:/my-profile";
     }
