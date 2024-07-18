@@ -108,7 +108,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
     @Override
     public Utilisateur findByEmail(String email) {
-        String sql = "select no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur from utilisateurs where email = :email;";
+        String sql = "select no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur, active from utilisateurs where email = :email;";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("email", email);
@@ -137,5 +137,27 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
         List<Role> list = namedParameterJdbcTemplate.query(sql, map, new RoleRowMapper());
 
         return list;
+    }
+
+    @Override
+    public void desactivateById(int id) {
+
+        String sql = "update utilisateurs set active = 0 where no_utilisateur = :id;";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", id);
+
+        namedParameterJdbcTemplate.update(sql, map);
+    }
+
+    @Override
+    public void activateById(int id) {
+
+        String sql = "update utilisateurs set active = 1 where no_utilisateur = :id;";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", id);
+
+        namedParameterJdbcTemplate.update(sql, map);
     }
 }

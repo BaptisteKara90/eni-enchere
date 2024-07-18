@@ -96,4 +96,16 @@ public class UtilisateurService {
     public List<Role> getUserRoles(String username){
         return utilisateurRepository.findRolesByUsername(username);
     }
+
+    public void desactivateUser(int id) {
+
+        enchereService.deleteEnchereByUserId(id);
+        articleVenduService.deleteArticleVenduByUserId(id);
+        utilisateurRepository.desactivateById(id);
+    }
+
+    public void activateUser(int id) {
+
+        utilisateurRepository.activateById(id);
+    }
 }

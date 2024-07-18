@@ -22,25 +22,9 @@ public class Utilisateur implements UserDetails {
     private int credit;
     private boolean administrateur;
     private UtilisateurService utilisateurService;
+    private boolean active;
 
-    public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService) {
-        super();
-        this.pseudo = pseudo;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.telephone = telephone;
-        this.rue = rue;
-        this.code_postal = code_postal;
-        this.ville = ville;
-        this.mot_de_passe = mot_de_passe;
-        this.credit = credit;
-        this.administrateur = administrateur;
-        this.utilisateurService = utilisateurService;
-    }
-
-    public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService) {
-        super();
+    public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService, boolean active) {
         this.no_utilisateur = no_utilisateur;
         this.pseudo = pseudo;
         this.nom = nom;
@@ -54,10 +38,26 @@ public class Utilisateur implements UserDetails {
         this.credit = credit;
         this.administrateur = administrateur;
         this.utilisateurService = utilisateurService;
+        this.active = active;
+    }
+
+    public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur, UtilisateurService utilisateurService, boolean active) {
+        this.pseudo = pseudo;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.rue = rue;
+        this.code_postal = code_postal;
+        this.ville = ville;
+        this.mot_de_passe = mot_de_passe;
+        this.credit = credit;
+        this.administrateur = administrateur;
+        this.utilisateurService = utilisateurService;
+        this.active = active;
     }
 
     public Utilisateur() {
-        super();
     }
 
     public int getNo_utilisateur() {
@@ -162,6 +162,14 @@ public class Utilisateur implements UserDetails {
 
     public void setUtilisateurService(UtilisateurService utilisateurService) {
         this.utilisateurService = utilisateurService;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     //ToString
