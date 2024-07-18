@@ -93,6 +93,9 @@ footer {
     text-align: center;
     color: white;
     height: 35px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .container {
