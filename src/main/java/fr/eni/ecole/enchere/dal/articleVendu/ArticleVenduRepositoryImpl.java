@@ -82,4 +82,12 @@ public class ArticleVenduRepositoryImpl implements ArticleVenduRepository {
         namedParameterJdbcTemplate.update(sql, map);
     }
 
+    @Override
+    public void deleteByIdUtilisateur(int idUtilisateur) {
+            String sql = "delete from articles_vendus where no_utilisateur = :id";
+
+            MapSqlParameterSource map = new MapSqlParameterSource();
+            map.addValue("id", idUtilisateur);
+            namedParameterJdbcTemplate.update(sql, map);
+    }
 }

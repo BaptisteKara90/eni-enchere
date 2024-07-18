@@ -21,7 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final String SELECT_USER = "select email, mot_de_passe, 1 from utilisateurs where email = ?";
+    private final String SELECT_USER = "select email, mot_de_passe, active from utilisateurs where email = ?";
     private final String SELECT_ROLES = "select email, role from roles where email = ?";
     private static UserDetailsService userService;
 

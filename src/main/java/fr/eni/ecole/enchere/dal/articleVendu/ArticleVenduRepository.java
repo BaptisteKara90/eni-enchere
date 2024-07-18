@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ArticleVenduRepository extends Dao<ArticleVendu> {
 
+    void deleteByIdUtilisateur(int idUtilisateur);
 }

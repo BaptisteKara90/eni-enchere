@@ -16,23 +16,33 @@ public class ArticleVenduService {
     }
 
     public List<ArticleVendu> getArticleVendu() {
+
         return articleVenduRepository.findAll();
     }
 
     public ArticleVendu getArticleVendu(int id) {
+
         return articleVenduRepository.findById(id);
     }
 
     public void addArticleVendu(ArticleVendu articleVendu) {
+
         articleVenduRepository.save(articleVendu);
     }
 
     public void updateArticle(ArticleVendu articleVendu) {
+
         articleVenduRepository.update(articleVendu);
     }
 
     public void deleteArticleVendu(int id) {
+
         articleVenduRepository.deleteById(id);
+    }
+
+    public void deleteArticleVenduByUserId(int userId) {
+
+        articleVenduRepository.deleteByIdUtilisateur(userId);
     }
 
 }

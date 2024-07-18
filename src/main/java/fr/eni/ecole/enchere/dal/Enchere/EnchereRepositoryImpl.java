@@ -65,7 +65,6 @@ public class EnchereRepositoryImpl implements EnchereRepository {
         }
     }
 
-
     @Override
     public void save(Enchere enchere) {
         String sql = "insert into encheres (no_utilisateur, no_article, date_enchere, montant_enchere) values (:no_utilisateur, :no_article, :date_enchere, :montant_enchere);";
@@ -85,6 +84,17 @@ public class EnchereRepositoryImpl implements EnchereRepository {
         map.addValue("id", id);
         namedParameterJdbcTemplate.update(sql, map);
 
+    }
+
+    @Override
+    public void deleteByIdUtilisateur(int idUtilisateur) {
+
+        String sql = "delete from encheres where no_utilisateur = :id";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", idUtilisateur);
+
+        namedParameterJdbcTemplate.update(sql, map);
     }
 
     @Override

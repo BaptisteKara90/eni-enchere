@@ -21,10 +21,14 @@ public class UtilisateurService {
 
     private PasswordEncoder encoderBean;
     private UtilisateurRepository utilisateurRepository;
+    private EnchereService enchereService;
+    private ArticleVenduService articleVenduService;
 
-    public UtilisateurService(PasswordEncoder encoderBean, UtilisateurRepository utilisateurRepository) {
+    public UtilisateurService(PasswordEncoder encoderBean, UtilisateurRepository utilisateurRepository, EnchereService enchereService, ArticleVenduService articleVenduService, RetraitService retraitService) {
         this.encoderBean = encoderBean;
         this.utilisateurRepository = utilisateurRepository;
+        this.enchereService = enchereService;
+        this.articleVenduService = articleVenduService;
     }
 
     public void registerUtilisateur(Utilisateur utilisateur) {
@@ -80,6 +84,8 @@ public class UtilisateurService {
 
     public void deleteUtilisateur(int id) {
 
+        enchereService.deleteEnchereByUserId(id);
+        articleVenduService.deleteArticleVenduByUserId(id);
         utilisateurRepository.deleteById(id);
     }
 
