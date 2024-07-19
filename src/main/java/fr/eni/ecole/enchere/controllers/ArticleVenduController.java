@@ -16,7 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ArticleVenduController {
@@ -49,9 +52,13 @@ public class ArticleVenduController {
         model.addAttribute("categories", listCategories);
 
         List<ArticleVendu> listArticles = articleVenduService.getArticleVendu();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        // Map pour stocker les dates formatées
+        Map<String, String> formattedDates = new HashMap<>();
 
         List<Image> listImage = imageService.getImages();
-        if(listImage != null && listImage.size() > 0) {
+        if (listImage != null && !listImage.isEmpty()) {
             model.addAttribute("images", listImage);
         }
 
@@ -60,8 +67,16 @@ public class ArticleVenduController {
             if (enchere != null) {
                 articleVendu.setPrix_initial(enchere.getMontant_enchere());
             }
+            String formattedDateDebut = articleVendu.getDate_debut_encheres().format(formatter);
+            String formattedDateFin = articleVendu.getDate_fin_encheres().format(formatter);
+
+            // Utiliser des clés combinées pour stocker les dates de début et de fin
+            formattedDates.put(articleVendu.getNo_article() + "_debut", formattedDateDebut);
+            formattedDates.put(articleVendu.getNo_article() + "_fin", formattedDateFin);
         }
+
         model.addAttribute("articles", listArticles);
+        model.addAttribute("formattedDates", formattedDates);
 
         return "encheres";
     }

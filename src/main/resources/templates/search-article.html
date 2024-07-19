@@ -86,7 +86,7 @@
         </section>
         <section id="encheres-list">
             <div class="container-card" data-th-each="item : ${articles}">
-                <div class="card-header"><p>SE TERMINE LE&nbsp;</p> <span data-th-text="${item.date_fin_encheres}"></span></div>
+                <div class="card-header"><p>SE TERMINE LE&nbsp;</p> <span data-th-text="${formattedDates[item.no_article + '_fin']}"></span></div>
                 <div class="card-text">
                     <div class="image-container-card" th:each="image : ${images}" th:if="${image.no_article == item.no_article}">
                         <img class="image-card" th:src="@{${image.image}}" alt="Image de l'article"/>
