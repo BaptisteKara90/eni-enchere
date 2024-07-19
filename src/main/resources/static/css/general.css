@@ -420,6 +420,11 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 15px;
+}
+
+.input-user label{
+    margin-bottom: 10px;
 }
 
 /*page my-profile*/
