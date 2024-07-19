@@ -78,13 +78,13 @@ public class UtilisateurController {
     }
 
     @PostMapping("/profile/update")
-    public String updateProfile(@Valid @ModelAttribute("userData") Utilisateur utilisateur, @RequestParam("password") String password, BindingResult bindingResult) {
+    public String updateProfile(@Valid @ModelAttribute("userData") Utilisateur utilisateur, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "update-profile";
         }
 
-        utilisateurService.updateUtilisateur(utilisateur, password);
+        utilisateurService.updateUtilisateur(utilisateur);
 
         return "redirect:/my-profile";
     }

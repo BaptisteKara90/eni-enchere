@@ -58,7 +58,7 @@ public class UtilisateurService {
         return utilisateurRepository.findByEmail(email);
     }
 
-    public void updateUtilisateur(Utilisateur utilisateur, String password) {
+    public void updateUtilisateur(Utilisateur utilisateur) {
 
         //Récupération de l'utilisateur connecté
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -69,7 +69,7 @@ public class UtilisateurService {
         utilisateur.setMot_de_passe(encryptedPassword);
 
         //Mise à jour de l'utilisateur si le mot de passe saisi est le mot de passe de l'utilisateur courant
-        if(encoderBean.matches(password,principal.getMot_de_passe()))
+//        if(encoderBean.matches(password,principal.getMot_de_passe()))
             utilisateurRepository.update(utilisateur);
 
         // On récupère l'utilisateur mis à jour
