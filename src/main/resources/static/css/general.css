@@ -301,8 +301,13 @@ button:hover {
     justify-content: center;
 }
 
-.card-header span p{
-    color: #2D1D38;
+.card-header span {
+    color: var(--background-color);
+    font-size: 10px;
+}
+
+.card-header p{
+    color: var(--background-color);
     font-size: 10px;
 }
 
