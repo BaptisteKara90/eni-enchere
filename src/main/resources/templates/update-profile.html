@@ -11,56 +11,62 @@
 <!--  contenu passé en paramètre -->
 <main>
     <div class="container">
-        <h1>Voici mon profil !</h1>
-        <form data-th-action="@{/profile/update}" method="post" data-th-object="${userData}">
-            <ul class="flex-outer">
-                <li>
-                    <input hidden data-th-field="${userData.no_utilisateur}">
-                </li>
-                <li>
-                    <label for="pseudo">Pseudo</label>
-                    <input id="pseudo" data-th-field="${userData.pseudo}">
-                </li>
-                <li>
-                    <label for="nom">Nom</label>
-                    <input id="nom" data-th-field="${userData.nom}">
-                </li>
-                <li>
-                    <label for="prenom">Prénom</label>
-                    <input id="prenom" data-th-field="${userData.prenom}">
-                </li>
-                <li>
-                    <label for="email">Email</label>
-                    <input id="email" data-th-field="${userData.email}">
-                </li>
-                <li>
-                    <label for="telephone">Téléphone</label>
-                    <input id="telephone" data-th-field="${userData.telephone}">
-                </li>
-                <li>
-                    <label for="rue">Rue</label>
-                    <input id="rue" data-th-field="${userData.rue}">
-                </li>
-                <li>
-                    <label for="codePostal">Code postal</label>
-                    <input id="codePostal" data-th-field="${userData.code_postal}">
-                </li>
-                <li>
-                    <label for="ville">Ville</label>
-                    <input id="ville" data-th-field="${userData.ville}">
-                </li>
-                <li>
-                    <label for="newPassword">Nouveau mot de passe</label>
-                    <input type="password" id="newPassword" data-th-field="${userData.mot_de_passe}">
-                </li>
-                <li>
-                    <label for="password">Saisissez votre mot de passe pour valider les modification</label>
-                    <input type="password" id="password" name="password" required>
-                </li>
-                <li>
-                    <button type="submit">Mettre à jour</button>
-                </li>
-            </ul>
+        <h1 class="titre-index">S'enregistrer</h1>
+        <form data-th-action="@{/update-profile}" method="post" data-th-object="${userData}">
+            <div class="flex-outer">
+                <div class="container-form-user">
+                    <input hidden data-th-field="*{no_utilisateur}">
+                    <div class="input-user">
+                        <label for="idPseudo">Pseudo</label>
+                        <input data-th-field="*{pseudo}" id="idPseudo" type="text" placeholder="Votre pseudonyme">
+                    </div>
+                    <div class="input-user">
+                        <label for="idMail">Mail</label>
+                        <input data-th-field="*{email}" id="idMail" type="email" placeholder="Votre e-mail">
+                    </div>
+                    <div class="input-user">
+                        <label for="idPassword">Mot de passe</label>
+                        <input data-th-field="*{mot_de_passe}" name="mot_de_passe" id="idPassword" type="password"
+                               placeholder="Mot de Passe">
+                    </div>
+                </div>
+                <div class="container-form-user">
+                    <h2>Votre Identité</h2>
+                    <div class="input-user">
+                        <label for="idNom">Nom</label>
+                        <input data-th-field="*{nom}" name="nom" id="idNom" type="text" placeholder="Votre Nom">
+                    </div>
+                    <div class="input-user">
+                        <label for="idPrenom">Prenom</label>
+                        <input data-th-field="*{prenom}" name="prenom" id="idPrenom" type="text"
+                               placeholder="Votre prenom">
+                    </div>
+                    <div class="input-user">
+                        <label for="idTelephone">Telephone</label>
+                        <input data-th-field="*{telephone}" name="telephone" id="idTelephone" type="text"
+                               placeholder="Votre numero de telephone">
+                    </div>
+                </div>
+                <div class="container-form-user">
+                    <h2>Votre Adresse</h2>
+                    <div class="input-user">
+                        <label for="idRue">Adresse</label>
+                        <input data-th-field="*{rue}" name="rue" id="idRue" type="text" placeholder="Votre adresse">
+                    </div>
+                    <div class="input-user">
+                        <label for="idCodePostal">Code Postal</label>
+                        <input data-th-field="*{code_postal}" name="code_postal" id="idCodePostal" type="text"
+                               placeholder="votre code postal">
+                    </div>
+                    <div class="input-user">
+                        <label for="idVille">Ville</label>
+                        <input data-th-field="*{ville}" name="ville" id="idVille" type="text" placeholder="Votre ville">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit">Modifier</button>
+                </div>
+            </div>
         </form>
     </div>
 </main>
