@@ -540,3 +540,36 @@ button:hover {
     margin: 10px 0;
 }
 
+
+/*page admin*/
+tr{
+    border: solid 1px #2D1D38;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 15px;
+}
+
+th{
+    border: solid 1px #2D1D38;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 15px;
+}
+
+td{
+    border: solid 1px #2D1D38;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 15px;
+    vertical-align: middle;
+}
+.container-admin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titre-admin{
+    margin: 25px 0;
+}

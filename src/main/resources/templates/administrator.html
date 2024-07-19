@@ -8,8 +8,9 @@
 
 <main>
     <div class="container">
-        <h1>Espace administrateur</h1>
-        <h2>Gestion des utilisateurs</h2>
+        <h1 class="titre-index">Espace administrateur</h1>
+        <h2 class="titre-admin">Gestion des utilisateurs</h2>
+        <div class="container-admin">
         <div class="admin-utilisateurs-container">
             <table>
                 <thead>
@@ -17,13 +18,13 @@
                     <th>ID</th>
                     <th>Pseudo</th>
                     <th>Nom</th>
+                    <th>Prénom</th>
                     <th>Email</th>
                     <th>Téléphone</th>
                     <th>Rue</th>
                     <th>Code Postal</th>
                     <th>Ville</th>
                     <th>Crédit</th>
-                    <th>Administrateur</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -40,15 +41,15 @@
                         <td data-th-text="${item.ville}"></td>
                         <td data-th-text="${item.credit}"></td>
                         <td>
-                            <a data-th-href="@{/profile/delete(id=${item.no_utilisateur})}">Supprimer utilisateur</a>
-                            <a data-th-if="${item.active == 1 || item.active == true}" data-th-href="@{/desactivate-user(id=${item.no_utilisateur})}">Désactiver utilisateur</a>
-                            <a data-th-if="${item.active == 0 || item.active == false}" data-th-href="@{/activate-user(id=${item.no_utilisateur})}">Activer utilisateur</a>
+                            <button data-th-href="@{/profile/delete(id=${item.no_utilisateur})}">Supprimer utilisateur</button>
+                            <button data-th-if="${item.active == 1 || item.active == true}" data-th-href="@{/desactivate-user(id=${item.no_utilisateur})}">Désactiver utilisateur</button>
+                            <button data-th-if="${item.active == 0 || item.active == false}" data-th-href="@{/activate-user(id=${item.no_utilisateur})}">Activer utilisateur</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <h2>Gestion des categories</h2>
+        <h2 class="titre-admin">Gestion des categories</h2>
         <div class="admin-categories-container">
             <table>
                 <thead>
