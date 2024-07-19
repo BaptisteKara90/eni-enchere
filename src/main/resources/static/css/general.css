@@ -173,6 +173,11 @@ select {
     align-items: center;
 }
 
+.container-mot-cles>label,
+.container-categorie>label{
+    margin-bottom: 10px;
+}
+
 #motCle{
     width: 92%;
 }
@@ -578,4 +583,13 @@ td{
 
 .titre-admin{
     margin: 25px 0;
+}
+
+div.login-links{
+    padding: 10px;
+}
+
+div.login-links>a {
+    display: inline-block;
+    margin: 5px 0;
 }
