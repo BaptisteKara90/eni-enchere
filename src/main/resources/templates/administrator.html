@@ -41,9 +41,9 @@
                         <td data-th-text="${item.ville}"></td>
                         <td data-th-text="${item.credit}"></td>
                         <td>
-                            <button data-th-href="@{/profile/delete(id=${item.no_utilisateur})}">Supprimer utilisateur</button>
-                            <button data-th-if="${item.active == 1 || item.active == true}" data-th-href="@{/desactivate-user(id=${item.no_utilisateur})}">Désactiver utilisateur</button>
-                            <button data-th-if="${item.active == 0 || item.active == false}" data-th-href="@{/activate-user(id=${item.no_utilisateur})}">Activer utilisateur</button>
+                            <button><a class="button" data-th-href="@{/profile/delete(id=${item.no_utilisateur})}">Supprimer utilisateur</a></button>
+                            <button data-th-if="${item.active == 1 || item.active == true}"><a class="button"  data-th-href="@{/desactivate-user(id=${item.no_utilisateur})}">Désactiver utilisateur</a></button>
+                            <button data-th-if="${item.active == 0 || item.active == false}"><a class="button"  data-th-href="@{/activate-user(id=${item.no_utilisateur})}">Activer utilisateur</a></button>
                         </td>
                     </tr>
                 </tbody>

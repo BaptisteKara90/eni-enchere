@@ -20,8 +20,8 @@
             <div class="menu" data-th-if="${#authorization.expression('isAuthenticated()')}">/</div>
             <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/add-article">nouvel article</a></div>
             <div class="menu" data-th-if="${#authorization.expression('isAuthenticated()')}">/</div>
-            <div class = "menu" data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}"><a href="/admin"> espace administrateur</a></div>
-            <div class="menu" data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}">/</div>
+<!--            <div class = "menu" data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}"><a href="/admin"> espace administrateur</a></div>-->
+<!--            <div class="menu" data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}">/</div>-->
             <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/logout">deconnection</a></div>
         </div>
     </nav>
