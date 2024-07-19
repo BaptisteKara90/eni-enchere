@@ -86,18 +86,20 @@
         </section>
         <section id="encheres-list">
             <div class="container-card" data-th-each="item : ${articles}">
-                <div class="card-header"><p>SE TERMINE LE&nbsp;</p> <span
-                        data-th-text="${item.getDate_fin_encheres()}"></span></div>
-                <ul class="card-text">
-                    <li><p class="card-nom-article" data-th-text="${item.nom_article}"></p></li>
-                    <div class="card-text-info">
-                        <li>Prix :&nbsp; <span data-th-text="${item.prix_initial}"></span>&nbsp; points</li>
-                        <li>Vendeur :&nbsp; <span data-th-text="${item.utilisateur.pseudo}"></span></li>
-                        <li><a th:href="@{/article(id=${item.no_article})}">
-                            <button>ENCHÉRIR</button>
-                        </a></li>
+                <div class="card-header"><p>SE TERMINE LE&nbsp;</p> <span data-th-text="${item.getDate_fin_encheres()}"></span></div>
+                <div class="card-text">
+                    <div class="image-container-card" th:each="image : ${images}" th:if="${image.no_article == item.no_article}">
+                        <img class="image-card" th:src="@{${image.image}}" alt="Image de l'article"/>
                     </div>
-                </ul>
+                    <div><p class="card-nom-article" data-th-text="${item.nom_article}"></p></div>
+                    <div class="card-text-info">
+                        <div>Prix :&nbsp; <span data-th-text="${item.prix_initial}"></span>&nbsp; points</div>
+                        <div>Vendeur :&nbsp; <span data-th-text="${item.utilisateur.pseudo}"></span></div>
+                        <div><a th:href="@{/article(id=${item.no_article})}">
+                            <button>ENCHÉRIR</button>
+                        </a></div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

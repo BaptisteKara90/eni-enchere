@@ -2,6 +2,7 @@ package fr.eni.ecole.enchere.controllers;
 
 import fr.eni.ecole.enchere.bll.CategorieService;
 import fr.eni.ecole.enchere.bll.EnchereService;
+import fr.eni.ecole.enchere.bll.ImageService;
 import fr.eni.ecole.enchere.bll.SearchService;
 import fr.eni.ecole.enchere.bo.*;
 import org.springframework.security.core.Authentication;
@@ -20,11 +21,13 @@ public class SearchController {
     private SearchService searchService;
     private CategorieService categorieService;
     private EnchereService enchereService;
+    private ImageService imageService;
 
-    public SearchController(SearchService searchService, CategorieService categorieService, EnchereService enchereService) {
+    public SearchController(SearchService searchService, CategorieService categorieService, EnchereService enchereService, ImageService imageService) {
         this.searchService = searchService;
         this.categorieService = categorieService;
         this.enchereService = enchereService;
+        this.imageService = imageService;
     }
 
     @PostMapping("/search-article")
@@ -39,6 +42,10 @@ public class SearchController {
             if (enchere != null) {
                 articleVendu.setPrix_initial(enchere.getMontant_enchere());
             }
+        }
+        List<Image> listImage = imageService.getImages();
+        if(listImage != null && listImage.size() > 0) {
+            model.addAttribute("images", listImage);
         }
         model.addAttribute("articles", searchResult);
 
