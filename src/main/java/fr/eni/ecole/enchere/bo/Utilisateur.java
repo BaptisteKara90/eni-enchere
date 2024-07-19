@@ -1,6 +1,8 @@
 package fr.eni.ecole.enchere.bo;
 
 import fr.eni.ecole.enchere.bll.UtilisateurService;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,14 +12,17 @@ import java.util.List;
 public class Utilisateur implements UserDetails {
 
     private int no_utilisateur;
+    @Pattern(regexp ="^[a-zA-Z0-9]+$", message = "Merci de ne saisir que des lettres et des chiffres")
     private String pseudo;
     private String nom;
     private String prenom;
+    @Email(message = "Merci de saisir une adresse e-mail valide")
     private String email;
     private String telephone;
     private String rue;
     private String code_postal;
     private String ville;
+    @Pattern(regexp ="^(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z\\d]).{8,}$", message = "Le mot de passe doit contenir au mininum 8 caractères, une majuscule, un chiffre et un caractère spécial")
     private String mot_de_passe;
     private int credit;
     private boolean administrateur;

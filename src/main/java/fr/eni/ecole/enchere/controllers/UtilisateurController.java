@@ -2,10 +2,12 @@ package fr.eni.ecole.enchere.controllers;
 
 import fr.eni.ecole.enchere.bll.UtilisateurService;
 import fr.eni.ecole.enchere.bo.Utilisateur;
+import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,10 +34,15 @@ public class UtilisateurController {
     }
 
     @PostMapping("/register")
-    public String signin(@ModelAttribute("utilisateur") Utilisateur utilisateur) {
+    public String signin(@Valid @ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+           return "register";
+        }
 
         utilisateurService.registerUtilisateur(utilisateur);
         return "redirect:/login";
+
     }
 
     @GetMapping("/my-profile")
@@ -61,7 +68,11 @@ public class UtilisateurController {
     }
 
     @PostMapping("/profile/update")
-    public String updateProfile(@ModelAttribute("userData") Utilisateur utilisateur, @RequestParam("password") String password) {
+    public String updateProfile(@Valid @ModelAttribute("userData") Utilisateur utilisateur, @RequestParam("password") String password, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "update-profile";
+        }
 
         utilisateurService.updateUtilisateur(utilisateur, password);
 
