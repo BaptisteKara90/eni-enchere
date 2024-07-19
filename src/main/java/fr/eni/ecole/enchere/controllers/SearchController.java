@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class SearchController {
@@ -36,13 +39,25 @@ public class SearchController {
         Search emptyFilter = new Search();
         model.addAttribute("search", emptyFilter);
 
+
         List<ArticleVendu> searchResult = searchService.getArticlesWithFilter(search);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        Map<String, String> formattedDates = new HashMap<>();
+
         for (ArticleVendu articleVendu : searchResult) {
             Enchere enchere = enchereService.getEnchere(articleVendu.getNo_article());
             if (enchere != null) {
                 articleVendu.setPrix_initial(enchere.getMontant_enchere());
             }
+            String formattedDateDebut = articleVendu.getDate_debut_encheres().format(formatter);
+            String formattedDateFin = articleVendu.getDate_fin_encheres().format(formatter);
+
+            formattedDates.put(articleVendu.getNo_article() + "_debut", formattedDateDebut);
+            formattedDates.put(articleVendu.getNo_article() + "_fin", formattedDateFin);
         }
+
+
         List<Image> listImage = imageService.getImages();
         if(listImage != null && listImage.size() > 0) {
             model.addAttribute("images", listImage);
@@ -51,6 +66,7 @@ public class SearchController {
 
         List<Categorie> listCategories = categorieService.getAllCategories();
         model.addAttribute("categories", listCategories);
+        model.addAttribute("formattedDates", formattedDates);
 
         return "search-article";
     }

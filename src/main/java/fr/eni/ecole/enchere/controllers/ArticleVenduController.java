@@ -52,9 +52,8 @@ public class ArticleVenduController {
         model.addAttribute("categories", listCategories);
 
         List<ArticleVendu> listArticles = articleVenduService.getArticleVendu();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        // Map pour stocker les dates formatées
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         Map<String, String> formattedDates = new HashMap<>();
 
         List<Image> listImage = imageService.getImages();
@@ -107,6 +106,17 @@ public class ArticleVenduController {
             model.addAttribute("enchere", enchere_vide);
         }
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        Map<String, String> formattedDates = new HashMap<>();
+        String formattedDateDebut = article.getDate_debut_encheres().format(formatter);
+        String formattedDateFin = article.getDate_fin_encheres().format(formatter);
+
+        // Utiliser des clés combinées pour stocker les dates de début et de fin
+        formattedDates.put(article.getNo_article() + "_debut", formattedDateDebut);
+        formattedDates.put(article.getNo_article() + "_fin", formattedDateFin);
+
+
+        model.addAttribute("formattedDates", formattedDates);
         model.addAttribute("retrait", retrait);
         model.addAttribute("article", article);
         model.addAttribute("utilisateur", utilisateur);
