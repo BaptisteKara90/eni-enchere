@@ -6,7 +6,9 @@
 .menu-container{
     display: flex;
     justify-content: space-evenly;
-    @media (min-width:800px){
+}
+@media (min-width:800px){
+    .menu-container{
         justify-content: end;
     }
 }
@@ -40,10 +42,13 @@ header {
     align-items: center;
     padding: 20px 50px;
     z-index: 1;
-    @media (min-width:800px){
+}
+@media (min-width:800px){
+    header{
         flex-direction: row;
         justify-content: space-between;
     }
+
 }
 
 .nav-menu{
@@ -146,9 +151,11 @@ select {
     margin-bottom: 10px;
     border: 1px solid var(--primary-color);
     border-radius: 50px;
-    @media (min-width: 800px) {
+}
+@media (min-width: 800px) {
+    input[type="text"],
+    select{
         width: 760px;
-
     }
 }
 
@@ -160,7 +167,9 @@ select {
 
 #motCle{
     width: 92%;
-    @media (min-width:780px) {
+}
+@media (min-width:780px) {
+    #motCle{
         width: 725px;
     }
 }
@@ -179,14 +188,14 @@ input[type="checkbox"] {
 .filtre-supp{
     margin-bottom: 25px;
 }
-
-.filter-content{
-    @media (min-width: 800px) {
+@media (min-width: 800px) {
+    .filter-content{
         display: flex;
         justify-content: center;
         align-items: center;
     }
 }
+
 
 hr{
     margin: 10px 0;
@@ -197,16 +206,21 @@ hr{
     display: flex;
     margin-bottom: 5px;
     align-items: center;
-     @media(min-width: 800px){
-         margin-right: 50px;
-     }
+}
+@media(min-width: 800px){
+    .input-achat{
+        margin-right: 50px;
+    }
+
 }
 
 .input-vente{
     display: flex;
     margin-bottom: 5px;
     align-items: center;
-    @media(min-width: 800px){
+}
+@media(min-width: 800px){
+    .input-vente{
         margin-left: 50px;
     }
 }
@@ -316,10 +330,13 @@ button:hover {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    @media (min-width: 800px) {
+}
+@media (min-width: 800px) {
+    .image-container-card{
         max-width: 600px;
     }
 }
+
 .image-card{
     width: 100%;
     height: auto;
@@ -331,7 +348,9 @@ button:hover {
 
 #idPseudo,#idNom,#idPrenom,#idTelephone,#idRue,#idCodePostal,#idVille,#motCle,#idNomArticle,#idPrixInit{
     width: 92%;
-    @media (min-width:780px) {
+}
+@media (min-width:780px) {
+    #idPseudo,#idNom,#idPrenom,#idTelephone,#idRue,#idCodePostal,#idVille,#motCle,#idNomArticle,#idPrixInit{
         width: 725px;
     }
 }
@@ -342,7 +361,9 @@ button:hover {
     border: 1px solid var(--primary-color);
     border-radius: 50px;
     width: 92%;
-    @media (min-width:780px) {
+}
+@media (min-width:780px) {
+    #idPassword, #idMail,#idDateDebut,#idDateFin,#idDescription{
         width: 725px;
     }
 }
@@ -353,7 +374,9 @@ button:hover {
     border: 1px solid var(--primary-color);
     border-radius: 50px;
     width: 200px;
-    @media (min-width:780px) {
+}
+@media (min-width:780px) {
+    #idEnchere{
         width: 200px;
     }
 }
@@ -366,7 +389,9 @@ button:hover {
     border-radius: 50px;
     width: 92%;
     background-color: white;
-    @media (min-width:780px) {
+}
+@media (min-width:780px) {
+    #idImage{
         width: 725px;
     }
 }
@@ -404,7 +429,9 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    @media(min-width: 780px){
+}
+@media(min-width: 780px){
+    .container-profile{
         flex-direction: row;
         justify-content: space-evenly;
         width:100%;
@@ -438,10 +465,14 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    @media(min-width: 780px){
+}
+
+@media(min-width: 780px){
+    .container-article{
         flex-direction: row;
         justify-content: space-evenly;
     }
+
 }
 
 .image-container{
@@ -453,7 +484,9 @@ button:hover {
     align-items: center;
     overflow: hidden;
     margin-bottom: 20px;
-    @media (min-width: 800px) {
+}
+@media (min-width: 800px) {
+    .image-container{
         max-width: 600px;
     }
 }
