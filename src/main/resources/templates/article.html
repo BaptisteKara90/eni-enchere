@@ -49,17 +49,17 @@
 
                 <!--/* Sinon l'enchere est fermé et on envoie un message pour prévenir de l'ouverture de l'enchère*/-->
                 <div data-th-if="${!article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
-                    <div>Les enchères commenceront le <span data-th-text="${article.date_debut_encheres}"></span></div>
+                    <div>L'enchère commence le <span data-th-text="${formattedDates[article.no_article + '_debut']}"></span></div>
                 </div>
 
 
                 <!--/* Sinon l'enchere est fermé */-->
                 <div data-th-if="${!article.date_fin_encheres.isAfter(T(java.time.LocalDate).now()) && enchereUtilisateur != null}">
-                    <div>Les enchères sont terminé! Le gagnant est : <span
+                    <div>L'enchère est terminé! Le gagnant est : <span
                             data-th-text="${enchereUtilisateur.pseudo}"></span></div>
                 </div>
 
-                <div class="view-profil" data-th-text="${article.getDate_fin_encheres()}"></div>
+                <div class="view-profil"> L'enchère prend fin le &nbsp;<span data-th-text="${formattedDates[article.no_article + '_fin']}"></span></div>
                 <div>
                     <div class="view-profil" th:text="${retrait.rue}"></div>
                     <div class="view-profil" th:text="${retrait.code_postal}"></div>
