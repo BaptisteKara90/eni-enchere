@@ -13,16 +13,16 @@
     <a data-th-if="${#authorization.expression('isAuthenticated()')}" href="/"><h1 id="nav-title">ENI encheres</h1></a>
     <nav class = "nav-menu">
         <div class = "menu-container">
-            <div class = "menu" data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/register">s'inscrire</a></div>
+            <div class = "menu" data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/register">S'inscrire</a></div>
             <div class="menu" data-th-if="${!#authorization.expression('isAuthenticated()')}">/</div>
-            <div class = "menu" data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">se connecter</a></div>
-            <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/my-profile">mon profil</a></div>
+            <div class = "menu" data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Se connecter</a></div>
+            <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/my-profile">Mon profil</a></div>
             <div class="menu" data-th-if="${#authorization.expression('isAuthenticated()')}">/</div>
-            <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/add-article">nouvel article</a></div>
+            <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/add-article">Vendre</a></div>
             <div class="menu" data-th-if="${#authorization.expression('isAuthenticated()')}">/</div>
 <!--            <div class = "menu" data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}"><a href="/admin"> espace administrateur</a></div>-->
 <!--            <div class="menu" data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}">/</div>-->
-            <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/logout">deconnection</a></div>
+            <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/logout">Deconnection</a></div>
         </div>
     </nav>
 </header>

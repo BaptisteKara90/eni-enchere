@@ -16,11 +16,11 @@
                 <div class="view-profil" th:text="${article.description}"></div>
                 <div class="view-profil" th:text="${article.categorie.libelle}"></div>
                 <div class="view-profil" th:if="${enchereUtilisateur != null}">
-                    Meilleur enchère :&nbsp;<span th:text="${enchereUtilisateur.pseudo}"></span>
+                    Meilleure enchère :&nbsp;<span th:text="${enchereUtilisateur.pseudo}"></span>
                 </div>
                 <div class="view-profil"
                      th:if="${enchereUtilisateur == null && !article.date_fin_encheres.isAfter(T(java.time.LocalDate).now())}">
-                    L'enchère est terminé sans enchérisseur
+                    L'enchère est terminée sans enchérisseur
                 </div>
                 <div class="view-profil"
                      th:if="${enchereUtilisateur == null && !article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
@@ -55,11 +55,11 @@
 
                 <!--/* Sinon l'enchere est fermé */-->
                 <div data-th-if="${!article.date_fin_encheres.isAfter(T(java.time.LocalDate).now()) && enchereUtilisateur != null}">
-                    <div>L'enchère est terminé! Le gagnant est : <span
-                            data-th-text="${enchereUtilisateur.pseudo}"></span></div>
+                    <div>L'enchère est terminée ! <span
+                            data-th-text="${enchereUtilisateur.pseudo}"></span> a remporté l'enchère !</div>
                 </div>
 
-                <div class="view-profil"> L'enchère prend fin le &nbsp;<span data-th-text="${formattedDates[article.no_article + '_fin']}"></span></div>
+                <div class="view-profil"> Fin de l'enchère le <span data-th-text="${formattedDates[article.no_article + '_fin']}"></span></div>
                 <div>
                     <div class="view-profil" th:text="${retrait.rue}"></div>
                     <div class="view-profil" th:text="${retrait.code_postal}"></div>
