@@ -69,7 +69,7 @@ CREATE TABLE IMAGE(
     image varchar(255) not null,
 
     PRIMARY KEY (id_image),
-    FOREIGN KEY (no_article) REFERENCES ARTICLES_VENDUS (no_article)
+    FOREIGN KEY (no_article) REFERENCES ARTICLES_VENDUS (no_article) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 ALTER TABLE ARTICLES_VENDUS

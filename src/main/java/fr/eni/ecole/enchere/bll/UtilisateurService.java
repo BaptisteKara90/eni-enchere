@@ -85,7 +85,7 @@ public class UtilisateurService {
     public void deleteUtilisateur(int id) {
 
         enchereService.deleteEnchereByUserId(id);
-        articleVenduService.deleteArticleVenduByUserId(id);
+        articleVenduService.deleteArticlesVenduByUserId(id);
         utilisateurRepository.deleteById(id);
     }
 
@@ -100,7 +100,7 @@ public class UtilisateurService {
     public void desactivateUser(int id) {
 
         enchereService.deleteEnchereByUserId(id);
-        articleVenduService.deleteArticleVenduByUserId(id);
+        articleVenduService.deleteArticlesVenduByUserId(id);
         utilisateurRepository.desactivateById(id);
     }
 

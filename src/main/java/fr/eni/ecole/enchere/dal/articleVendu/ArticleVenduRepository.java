@@ -9,4 +9,5 @@ import java.util.List;
 public interface ArticleVenduRepository extends Dao<ArticleVendu> {
 
     void deleteByIdUtilisateur(int idUtilisateur);
+    List<ArticleVendu> getArticlesVenduByUser(int idUtilisateur);
 }

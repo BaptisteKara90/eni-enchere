@@ -1,7 +1,7 @@
 <html data-th-fragment="frag-layout(title, content)">
 <head>
-    <meta charset="ISO-8859-1">
-    <!--  la abalise sera remplac�e par le contenu de title -->
+    <meta charset="utf8">
+    <!--  la abalise sera remplacée par le contenu de title -->
     <title data-th-replace="${title}"></title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/general.css">
@@ -22,7 +22,7 @@
             <div class="menu" data-th-if="${#authorization.expression('isAuthenticated()')}">/</div>
 <!--            <div class = "menu" data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}"><a href="/admin"> espace administrateur</a></div>-->
 <!--            <div class="menu" data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}">/</div>-->
-            <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/logout">Deconnection</a></div>
+            <div class = "menu" data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/logout">Déconnexion</a></div>
         </div>
     </nav>
 </header>

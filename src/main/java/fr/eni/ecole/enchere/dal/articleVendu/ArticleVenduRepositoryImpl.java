@@ -90,4 +90,21 @@ public class ArticleVenduRepositoryImpl implements ArticleVenduRepository {
             map.addValue("id", idUtilisateur);
             namedParameterJdbcTemplate.update(sql, map);
     }
+
+    @Override
+    public List<ArticleVendu> getArticlesVenduByUser(int idUtilisateur) {
+
+        String sql = "select a.no_article AS id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.prix_vente, u.no_utilisateur, u.pseudo, u.nom, u.prenom, u.email, u.telephone, u.rue, u.code_postal, u.ville, u.mot_de_passe, u.credit, u.administrateur, c.no_categorie, c.libelle " +
+                "FROM articles_vendus a " +
+                "INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur " +
+                "INNER JOIN categories c ON a.no_categorie = c.no_categorie " +
+                "WHERE a.no_utilisateur = :id";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", idUtilisateur);
+
+        List<ArticleVendu> list = namedParameterJdbcTemplate.query(sql, map, new ArticleVenduRowMapper());
+
+        return list;
+    }
 }
