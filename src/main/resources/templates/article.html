@@ -65,7 +65,7 @@
                     <div class="view-profil" th:text="${retrait.code_postal}"></div>
                     <div class="view-profil" th:text="${retrait.ville}"></div>
                 </div>
-                <div class="view-profil">vendu par : <span th:text="${article.utilisateur.pseudo}"></span></div>
+                <div class="view-profil">vendu par : <a data-th-href="@{/profile(id=${article.utilisateur.no_utilisateur})}" th:text="${article.utilisateur.pseudo}"></a></div>
                 <div data-th-if="${article.utilisateur.no_utilisateur == CurrentUtilisateur.no_utilisateur && !article.date_debut_encheres.isBefore(T(java.time.LocalDate).now())}">
                     <a data-th-href="@{/update-article(id=${article.no_article})}">
                         <button>Modifier</button>

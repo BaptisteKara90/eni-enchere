@@ -57,6 +57,16 @@ public class UtilisateurController {
         return "my-profile";
     }
 
+    @GetMapping("/profile")
+    public String userProfile(@RequestParam int id, Model model) {
+
+        Utilisateur currentUtilisateur = utilisateurService.getUtilisateur(id);
+
+        model.addAttribute("userData", currentUtilisateur);
+
+        return "user-profile";
+    }
+
     @GetMapping("/profile/update")
     public String getUpdateProfileForm(@RequestParam int id, Model model) {
 

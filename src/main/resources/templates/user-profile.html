@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html data-th-replace="~{layouts/layout :: frag-layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+
+<!--  tire passé en paramètre -->
+<title>Mon profil</title>
+
+<!--  contenu passé en paramètre -->
+<main>
+    <div class="container">
+        <h1 class="titre-index">Profil de <span data-th-text="${userData.pseudo}"></span></h1>
+        <div class="profile-container">
+            <div class="container-profile" data-th-object="${userData}">
+                <div class="container-user">
+                    <div class="view-profil">Pseudo : <span class="user-info"
+                                                                  data-th-text="${userData.pseudo}"></span></div>
+                    <div class="view-profil">Email : <span class="user-info" data-th-text="${userData.email}"></span>
+                    </div>
+                    <div class="view-profil">Nom : <span class="user-info" data-th-text="${userData.nom}"></span></div>
+                    <div class="view-profil">Prénom : <span class="user-info" data-th-text="${userData.prenom}"></span>
+                    </div>
+                </div>
+                <div class="container-user">
+                    <div class="view-profil">Telephone : <span class="user-info"
+                                                               data-th-text="${userData.telephone}"></span></div>
+                    <div class="view-profil">Rue : <span class="user-info" data-th-text="${userData.rue}"></span></div>
+                    <div class="view-profil">Code Postal : <span class="user-info"
+                                                                 data-th-text="${userData.code_postal}"></span></div>
+                    <div class="view-profil">Ville : <span class="user-info" data-th-text="${userData.ville}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</html>
