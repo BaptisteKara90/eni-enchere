@@ -11,6 +11,7 @@
     <h1 class="titre-index">Je vous en pris, connectez vous</h1>
         <form data-th-action="@{/login}" method="post">
             <div>
+                <div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
                 <div class="input-user">
                     <label for="idMail">Identifiant</label>
                     <input name="username" id="idMail" type="text" placeholder="Adresse e-mail">

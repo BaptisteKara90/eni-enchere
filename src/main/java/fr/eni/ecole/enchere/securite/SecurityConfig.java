@@ -74,7 +74,7 @@ public class SecurityConfig {
 
         //Gestion du login avec un fichier login.html
         http.formLogin(form -> {
-            form.loginPage("/login").permitAll().defaultSuccessUrl("/");
+            form.loginPage("/login").permitAll().defaultSuccessUrl("/").failureUrl("/login-error");
         });
 
         http.logout(logout -> {
