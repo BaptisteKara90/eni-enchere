@@ -20,15 +20,18 @@
                         <label for="idPseudo">Pseudo</label>
                         <input data-th-field="*{pseudo}" id="idPseudo" type="text" placeholder="Votre pseudonyme">
                     </div>
+                    <div class="alert" data-th-errors="*{pseudo}"></div>
                     <div class="input-user">
                         <label for="idMail">Mail</label>
                         <input data-th-field="*{email}" id="idMail" type="email" placeholder="Votre e-mail">
                     </div>
+                    <div class="alert" data-th-errors="*{email}"></div>
                     <div class="input-user">
                         <label for="idPassword">Mot de passe</label>
                         <input data-th-field="*{mot_de_passe}" name="mot_de_passe" id="idPassword" type="password"
                                placeholder="Mot de Passe">
                     </div>
+                    <div class="alert" data-th-errors="*{mot_de_passe}"></div>
                 </div>
                 <div class="container-form-user">
                     <h2>Votre Identité</h2>

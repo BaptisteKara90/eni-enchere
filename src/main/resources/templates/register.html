@@ -17,49 +17,52 @@
                 <div class="container-form-user">
                     <div class="input-user">
                         <label for="idPseudo">Pseudo</label>
-                        <input data-th-field="*{pseudo}" id="idPseudo" type="text" placeholder="Votre pseudonyme">
+                        <input data-th-field="*{pseudo}" id="idPseudo" type="text" placeholder="Votre pseudonyme" required>
                     </div>
+                    <div class="alert" data-th-errors="*{pseudo}"></div>
                     <div class="input-user">
                         <label for="idMail">Mail</label>
-                        <input data-th-field="*{email}" id="idMail" type="email" placeholder="Votre e-mail">
+                        <input data-th-field="*{email}" id="idMail" type="email" placeholder="Votre e-mail" required>
                     </div>
+                    <div class="alert" data-th-errors="*{email}"></div>
                     <div class="input-user">
                         <label for="idPassword">Mot de passe</label>
                         <input data-th-field="*{mot_de_passe}" name="mot_de_passe" id="idPassword" type="password"
-                               placeholder="Mot de Passe">
+                               placeholder="Mot de Passe" required>
                     </div>
+                    <div class="alert" data-th-errors="*{mot_de_passe}"></div>
                 </div>
                 <div class="container-form-user">
                 <h2>Votre Identité</h2>
                     <div class="input-user">
                         <label for="idNom">Nom</label>
-                        <input data-th-field="*{nom}" name="nom" id="idNom" type="text" placeholder="Votre Nom">
+                        <input data-th-field="*{nom}" name="nom" id="idNom" type="text" placeholder="Votre Nom" required>
                     </div>
                     <div class="input-user">
                         <label for="idPrenom">Prenom</label>
                         <input data-th-field="*{prenom}" name="prenom" id="idPrenom" type="text"
-                               placeholder="Votre prenom">
+                               placeholder="Votre prenom" required>
                     </div>
                     <div class="input-user">
                         <label for="idTelephone">Telephone</label>
                         <input data-th-field="*{telephone}" name="telephone" id="idTelephone" type="text"
-                               placeholder="Votre numero de telephone">
+                               placeholder="Votre numero de telephone" required>
                     </div>
                 </div>
                 <div class="container-form-user">
                 <h2>Votre Adresse</h2>
                     <div class="input-user">
                         <label for="idRue">Adresse</label>
-                        <input data-th-field="*{rue}" name="rue" id="idRue" type="text" placeholder="Votre adresse">
+                        <input data-th-field="*{rue}" name="rue" id="idRue" type="text" placeholder="Votre adresse" required>
                     </div>
                     <div class="input-user">
                         <label for="idCodePostal">Code Postal</label>
                         <input data-th-field="*{code_postal}" name="code_postal" id="idCodePostal" type="text"
-                               placeholder="votre code postal">
+                               placeholder="votre code postal" required>
                     </div>
                     <div class="input-user">
                         <label for="idVille">Ville</label>
-                        <input data-th-field="*{ville}" name="ville" id="idVille" type="text" placeholder="Votre ville">
+                        <input data-th-field="*{ville}" name="ville" id="idVille" type="text" placeholder="Votre ville" required>
                     </div>
                 </div>
                 <div>
